@@ -1,0 +1,47 @@
+/*
+ * PALETA: los colores de KompasFlow, nombrados por su color. Cada color tiene cinco tonos:
+ *   -500 = el color en sí         -300 = más claro (final de los degradados)
+ *   -100 = fondo suave (etiquetas) -700 = oscuro (texto sobre el fondo suave) -900 = el más oscuro
+ * No se usan solos: los «temas» (naranja.css, violeta.css…) deciden cuál es el color primario y cuáles los acompañan.
+ * Para agregar un color nuevo, copia un bloque y cambia los cinco valores.
+ */
+@layer theme {
+  :root {
+    --naranja-500: #e4572e;
+    --naranja-300: #ff8a3d;
+    --naranja-100: #ffe8df;
+    --naranja-700: #c2431f;
+    --naranja-900: #5c2410;
+
+    --violeta-500: #6e4be8;
+    --violeta-300: #a88bff;
+    --violeta-100: #eeeaf8;
+    --violeta-700: #5536c4;
+    --violeta-900: #2e1f5e;
+
+    --verde-500: #00947e;
+    --verde-300: #43c9ac;
+    --verde-100: #e3f3ef;
+    --verde-700: #00745f;
+    --verde-900: #0b3f36;
+
+    --azul-500: #0077c8;
+    --azul-300: #5bb4f0;
+    --azul-100: #e1f0fa;
+    --azul-700: #005a99;
+    --azul-900: #0b2f4d;
+
+    --rosa-500: #e83e80;
+    --rosa-300: #ff8fb5;
+    --rosa-100: #ffe3ee;
+    --rosa-700: #c2185b;
+    --rosa-900: #5c0f2e;
+
+    /* Ámbar: color fijo de avisos y advertencias (no cambia con el tema). */
+    --ambar-500: #ffb020;
+    --ambar-300: #ffc531;
+    --ambar-100: #fff1d6;
+    --ambar-700: #8a5a00;
+    --ambar-900: #5c3d00;
+  }
+}

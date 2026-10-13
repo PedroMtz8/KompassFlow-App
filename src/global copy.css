@@ -1,0 +1,70 @@
+@import 'tailwindcss';
+@import 'uniwind';
+
+/*
+ * Tokens de diseño de Stagelight (tomados de design/, Turn 4). La app es solo clara:
+ * fondo crema, tinta morada oscura y acento naranja. Los nombres shadcn (background,
+ * foreground, primary, ...) se conservan para que los primitivos de `ui/` sigan funcionando;
+ * los tonos de marca (violet, teal, amber) se usan en mosaicos, etiquetas y barras.
+ */
+@layer theme {
+  :root {
+    @variant light {
+      --color-background: #fff7f1;
+      --color-foreground: #1b1620;
+      --color-card: #ffffff;
+      --color-card-foreground: #1b1620;
+      --color-primary: #e4572e;
+      --color-primary-foreground: #ffffff;
+      --color-primary-dark: #c2431f;
+      --color-primary-soft: #ffe8df;
+      --color-secondary: #ffffff;
+      --color-secondary-foreground: #1b1620;
+      --color-muted: #f3eef4;
+      --color-muted-foreground: #6b6270;
+      --color-subtle: #9a93a0;
+      --color-accent: #ffe8df;
+      --color-accent-foreground: #c2431f;
+      --color-destructive: #d92d20;
+      --color-border: #ede7ee;
+      --color-input: #ede7ee;
+      --color-ring: #e4572e;
+      --color-ink: #1b1620;
+      --color-violet: #6e4be8;
+      --color-violet-dark: #5536c4;
+      --color-violet-soft: #eeeaf8;
+      --color-teal: #00947e;
+      --color-teal-dark: #00745f;
+      --color-teal-soft: #e3f3ef;
+      --color-amber: #ffc531;
+      --color-amber-dark: #8a5a00;
+      --color-amber-soft: #fff1d6;
+    }
+  }
+}
+
+/*
+ * Hanken Grotesk / JetBrains Mono se cargan por peso (React Native no sintetiza pesos en
+ * fuentes personalizadas): cada `font-*` apunta a su archivo. Ver `src/lib/fonts.ts`.
+ */
+@utility font-normal {
+  font-family: 'HankenGrotesk_400Regular';
+}
+@utility font-medium {
+  font-family: 'HankenGrotesk_500Medium';
+}
+@utility font-semibold {
+  font-family: 'HankenGrotesk_600SemiBold';
+}
+@utility font-bold {
+  font-family: 'HankenGrotesk_700Bold';
+}
+@utility font-extrabold {
+  font-family: 'HankenGrotesk_800ExtraBold';
+}
+@utility font-mono {
+  font-family: 'JetBrainsMono_500Medium';
+}
+@utility font-mono-bold {
+  font-family: 'JetBrainsMono_700Bold';
+}

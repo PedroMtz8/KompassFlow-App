@@ -1,0 +1,1 @@
+ALTER TABLE `booking` ADD `checked_in_at` integer;

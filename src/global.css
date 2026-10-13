@@ -1,0 +1,52 @@
+@import "tailwindcss";
+@import "uniwind";
+
+/*
+ * ═══════════════════════════════════════════════════════════════════════════════════════════
+ *  COLOR DE LA APP — cambia el color primario editando UNA línea
+ * ═══════════════════════════════════════════════════════════════════════════════════════════
+ *  1. paleta.css  → los colores por nombre (naranja, violeta, verde, azul, rosa, ámbar).
+ *  2. Un tema     → decide cuál es el primario y qué colores lo acompañan (secundario y terciario),
+ *                   y tiñe fondo, bordes y texto para que todo combine.
+ *
+ *  Deja SIN comentar solo UNA de estas líneas @import (a las demás ponles la marca de comentario alrededor,
+ *  como ya están). Se aplica al guardar el archivo.
+ */
+@import "./theme/paleta.css";
+
+/* @import './theme/naranja.css'; ← activo */
+/* @import './theme/violeta.css'; */
+@import "./theme/verde.css";
+/* @import './theme/azul.css'; */
+/* @import './theme/rosa.css'; */
+
+/*
+ * Para crear un tema nuevo: copia src/theme/naranja.css, cámbiale el nombre y elige qué colores de la paleta
+ * hacen de primario, secundario y terciario; luego agrégalo aquí con su @import.
+ */
+
+/*
+ * Hanken Grotesk / JetBrains Mono se cargan por peso (React Native no sintetiza pesos en
+ * fuentes personalizadas): cada `font-*` apunta a su archivo. Ver `src/lib/fonts.ts`.
+ */
+@utility font-normal {
+  font-family: "HankenGrotesk_400Regular";
+}
+@utility font-medium {
+  font-family: "HankenGrotesk_500Medium";
+}
+@utility font-semibold {
+  font-family: "HankenGrotesk_600SemiBold";
+}
+@utility font-bold {
+  font-family: "HankenGrotesk_700Bold";
+}
+@utility font-extrabold {
+  font-family: "HankenGrotesk_800ExtraBold";
+}
+@utility font-mono {
+  font-family: "JetBrainsMono_500Medium";
+}
+@utility font-mono-bold {
+  font-family: "JetBrainsMono_700Bold";
+}

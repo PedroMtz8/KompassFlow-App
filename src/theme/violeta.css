@@ -1,0 +1,112 @@
+/*
+ * TEMA «violeta» — Violeta: acompañan verde y naranja.
+ * Se activa desde src/global.css (una sola línea). Define tres colores con funciones distintas:
+ *   primario    → botones, enlaces, pestaña activa, acentos de marca          (clases: primary, primary-dark, primary-soft…)
+ *   secundario  → mosaicos, etiquetas y gráficas de apoyo                      (clases: violet-*  — «violet» es el nombre del puesto, no del color)
+ *   terciario   → estados positivos, confirmaciones y gráficas de apoyo        (clases: teal-*    — «teal» es el nombre del puesto)
+ * Además tiñe los neutros (fondo, bordes, texto) para que todo combine con el primario.
+ */
+@layer theme {
+  :root {
+    @variant light {
+      /* Neutros */
+      --color-background: #f8f5ff;
+      --color-foreground: #1a1630;
+      --color-card: #ffffff;
+      --color-card-foreground: #1a1630;
+      --color-secondary: #ffffff;
+      --color-secondary-foreground: #1a1630;
+      --color-muted: #efeaf8;
+      --color-muted-foreground: #675f7a;
+      --color-subtle: #9890ad;
+      --color-border: #e5def2;
+      --color-input: #e5def2;
+      --color-ink: #1a1630;
+      --color-destructive: #d92d20;
+      --color-primary-foreground: #ffffff;
+
+      /* Primario */
+      --color-primary: var(--violeta-500);
+      --color-primary-dark: var(--violeta-700);
+      --color-primary-soft: var(--violeta-100);
+      --color-primary-light: var(--violeta-300);
+      --color-primary-ink: var(--violeta-900);
+      --color-primary-glow: rgba(110, 75, 232, 0.3);
+      --color-accent: var(--violeta-100);
+      --color-accent-foreground: var(--violeta-700);
+      --color-ring: var(--violeta-500);
+
+      /* Secundario (puesto «violet») */
+      --color-violet: var(--verde-500);
+      --color-violet-dark: var(--verde-700);
+      --color-violet-soft: var(--verde-100);
+      --color-violet-light: var(--verde-300);
+      --color-violet-ink: var(--verde-900);
+
+      /* Terciario (puesto «teal») */
+      --color-teal: var(--naranja-500);
+      --color-teal-dark: var(--naranja-700);
+      --color-teal-soft: var(--naranja-100);
+      --color-teal-light: var(--naranja-300);
+      --color-teal-ink: var(--naranja-900);
+
+      /* Ámbar: avisos (fijo) */
+      --color-amber: var(--ambar-500);
+      --color-amber-dark: var(--ambar-700);
+      --color-amber-soft: var(--ambar-100);
+      --color-amber-light: var(--ambar-300);
+      --color-amber-ink: var(--ambar-900);
+    }
+
+    /* La app es solo clara; Uniwind exige que «dark» tenga las mismas variables, así que se copian. */
+    @variant dark {
+      /* Neutros */
+      --color-background: #f8f5ff;
+      --color-foreground: #1a1630;
+      --color-card: #ffffff;
+      --color-card-foreground: #1a1630;
+      --color-secondary: #ffffff;
+      --color-secondary-foreground: #1a1630;
+      --color-muted: #efeaf8;
+      --color-muted-foreground: #675f7a;
+      --color-subtle: #9890ad;
+      --color-border: #e5def2;
+      --color-input: #e5def2;
+      --color-ink: #1a1630;
+      --color-destructive: #d92d20;
+      --color-primary-foreground: #ffffff;
+
+      /* Primario */
+      --color-primary: var(--violeta-500);
+      --color-primary-dark: var(--violeta-700);
+      --color-primary-soft: var(--violeta-100);
+      --color-primary-light: var(--violeta-300);
+      --color-primary-ink: var(--violeta-900);
+      --color-primary-glow: rgba(110, 75, 232, 0.3);
+      --color-accent: var(--violeta-100);
+      --color-accent-foreground: var(--violeta-700);
+      --color-ring: var(--violeta-500);
+
+      /* Secundario (puesto «violet») */
+      --color-violet: var(--verde-500);
+      --color-violet-dark: var(--verde-700);
+      --color-violet-soft: var(--verde-100);
+      --color-violet-light: var(--verde-300);
+      --color-violet-ink: var(--verde-900);
+
+      /* Terciario (puesto «teal») */
+      --color-teal: var(--naranja-500);
+      --color-teal-dark: var(--naranja-700);
+      --color-teal-soft: var(--naranja-100);
+      --color-teal-light: var(--naranja-300);
+      --color-teal-ink: var(--naranja-900);
+
+      /* Ámbar: avisos (fijo) */
+      --color-amber: var(--ambar-500);
+      --color-amber-dark: var(--ambar-700);
+      --color-amber-soft: var(--ambar-100);
+      --color-amber-light: var(--ambar-300);
+      --color-amber-ink: var(--ambar-900);
+    }
+  }
+}

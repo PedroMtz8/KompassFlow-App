@@ -1,0 +1,25 @@
+name: CI
+
+# En cada cambio: tipos, lint y TODAS las pruebas. Las pruebas usan una base SQLite temporal (no tocan Turso ni mandan correos reales).
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v2
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: bun install --frozen-lockfile
+      - name: Tipos
+        run: bun run typecheck
+      - name: Lint
+        run: bun run lint
+      - name: Pruebas
+        run: bun run test

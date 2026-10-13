@@ -1,0 +1,25 @@
+name: Recordatorios
+
+# Cada ~10 minutos llama al servidor para que avise las clases que empiezan en la próxima hora y los paquetes por vencer.
+# GitHub puede retrasar unos minutos las ejecuciones programadas: el aviso sale entre 50 y 60 minutos antes de la clase.
+# Secrets del repositorio: APP_URL (https://app.tudominio.mx) y CRON_SECRET (el mismo valor que en las variables del servidor).
+on:
+  schedule:
+    - cron: '*/10 * * * *'
+  workflow_dispatch:
+
+jobs:
+  recordatorios:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - name: Llamar al servidor
+        env:
+          APP_URL: ${{ secrets.APP_URL }}
+          CRON_SECRET: ${{ secrets.CRON_SECRET }}
+        run: |
+          set -euo pipefail
+          test -n "$APP_URL" && test -n "$CRON_SECRET"
+          code=$(curl -sS -o /tmp/out.json -w '%{http_code}' --max-time 60 -X POST "$APP_URL/api/jobs/reminders" -H "x-cron-secret: $CRON_SECRET")
+          cat /tmp/out.json; echo
+          test "$code" = "200"
