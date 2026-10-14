@@ -1,6 +1,7 @@
 import { Elysia } from 'elysia';
 import { CloudflareAdapter } from 'elysia/adapter/cloudflare-worker';
 
+import { auth } from './auth';
 import { authPlugin } from './auth/plugin';
 import { reportError } from './lib/report';
 import { validationMessage } from './lib/validation-message';
@@ -84,3 +85,14 @@ export const api = new Elysia({ prefix: '/api', adapter: CloudflareAdapter })
 
 /** Tipo para el cliente Eden. En el cliente importa SIEMPRE con `import type`. */
 export type App = typeof api;
+
+/**
+ * Punto de entrada para servidores reales (Expo Router, Workers). Better Auth se atiende ANTES de Elysia: su `mount` compila
+ * el manejador con `new Function` en la primera petición, y en EAS Hosting (Cloudflare Workers) eso está prohibido
+ * («process.exit is not available»). Better Auth no necesita nada de Elysia para responder.
+ */
+export const handleRequest = (request: Request): Response | Promise<Response> => {
+  const { pathname } = new URL(request.url);
+  if (pathname === '/api/auth' || pathname.startsWith('/api/auth/')) return auth.handler(request);
+  return api.fetch(request);
+};

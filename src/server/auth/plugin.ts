@@ -15,28 +15,20 @@ import { auth } from './index';
  */
 const ALLOWED_WHILE_FORCED = ['/api/me/security', '/api/me/password/replace'];
 
-// Rutas explícitas en vez de `.mount(auth.handler)`: `mount` compila su manejador en tiempo de ejecución con `new Function`
-// y en EAS Hosting (Cloudflare Workers) eso termina en «process.exit is not available». `parse: 'none'` deja el cuerpo
-// intacto para que Better Auth lo lea de la `Request` original.
-const authRoute = ({ request }: { request: Request }) => auth.handler(request);
-
-export const authPlugin = new Elysia({ name: 'auth' })
-  .all('/auth', authRoute, { parse: 'none' })
-  .all('/auth/*', authRoute, { parse: 'none' })
-  .macro({
-    auth: {
-      async resolve({ status, request }) {
-        const session = await auth.api.getSession({ headers: request.headers });
-        if (!session) return status(401);
-        // Cuenta suspendida por la administración: ninguna ruta autenticada responde (y sus sesiones ya se cerraron).
-        if (await isSuspended(session.user.id))
-          return status(403, { code: 'ACCOUNT_SUSPENDED', message: 'Tu cuenta está suspendida. Escríbenos si crees que es un error.' });
-        if (
-          (session.user as { mustChangePassword?: boolean }).mustChangePassword &&
-          !ALLOWED_WHILE_FORCED.includes(new URL(request.url).pathname)
-        )
-          return status(403, { code: 'PASSWORD_CHANGE_REQUIRED', message: 'Debes cambiar tu contraseña para continuar.' });
-        return { user: session.user, session: session.session };
-      },
+export const authPlugin = new Elysia({ name: 'auth' }).mount(auth.handler).macro({
+  auth: {
+    async resolve({ status, request }) {
+      const session = await auth.api.getSession({ headers: request.headers });
+      if (!session) return status(401);
+      // Cuenta suspendida por la administración: ninguna ruta autenticada responde (y sus sesiones ya se cerraron).
+      if (await isSuspended(session.user.id))
+        return status(403, { code: 'ACCOUNT_SUSPENDED', message: 'Tu cuenta está suspendida. Escríbenos si crees que es un error.' });
+      if (
+        (session.user as { mustChangePassword?: boolean }).mustChangePassword &&
+        !ALLOWED_WHILE_FORCED.includes(new URL(request.url).pathname)
+      )
+        return status(403, { code: 'PASSWORD_CHANGE_REQUIRED', message: 'Debes cambiar tu contraseña para continuar.' });
+      return { user: session.user, session: session.session };
     },
-  });
+  },
+});
