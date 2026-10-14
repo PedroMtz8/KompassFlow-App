@@ -20,7 +20,7 @@ export type TabItem = {
   perm?: [string, string];
 };
 
-/** Barra inferior de KompasFlow: fondo blanco, pastilla naranja suave en la pestaña activa. */
+/** Barra inferior de KompassFlow: fondo blanco, pastilla naranja suave en la pestaña activa. */
 export function makeTabBar(items: TabItem[]) {
   return function TabBar({ state, navigation }: BottomTabBarProps) {
     const insets = useSafeAreaInsets();

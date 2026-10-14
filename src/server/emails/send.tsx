@@ -9,10 +9,10 @@ import { VerifyEmailEmail } from './verify-email';
 /** Un envío por tipo de correo: es lo que usa el resto del servidor (sin tocar JSX). */
 
 export const sendResetPassword = (user: { email: string; name: string }, url: string) =>
-  sendEmail({ to: user.email, subject: 'Restablece tu contraseña de KompasFlow', react: <ResetPasswordEmail name={user.name} url={url} /> });
+  sendEmail({ to: user.email, subject: 'Restablece tu contraseña de KompassFlow', react: <ResetPasswordEmail name={user.name} url={url} /> });
 
 export const sendVerifyEmail = (user: { email: string; name: string }, url: string) =>
-  sendEmail({ to: user.email, subject: 'Confirma tu correo de KompasFlow', react: <VerifyEmailEmail name={user.name} url={url} /> });
+  sendEmail({ to: user.email, subject: 'Confirma tu correo de KompassFlow', react: <VerifyEmailEmail name={user.name} url={url} /> });
 
 export const sendInvitation = (to: string, data: { inviter: string; organization: string; role: string }) =>
   sendEmail({
@@ -29,4 +29,4 @@ export const sendClassCanceled = (to: string, data: { name: string; organization
   });
 
 export const sendAccountDeleted = (to: string, name: string) =>
-  sendEmail({ to, subject: 'Eliminamos tu cuenta de KompasFlow', react: <AccountDeletedEmail name={name} /> });
+  sendEmail({ to, subject: 'Eliminamos tu cuenta de KompassFlow', react: <AccountDeletedEmail name={name} /> });

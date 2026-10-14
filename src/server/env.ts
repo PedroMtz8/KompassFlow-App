@@ -19,7 +19,7 @@ export const env = {
   },
   /** Esquema de deep link de la app (app.json -> expo.scheme). */
   get appScheme() {
-    return clean(process.env.APP_SCHEME) ?? 'kompasflow';
+    return clean(process.env.APP_SCHEME) ?? 'kompassflow';
   },
   /** URL pública de la app web (enlaces dentro de los correos). */
   get appUrl() {
@@ -31,7 +31,7 @@ export const env = {
     if (!key) return undefined;
     return {
       key,
-      from: clean(process.env.EMAIL_FROM) ?? 'KompasFlow <onboarding@resend.dev>',
+      from: clean(process.env.EMAIL_FROM) ?? 'KompassFlow <onboarding@resend.dev>',
       // Solo se cambia en pruebas (un servidor local que imita a Resend).
       baseUrl: (clean(process.env.RESEND_BASE_URL) ?? 'https://api.resend.com').replace(/\/+$/, ''),
     };

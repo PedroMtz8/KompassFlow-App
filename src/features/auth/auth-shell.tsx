@@ -35,7 +35,7 @@ export function AuthShell({ title, subtitle, children, footer }: AuthShellProps)
               <View className="h-[30px] w-[30px] items-center justify-center rounded-[10px] bg-primary">
                 <Icon as={Music} size={17} color="#fff" />
               </View>
-              <Text className="text-xl font-extrabold tracking-[-0.025em] text-white">KompasFlow</Text>
+              <Text className="text-xl font-extrabold tracking-[-0.025em] text-white">KompassFlow</Text>
             </View>
           </View>
 

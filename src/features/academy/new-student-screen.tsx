@@ -67,7 +67,7 @@ export function NewStudentScreen() {
       <InfoBanner
         icon={Link2}
         tone="violet"
-        text="No necesita cuenta. Si después instala KompasFlow, vinculas su historial con su teléfono o correo."
+        text="No necesita cuenta. Si después instala KompassFlow, vinculas su historial con su teléfono o correo."
       />
       <Field label="Nombre completo" value={f.name} onChangeText={(name) => setF({ ...f, name })} maxLength={100} />
       <Field

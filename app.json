@@ -1,11 +1,11 @@
 {
   "expo": {
-    "name": "KompasFlow",
-    "slug": "kompasflow",
+    "name": "KompassFlow",
+    "slug": "kompassflow-app",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
-    "scheme": "kompasflow",
+    "scheme": "kompassflow",
     "userInterfaceStyle": "light",
     "backgroundColor": "#FFF7F1",
     "androidStatusBar": {
@@ -24,7 +24,11 @@
         "monochromeImage": "./assets/images/android-icon-monochrome.png"
       },
       "predictiveBackGestureEnabled": false,
-      "package": "com.example.expostarter"
+      "package": "com.example.expostarter",
+      "permissions": [
+        "android.permission.ACCESS_COARSE_LOCATION",
+        "android.permission.ACCESS_FINE_LOCATION"
+      ]
     },
     "web": {
       "output": "server",
@@ -44,13 +48,13 @@
       [
         "expo-image-picker",
         {
-          "photosPermission": "KompasFlow necesita tus fotos para elegir la portada de tu academia y tu foto de perfil."
+          "photosPermission": "KompassFlow necesita tus fotos para elegir la portada de tu academia y tu foto de perfil."
         }
       ],
       [
         "expo-location",
         {
-          "locationWhenInUsePermission": "KompasFlow usa tu ubicación para mostrarte las academias y clases más cercanas."
+          "locationWhenInUsePermission": "KompassFlow usa tu ubicación para mostrarte las academias y clases más cercanas."
         }
       ],
       "expo-sqlite",
@@ -64,6 +68,13 @@
     "experiments": {
       "typedRoutes": true,
       "reactCompiler": true
-    }
+    },
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "dfc0d842-9b15-4575-8edb-fc9f280907ac"
+      }
+    },
+    "owner": "kompassflow"
   }
 }

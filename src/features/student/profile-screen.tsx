@@ -67,7 +67,7 @@ export function ProfileScreen() {
                 {user?.name}
               </Text>
               <Text className="text-[12.5px] font-semibold text-white/90">
-                {s?.since && s.attended > 0 ? `Bailando desde ${monthYear(s.since)}` : s?.since ? `En KompasFlow desde ${monthYear(s.since)}` : 'Aún no tomas tu primera clase'}
+                {s?.since && s.attended > 0 ? `Bailando desde ${monthYear(s.since)}` : s?.since ? `En KompassFlow desde ${monthYear(s.since)}` : 'Aún no tomas tu primera clase'}
               </Text>
             </View>
           </View>

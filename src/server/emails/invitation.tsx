@@ -9,7 +9,7 @@ export function InvitationEmail({ inviter, organization, role, url }: { inviter:
       <Text style={styles.p}>
         {inviter} te invitó a formar parte del equipo de <strong>{organization}</strong> como <strong>{role}</strong>.
       </Text>
-      <Text style={styles.p}>Entra a KompasFlow con este mismo correo y verás la invitación para aceptarla. Si aún no tienes cuenta, créala con él.</Text>
+      <Text style={styles.p}>Entra a KompassFlow con este mismo correo y verás la invitación para aceptarla. Si aún no tienes cuenta, créala con él.</Text>
       <Button href={url} style={styles.button}>
         Ver la invitación
       </Button>

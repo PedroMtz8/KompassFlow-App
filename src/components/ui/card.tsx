@@ -5,7 +5,7 @@ import { cn } from '@/lib/utils';
 
 type ViewProps = React.ComponentProps<typeof View>;
 
-/** Superficie blanca con sombra suave: la tarjeta base de KompasFlow. */
+/** Superficie blanca con sombra suave: la tarjeta base de KompassFlow. */
 export function Card({ className, ...props }: ViewProps) {
   return <View className={cn('rounded-[22px] bg-card p-4 shadow-[0_6px_20px_rgba(27,22,32,0.06)]', className)} {...props} />;
 }

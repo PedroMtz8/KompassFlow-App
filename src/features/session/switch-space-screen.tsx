@@ -145,7 +145,7 @@ export function SwitchSpaceScreen() {
           <>
             <SectionHeader title="Plataforma" className="pt-1.5" />
             <SpaceRow
-              name="Administración de KompasFlow"
+              name="Administración de KompassFlow"
               icon={ShieldCheck}
               badge="ADMIN"
               badgeTone="ink"

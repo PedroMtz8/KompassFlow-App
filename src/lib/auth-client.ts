@@ -9,7 +9,7 @@ import { getBaseUrl } from './base-url';
 
 const scheme = Array.isArray(Constants.expoConfig?.scheme)
   ? Constants.expoConfig.scheme[0]
-  : (Constants.expoConfig?.scheme ?? 'kompasflow');
+  : (Constants.expoConfig?.scheme ?? 'kompassflow');
 
 /**
  * Cliente de Better Auth para iOS y Android (cookies de sesión en SecureStore).

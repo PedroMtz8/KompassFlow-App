@@ -4,7 +4,7 @@
  */
 export const LEGAL = {
   /** Quien es responsable de los datos personales (razón social o persona física). */
-  controller: process.env.EXPO_PUBLIC_LEGAL_NAME ?? 'KompasFlow',
+  controller: process.env.EXPO_PUBLIC_LEGAL_NAME ?? 'KompassFlow',
   /** Domicilio del responsable (obligatorio en el aviso de privacidad mexicano). */
   address: process.env.EXPO_PUBLIC_LEGAL_ADDRESS ?? '[domicilio del responsable]',
   /** Correo para ejercer derechos ARCO y dudas de privacidad. */
@@ -68,9 +68,9 @@ export const PRIVACY: LegalSection[] = [
 
 export const TERMS: LegalSection[] = [
   {
-    title: 'Qué es KompasFlow',
+    title: 'Qué es KompassFlow',
     body: [
-      'KompasFlow es una plataforma para que academias y estudios publiquen sus clases y administren reservas, asistencia y pagos, y para que las personas descubran y reserven clases. KompasFlow no imparte las clases ni es parte de la relación entre la academia y sus alumnos.',
+      'KompassFlow es una plataforma para que academias y estudios publiquen sus clases y administren reservas, asistencia y pagos, y para que las personas descubran y reserven clases. KompassFlow no imparte las clases ni es parte de la relación entre la academia y sus alumnos.',
     ],
   },
   {
@@ -82,7 +82,7 @@ export const TERMS: LegalSection[] = [
   {
     title: 'Reservas, pagos y cancelaciones',
     body: [
-      'Cada academia define sus precios, paquetes y plazo de cancelación. Los pagos se acuerdan y se cobran entre tú y la academia; KompasFlow solo facilita el registro y, cuando se active, el procesamiento del pago.',
+      'Cada academia define sus precios, paquetes y plazo de cancelación. Los pagos se acuerdan y se cobran entre tú y la academia; KompassFlow solo facilita el registro y, cuando se active, el procesamiento del pago.',
       'Si la academia cancela una clase, tu reserva se cancela con ella y te avisamos.',
     ],
   },
@@ -105,7 +105,7 @@ export const TERMS: LegalSection[] = [
   {
     title: 'Limitación de responsabilidad',
     body: [
-      'La actividad física implica riesgos que asume cada persona y la academia, no KompasFlow. Hacemos lo posible por mantener el servicio disponible, pero no garantizamos que no tenga interrupciones.',
+      'La actividad física implica riesgos que asume cada persona y la academia, no KompassFlow. Hacemos lo posible por mantener el servicio disponible, pero no garantizamos que no tenga interrupciones.',
     ],
   },
   {

@@ -5,7 +5,7 @@ import { getBaseUrl } from '@/lib/base-url';
 
 /**
  * Enlace que abre ESTA app en `path`: en web, la misma página; en celular, un deep link (en Expo Go, `exp://…`; en una
- * build, `kompasflow://…`). Se manda al servidor como destino de los enlaces de los correos (recuperar contraseña, confirmar correo).
+ * build, `kompassflow://…`). Se manda al servidor como destino de los enlaces de los correos (recuperar contraseña, confirmar correo).
  */
 export function appLink(path: string) {
   if (Platform.OS === 'web' && typeof window !== 'undefined') return `${window.location.origin}${path}`;
@@ -13,7 +13,7 @@ export function appLink(path: string) {
 }
 
 /**
- * Como `appLink`, pero apto para Stripe: sus enlaces de regreso solo aceptan http(s), no `exp://` ni `kompasflow://`.
+ * Como `appLink`, pero apto para Stripe: sus enlaces de regreso solo aceptan http(s), no `exp://` ni `kompassflow://`.
  * En celular se pasa por una página del servidor (`/api/stripe/return`) que devuelve a la persona a la app.
  */
 export function stripeReturnLink(path: string, sessionPlaceholder = false) {

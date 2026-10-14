@@ -92,7 +92,7 @@ export function Sidebar() {
         <View className="h-[30px] w-[30px] items-center justify-center rounded-[10px] bg-primary">
           <Icon as={Music} size={17} color="#fff" />
         </View>
-        <Text className="text-xl font-extrabold tracking-[-0.025em]">KompasFlow</Text>
+        <Text className="text-xl font-extrabold tracking-[-0.025em]">KompassFlow</Text>
       </View>
 
       <Pressable
@@ -110,7 +110,7 @@ export function Sidebar() {
             {inAdmin ? 'Administración' : inOrg ? org?.name : 'Modo alumno'}
           </Text>
           <Text className="text-[11px] font-semibold text-muted-foreground" numberOfLines={1}>
-            {inAdmin ? 'Plataforma KompasFlow' : inOrg ? roleLabel(org!.role, terms?.instructor) : 'Descubrir y reservar'}
+            {inAdmin ? 'Plataforma KompassFlow' : inOrg ? roleLabel(org!.role, terms?.instructor) : 'Descubrir y reservar'}
           </Text>
         </View>
         <Icon as={Repeat} size={15} color={t.subtle} />

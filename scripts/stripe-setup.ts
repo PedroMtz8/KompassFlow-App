@@ -46,7 +46,7 @@ for (const k of PAID_PLANS) {
     unit_amount: String(plan.priceMxn * 100),
     'recurring[interval]': 'month',
     lookup_key: lookup,
-    'product_data[name]': `KompasFlow ${plan.name}`,
+    'product_data[name]': `KompassFlow ${plan.name}`,
     'product_data[metadata][plan]': k,
   });
   found[k] = price.id;

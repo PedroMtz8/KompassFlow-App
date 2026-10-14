@@ -45,7 +45,7 @@ export default function RootLayout() {
     [t]
   );
 
-  // El diseño de KompasFlow es solo claro.
+  // El diseño de KompassFlow es solo claro.
   useEffect(() => {
     Uniwind.setTheme('light');
     // Fondo de la ventana nativa: en Android (borde a borde) es lo que se ve detrás de la barra de estado.

@@ -4,10 +4,10 @@ import { EmailLayout, styles } from './layout';
 
 export function AccountDeletedEmail({ name }: { name: string }) {
   return (
-    <EmailLayout preview="Eliminamos tu cuenta de KompasFlow">
+    <EmailLayout preview="Eliminamos tu cuenta de KompassFlow">
       <Text style={styles.h1}>Tu cuenta se eliminó</Text>
       <Text style={styles.p}>
-        Hola {name.split(' ')[0]}, eliminamos tu cuenta de KompasFlow y tus datos personales, como pediste. Tus sesiones se cerraron en todos los dispositivos.
+        Hola {name.split(' ')[0]}, eliminamos tu cuenta de KompassFlow y tus datos personales, como pediste. Tus sesiones se cerraron en todos los dispositivos.
       </Text>
       <Text style={styles.p}>
         Las academias donde fuiste alumno conservan los registros de pagos y asistencia que necesitan para su contabilidad, pero ya sin tu nombre, correo ni teléfono.

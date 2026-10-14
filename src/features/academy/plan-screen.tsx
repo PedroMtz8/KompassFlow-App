@@ -85,7 +85,7 @@ export function PlanScreen() {
           <InfoBanner
             icon={Gift}
             tone="teal"
-            text={`KompasFlow te regaló el plan ${current.name}${b.granted.until ? ` hasta el ${fmtDate(b.granted.until)}` : ''}. ${b.granted.until ? 'Después volverás a tu plan anterior; para conservar este tendrás que contratarlo.' : ''}`.trim()}
+            text={`KompassFlow te regaló el plan ${current.name}${b.granted.until ? ` hasta el ${fmtDate(b.granted.until)}` : ''}. ${b.granted.until ? 'Después volverás a tu plan anterior; para conservar este tendrás que contratarlo.' : ''}`.trim()}
           />
         ) : null}
         {b.status === 'past_due' ? (

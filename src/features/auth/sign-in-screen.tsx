@@ -16,7 +16,7 @@ export function SignInScreen() {
         <Link href="/sign-up" asChild>
           <Pressable>
             <Text className="text-[13.5px] text-muted-foreground">
-              ¿Nuevo en KompasFlow? <Text className="text-[13.5px] font-extrabold text-primary">Crea tu cuenta</Text>
+              ¿Nuevo en KompassFlow? <Text className="text-[13.5px] font-extrabold text-primary">Crea tu cuenta</Text>
             </Text>
           </Pressable>
         </Link>

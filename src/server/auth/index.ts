@@ -33,7 +33,7 @@ export const withoutVerificationEmail = async <T>(email: string, run: () => Prom
 };
 
 export const auth = betterAuth({
-  appName: 'KompasFlow',
+  appName: 'KompassFlow',
   database: drizzleAdapter(db, { provider: 'sqlite', schema }),
   emailAndPassword: {
     enabled: true,

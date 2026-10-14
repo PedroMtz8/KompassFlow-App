@@ -1,4 +1,4 @@
-# Operación de KompasFlow
+# Operación de KompassFlow
 
 Guía corta para quien mantiene el servicio: pruebas, respaldos y monitoreo.
 

@@ -7,16 +7,16 @@ Esta guía lleva la app de tu laptop a internet. El orden importa: cada paso des
 | Decisión | Por qué importa |
 |---|---|
 | **Nombre del dominio** (p. ej. `app.tudominio.mx`) | Va en los correos, Stripe y Google; cambiarlo después duele. |
-| **Identificador de la app** (p. ej. `mx.tuempresa.stagelight`) | `ios.bundleIdentifier` y `android.package` en `app.json`. **No se pueden cambiar después de publicar.** Hoy son `com.example.expostarter`. |
+| **Identificador de la app** (p. ej. `mx.tuempresa.kompassflow`) | `ios.bundleIdentifier` y `android.package` en `app.json`. **No se pueden cambiar después de publicar.** Hoy son `com.example.expostarter`. |
 | **Razón social, domicilio y correo de soporte** | Los pide el aviso de privacidad y los términos (`EXPO_PUBLIC_LEGAL_*`). Un abogado debe revisar los textos de `src/features/legal/legal-text.ts`. |
 | **Plan de EAS de paga** | El dominio propio de EAS Hosting no existe en el plan gratis. |
 
 ## 1. Repositorio y CI
 
 ```bash
-git init && git add -A && git commit -m "KompasFlow"
+git init && git add -A && git commit -m "KompassFlow"
 git branch -M main
-git remote add origin git@github.com:<tu-usuario>/stagelight.git   # repositorio PRIVADO
+git remote add origin git@github.com:<tu-usuario>/KompassFlow-App.git   # repositorio PRIVADO
 git push -u origin main
 ```
 Revisa antes del primer `git add` que `.env`, `.env.production` y `STRIPE.md` no se suben (ya están en `.gitignore`). En GitHub → Settings → Secrets agrega los del respaldo (ver `OPERACION.md`). La CI (`.github/workflows/ci.yml`) corre tipos, lint y las pruebas en cada push.
@@ -28,7 +28,7 @@ Crea **otra** base de Turso para producción (no uses la de pruebas) y aplica la
 ## 3. Correo (Resend)
 
 1. Resend → Domains → agrega tu dominio y crea los registros DNS que te pide (SPF y DKIM). Espera a "Verified".
-2. `EMAIL_FROM="KompasFlow <hola@tudominio.mx>"`.
+2. `EMAIL_FROM="KompassFlow <hola@tudominio.mx>"`.
 
 ## 4. Archivos y respaldos (Cloudflare R2)
 

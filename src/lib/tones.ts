@@ -2,7 +2,7 @@ import { useMemo } from 'react';
 
 import { useTheme } from './theme';
 
-/** Tonos de marca de KompasFlow: cada academia/estado usa uno (mosaicos, barras, etiquetas). */
+/** Tonos de marca de KompassFlow: cada academia/estado usa uno (mosaicos, barras, etiquetas). */
 export type Tone = 'orange' | 'violet' | 'teal' | 'amber' | 'pink' | 'blue' | 'green' | 'ink';
 
 export type ToneSpec = {

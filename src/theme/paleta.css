@@ -1,5 +1,5 @@
 /*
- * PALETA: los colores de KompasFlow, nombrados por su color. Cada color tiene cinco tonos:
+ * PALETA: los colores de KompassFlow, nombrados por su color. Cada color tiene cinco tonos:
  *   -500 = el color en sí         -300 = más claro (final de los degradados)
  *   -100 = fondo suave (etiquetas) -700 = oscuro (texto sobre el fondo suave) -900 = el más oscuro
  * No se usan solos: los «temas» (naranja.css, violeta.css…) deciden cuál es el color primario y cuáles los acompañan.

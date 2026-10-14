@@ -154,7 +154,7 @@ export async function getBilling(organizationId: string) {
     cardFeeBps: def.cardFeeBps,
     plan: key,
     planName: def.name,
-    // Plan otorgado por KompasFlow (cortesía o prueba extendida): vence en `until` (null = sin fecha).
+    // Plan otorgado por KompassFlow (cortesía o prueba extendida): vence en `until` (null = sin fecha).
     granted: override ? { until: override.expiresAt } : null,
     status: subscription?.status ?? null,
     trialEnd: subscription?.trialEnd ?? null,
