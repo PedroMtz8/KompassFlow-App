@@ -75,6 +75,14 @@
         "projectId": "dfc0d842-9b15-4575-8edb-fc9f280907ac"
       }
     },
-    "owner": "kompassflow"
+    "owner": "kompassflow",
+    "runtimeVersion": {
+      "policy": "fingerprint"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/dfc0d842-9b15-4575-8edb-fc9f280907ac",
+      "checkAutomatically": "ON_LOAD",
+      "fallbackToCacheTimeout": 0
+    }
   }
 }
