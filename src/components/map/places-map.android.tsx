@@ -4,15 +4,12 @@ import { WebView, type WebViewMessageEvent } from 'react-native-webview';
 
 import { Text } from '@/components/ui/text';
 
-import { NativeMap } from './native-map';
 import { TEPIC_CENTER, usePinColors, type PlacesMapProps } from './types';
 
 /**
- * Mapa en Android. Primero Google Maps nativo (`react-native-maps`): en Expo Go funciona sin configurar nada y en una build
- * propia necesita la llave de Google Maps (plugin `react-native-maps`). Si en 8 segundos no termina de pintar (sin llave,
- * sin Google Play Services, emulador sin gráficos…) se cambia solo a OpenStreetMap con Leaflet dentro de un WebView, que
- * no pide llave. Si tampoco carga, se muestra un mensaje con el motivo en lugar de un recuadro gris vacío.
- * iOS usa Apple Maps y la web usa Leaflet directamente; todos comparten los mismos pines y colores.
+ * Mapa en Android: OpenStreetMap con Leaflet dentro de un WebView (sin llave de Google). Si no carga, se muestra un mensaje
+ * con el motivo en lugar de un recuadro gris vacío. iOS usa Apple Maps y la web usa Leaflet directamente; todos comparten
+ * los mismos pines y colores.
  */
 const html = (data: string) => `<!doctype html>
 <html><head>
@@ -127,28 +124,12 @@ function OsmMap({ pins, selectedId, onSelect, user, height = 240, interactive = 
   );
 }
 
-const GOOGLE_TIMEOUT_MS = 8000;
-
+/**
+ * En Android se usa siempre OpenStreetMap (Leaflet en un WebView): no pide llave ni cuenta de facturación.
+ * El Google Maps nativo (`NativeMap`) NO sirve sin llave en el AndroidManifest: la app se cierra al instante, antes de que
+ * ningún respaldo alcance a actuar. Si más adelante se quiere Google Maps, hay que crear la llave (Maps SDK for Android,
+ * restringida al paquete y la huella SHA-1), ponerla en `app.json` → `android.config.googleMaps.apiKey` y volver a usar `NativeMap`.
+ */
 export function PlacesMap(props: PlacesMapProps) {
-  const [mode, setMode] = useState<'google' | 'osm'>('google');
-  const loaded = useRef(false);
-
-  // Si Google no termina de pintar a tiempo (sin llave, sin Play Services…) se usa OpenStreetMap.
-  useEffect(() => {
-    const t = setTimeout(() => {
-      if (!loaded.current) setMode('osm');
-    }, GOOGLE_TIMEOUT_MS);
-    return () => clearTimeout(t);
-  }, []);
-
-  return mode === 'google' ? (
-    <NativeMap
-      {...props}
-      onLoaded={() => {
-        loaded.current = true;
-      }}
-    />
-  ) : (
-    <OsmMap {...props} />
-  );
+  return <OsmMap {...props} />;
 }
