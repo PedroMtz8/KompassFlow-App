@@ -1,5 +1,4 @@
 import { router } from 'expo-router';
-import Head from 'expo-router/head';
 import { Music } from 'lucide-react-native';
 import { useEffect, useRef, type MouseEvent, type ReactNode } from 'react';
 import { ScrollView } from 'react-native';
@@ -11,9 +10,12 @@ import { photos } from '@/mocks/photos';
  * Página de presentación (solo web). La ruta «/» es pública: sin sesión se ve esta página; con sesión se manda a la
  * persona al lado donde estaba (alumno o academia), igual que en el celular. Va con elementos HTML normales para
  * que se comporte como un sitio web: enlaces reales, secciones con ancla, texto seleccionable.
+ *
+ * Se renderiza en el servidor (el HTML ya trae todo el contenido, sin esperar a JavaScript ni a la sesión). Las animaciones
+ * son solo del cliente: nada queda oculto hasta que JavaScript marca la página como «lista» (`kf-ready`).
  */
 export default function Index() {
-  return <Entry signedOut={<Landing />} />;
+  return <Entry signedOut={<Landing />} pending={<Landing />} />;
 }
 
 /* ─────────────────────────────  colores propios de la página  ───────────────────────────── */
@@ -78,8 +80,8 @@ const CSS = `
 .kf-root { font-family: HankenGrotesk_400Regular, system-ui, sans-serif; color: ${INK}; -webkit-font-smoothing: antialiased; }
 @layer base { .kf-root a { color: inherit; text-decoration: none; } }
 .kf-mono { font-family: JetBrainsMono_500Medium, ui-monospace, monospace; letter-spacing: 0.04em; text-transform: uppercase; }
-.kf-reveal { opacity: 0; transform: translateY(22px); transition: opacity .7s cubic-bezier(.2,.7,.2,1), transform .7s cubic-bezier(.2,.7,.2,1); }
-.kf-reveal.kf-in { opacity: 1; transform: none; }
+.kf-ready .kf-reveal:not(.kf-in) { opacity: 0; transform: translateY(22px); }
+.kf-reveal {  transition: opacity .7s cubic-bezier(.2,.7,.2,1), transform .7s cubic-bezier(.2,.7,.2,1); }
 @keyframes kf-marquee { to { transform: translateX(-50%); } }
 @keyframes kf-spin { to { transform: rotate(360deg); } }
 @keyframes kf-rise { from { opacity: 0; transform: translateY(26px); } to { opacity: 1; transform: none; } }
@@ -99,7 +101,7 @@ const CSS = `
 .kf-tile:hover { transform: translateY(-4px); }
 @media (prefers-reduced-motion: reduce) {
   .kf-marquee, .kf-spin, .kf-h1 > span, .kf-underline path { animation: none !important; }
-  .kf-reveal { transition: none; opacity: 1; transform: none; }
+  .kf-ready .kf-reveal:not(.kf-in) { opacity: 1; transform: none; }
 }
 `;
 
@@ -641,18 +643,13 @@ function Footer() {
 }
 
 function Landing() {
+  // Las animaciones de aparición solo se activan con JavaScript: sin él (o antes de hidratar) todo el contenido está visible.
+  useEffect(() => {
+    document.documentElement.classList.add('kf-ready');
+    return () => document.documentElement.classList.remove('kf-ready');
+  }, []);
   return (
     <ScrollView style={{ flex: 1, backgroundColor: PAPER }} contentContainerStyle={{ flexGrow: 1 }} showsVerticalScrollIndicator>
-      <Head>
-        <title>KompassFlow · La agenda de tu academia de baile</title>
-        <meta
-          name="description"
-          content="Publica tus clases, controla el cupo, cobra y pasa lista desde un solo lugar. Y si bailas, encuentra una clase cerca y reserva en dos toques."
-        />
-        <meta property="og:title" content="KompassFlow · La agenda de tu academia de baile" />
-        <meta property="og:description" content="Reservas, cupos, cobros y asistencia para academias e instructores de baile." />
-        <meta name="theme-color" content={PAPER} />
-      </Head>
       <style dangerouslySetInnerHTML={{ __html: CSS }} />
       <div className="kf-root w-full" style={{ background: PAPER }}>
         <Nav />

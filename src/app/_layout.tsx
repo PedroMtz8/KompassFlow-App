@@ -2,7 +2,7 @@ import '@/global.css';
 
 import { PortalHost } from '@rn-primitives/portal';
 import { QueryClientProvider } from '@tanstack/react-query';
-import { DefaultTheme, Stack, ThemeProvider } from 'expo-router';
+import { DefaultTheme, Stack, ThemeProvider, usePathname } from 'expo-router';
 import { useFonts } from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
 import { StatusBar } from 'expo-status-bar';
@@ -37,6 +37,9 @@ export { AppErrorBoundary as ErrorBoundary } from '@/components/error-screen';
 export default function RootLayout() {
   const [fontsLoaded, fontError] = useFonts(fontMap);
   const t = useTheme();
+  // En la web la página de presentación («/») se dibuja de inmediato, también en el servidor (SEO y carga rápida): no espera
+  // a las fuentes ni a la sesión. El resto de pantallas sí esperan, para no mostrar texto con la fuente equivocada.
+  const earlyLanding = useIsWebLanding();
   const navTheme = useMemo(
     () => ({
       ...DefaultTheme,
@@ -64,7 +67,7 @@ export default function RootLayout() {
             ) : (
               <StatusBar style="dark" />
             )}
-            {fontsLoaded || fontError ? <RootNavigator /> : null}
+            {fontsLoaded || fontError || earlyLanding ? <RootNavigator /> : null}
             <PortalHost />
             <ToastHost />
             <ImageCropperHost />
@@ -73,6 +76,12 @@ export default function RootLayout() {
       </SafeAreaProvider>
     </GestureHandlerRootView>
   );
+}
+
+/** Web y ruta «/»: la landing pública, que debe verse sin esperar a que cargue la sesión. */
+function useIsWebLanding() {
+  const pathname = usePathname();
+  return Platform.OS === 'web' && pathname === '/';
 }
 
 /** Guard de autenticación: (auth) solo sin sesión; (student) y (academy) solo con sesión. */
@@ -84,6 +93,7 @@ function AuthNavigator() {
   const t = useTheme();
   const { data: session, isPending } = authClient.useSession();
   const desktop = useIsDesktop();
+  const earlyLanding = useIsWebLanding();
 
   useEffect(() => {
     if (!isPending) SplashScreen.hideAsync();
@@ -114,7 +124,7 @@ function AuthNavigator() {
   // Cuenta creada por una academia con contraseña temporal: hasta que la cambie solo se ve la pantalla de cambio.
   const security = useSecurity(hasSession);
   const isAdmin = !!useIsPlatformAdmin(hasSession).data;
-  if (isPending || (hasSession && security.isPending)) return null;
+  if ((isPending || (hasSession && security.isPending)) && !earlyLanding) return null;
 
   const isSignedIn = !!session;
   const forced = isSignedIn && !!security.data?.mustChangePassword;

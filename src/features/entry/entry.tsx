@@ -9,11 +9,12 @@ import { useSpace, useSpaceHydrated } from '@/stores/space';
 
 /**
  * Entrada de la app: con sesión lleva al lado donde estaba esa persona; sin sesión muestra `signedOut`
- * (en el celular redirige a iniciar sesión; en la web es la página de presentación).
+ * (en el celular redirige a iniciar sesión; en la web es la página de presentación). Mientras se averigua la sesión muestra `pending`.
  */
-export function Entry({ signedOut }: { signedOut: ReactNode }) {
+export function Entry({ signedOut, pending }: { signedOut: ReactNode; pending?: ReactNode }) {
   const { data: session, isPending } = authClient.useSession();
-  if (isPending) return null;
+  // `pending`: qué mostrar mientras se sabe si hay sesión (la landing web lo usa para dibujarse ya en el servidor).
+  if (isPending) return <>{pending ?? null}</>;
   if (!session) return <>{signedOut}</>;
   return <SignedInRedirect userId={session.user.id} />;
 }

@@ -32,6 +32,12 @@
     },
     "web": {
       "output": "server",
+      "name": "KompassFlow",
+      "shortName": "KompassFlow",
+      "description": "Reservas, cupos, cobros y asistencia para academias e instructores de baile.",
+      "lang": "es",
+      "themeColor": "#F5EFE3",
+      "backgroundColor": "#F5EFE3",
       "favicon": "./assets/images/favicon.png"
     },
     "plugins": [
