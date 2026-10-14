@@ -1,10 +1,13 @@
-import { render } from '@react-email/render';
 import type { ReactElement } from 'react';
 
 import { env } from '../env';
 import { reportError } from './report';
 
-type Message = { to: string; subject: string; react: ReactElement };
+/**
+ * `react` puede ser una función: así las plantillas (y React Email, que es lo más pesado del servidor) se cargan solo al enviar
+ * un correo y no al arrancar. El hosting en la nube corta los arranques que gastan demasiada CPU.
+ */
+type Message = { to: string; subject: string; react: ReactElement | (() => Promise<ReactElement>) };
 
 /** Dominios reservados (RFC 2606): nunca son reales, así que jamás se les manda correo de verdad (pruebas, datos de ejemplo). */
 const RESERVED = /@(example\.(com|org|net)|[^@]*\.(test|example|invalid|localhost))$/i;
@@ -16,7 +19,9 @@ const RESERVED = /@(example\.(com|org|net)|[^@]*\.(test|example|invalid|localhos
  */
 export async function sendEmail({ to, subject, react }: Message): Promise<{ ok: boolean; skipped?: boolean }> {
   try {
-    const [html, text] = await Promise.all([render(react), render(react, { plainText: true })]);
+    const { render } = await import('@react-email/render');
+    const element = typeof react === 'function' ? await react() : react;
+    const [html, text] = await Promise.all([render(element), render(element, { plainText: true })]);
     const cfg = env.resend;
     // Con el Resend real, un correo a un dominio reservado no se envía (rebotaría y mancharía la reputación del remitente).
     if (cfg && cfg.baseUrl === 'https://api.resend.com' && RESERVED.test(to)) return { ok: true, skipped: true };
