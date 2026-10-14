@@ -77,7 +77,7 @@
     },
     "owner": "kompassflow",
     "runtimeVersion": {
-      "policy": "fingerprint"
+      "policy": "appVersion"
     },
     "updates": {
       "url": "https://u.expo.dev/dfc0d842-9b15-4575-8edb-fc9f280907ac",
