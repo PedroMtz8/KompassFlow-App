@@ -1,7 +1,6 @@
 import '@/global.css';
 
 import { PortalHost } from '@rn-primitives/portal';
-import { QueryClientProvider } from '@tanstack/react-query';
 import { DefaultTheme, Stack, ThemeProvider, usePathname } from 'expo-router';
 import { useFonts } from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
@@ -24,7 +23,9 @@ import { ToastHost } from '@/components/toast-host';
 import { useIsDesktop } from '@/lib/use-layout';
 import { authClient } from '@/lib/auth-client';
 import { fontMap } from '@/lib/fonts';
-import { queryClient } from '@/lib/query-client';
+import { OfflineBanner } from '@/components/offline-banner';
+import { QueryProvider, syncCacheOwner } from '@/lib/query-provider';
+import { onlineManager } from '@tanstack/react-query';
 import { installGlobalErrorHandlers } from '@/lib/report-error';
 import { useTheme } from '@/lib/theme';
 
@@ -58,7 +59,7 @@ export default function RootLayout() {
   return (
     <GestureHandlerRootView style={{ flex: 1, backgroundColor: t.background }}>
       <SafeAreaProvider style={{ backgroundColor: t.background }}>
-        <QueryClientProvider client={queryClient}>
+        <QueryProvider>
           <ThemeProvider value={navTheme}>
             {Platform.OS === 'android' ? (
               // En Android el fondo de la barra solo se pinta con el StatusBar nativo (cuando la app no va «borde a borde», p. ej.
@@ -69,10 +70,11 @@ export default function RootLayout() {
             )}
             {fontsLoaded || fontError || earlyLanding ? <RootNavigator /> : null}
             <PortalHost />
+            <OfflineBanner />
             <ToastHost />
             <ImageCropperHost />
           </ThemeProvider>
-        </QueryClientProvider>
+        </QueryProvider>
       </SafeAreaProvider>
     </GestureHandlerRootView>
   );
@@ -102,13 +104,13 @@ function AuthNavigator() {
   // Al cambiar de cuenta (o cerrar sesión) se descarta todo lo guardado: nadie ve datos de la persona anterior.
   const userId = session?.user.id;
   useEffect(() => {
-    queryClient.clear();
-  }, [userId]);
+    syncCacheOwner(userId, isPending);
+  }, [userId, isPending]);
 
   // Al abrir la app con sesión se actualiza la copia guardada del usuario (foto, nombre…) sin esperar a que caduque.
   const hasSession = !!session;
   useEffect(() => {
-    if (hasSession) authClient.getSession({ query: { disableCookieCache: true } });
+    if (hasSession && onlineManager.isOnline()) authClient.getSession({ query: { disableCookieCache: true } });
   }, [hasSession]);
 
   // El modo (alumno/academia) sigue a la organización activa de la sesión: si hay una, se está en modo academia. Así nunca se

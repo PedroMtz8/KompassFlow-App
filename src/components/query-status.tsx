@@ -7,7 +7,7 @@ import { Icon } from '@/components/ui/icon';
 import { Text } from '@/components/ui/text';
 import { useTheme } from '@/lib/theme';
 
-type Q = { isPending: boolean; isError: boolean; isFetching?: boolean; refetch: () => unknown };
+type Q = { isPending: boolean; isError: boolean; data?: unknown; isFetching?: boolean; refetch: () => unknown };
 
 /** Aviso de que falló la carga, con botón para reintentar. Sin esto, un error se confundía con «no hay datos». */
 export function ErrorNotice({ onRetry, busy, what = 'la información', fill }: { onRetry: () => unknown; busy?: boolean; what?: string; fill?: boolean }) {
@@ -39,6 +39,7 @@ export function ErrorNotice({ onRetry, busy, what = 'la información', fill }: {
 /** Indicador de carga o, si la consulta falló, aviso con reintento. No pinta nada cuando ya hay datos. */
 export function QueryStatus({ q, what }: { q: Q; what?: string }) {
   if (q.isPending) return <ActivityIndicator />;
-  if (q.isError) return <ErrorNotice onRetry={q.refetch} busy={q.isFetching} what={what} />;
+  // Con datos guardados un fallo de red no tapa la lista: se sigue mostrando lo último que se consultó.
+  if (q.isError && q.data === undefined) return <ErrorNotice onRetry={q.refetch} busy={q.isFetching} what={what} />;
   return null;
 }
