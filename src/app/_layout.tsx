@@ -24,6 +24,7 @@ import { useIsDesktop } from '@/lib/use-layout';
 import { authClient } from '@/lib/auth-client';
 import { fontMap } from '@/lib/fonts';
 import { OfflineBanner } from '@/components/offline-banner';
+import { UpdateBanner } from '@/components/update-banner';
 import { QueryProvider, syncCacheOwner } from '@/lib/query-provider';
 import { onlineManager } from '@tanstack/react-query';
 import { installGlobalErrorHandlers } from '@/lib/report-error';
@@ -71,6 +72,7 @@ export default function RootLayout() {
             {fontsLoaded || fontError || earlyLanding ? <RootNavigator /> : null}
             <PortalHost />
             <OfflineBanner />
+            <UpdateBanner />
             <ToastHost />
             <ImageCropperHost />
           </ThemeProvider>
