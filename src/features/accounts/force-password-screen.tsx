@@ -1,4 +1,5 @@
-import { KeyRound, TimerOff } from 'lucide-react-native';
+import KeyRound from 'lucide-react-native/icons/key-round';
+import TimerOff from 'lucide-react-native/icons/timer-off';
 import { useState } from 'react';
 
 import { FormScreen } from '@/components/form-screen';

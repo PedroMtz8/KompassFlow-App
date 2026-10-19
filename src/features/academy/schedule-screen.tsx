@@ -1,5 +1,7 @@
 import { router } from 'expo-router';
-import { ChevronLeft, ChevronRight, Plus } from 'lucide-react-native';
+import ChevronLeft from 'lucide-react-native/icons/chevron-left';
+import ChevronRight from 'lucide-react-native/icons/chevron-right';
+import Plus from 'lucide-react-native/icons/plus';
 import { useState } from 'react';
 import { Pressable, View } from 'react-native';
 
@@ -48,35 +50,37 @@ export function ScheduleScreen() {
     <Screen>
       <ScreenScroll wide contentContainerClassName="gap-3 pb-10" onRefresh={refresh}>
         <TimeZoneBanner tz={tz} />
-        <View className="flex-row items-center gap-2 pb-1 pt-1">
-          <Text variant="h2" className="flex-1">
+        <View className="flex-row items-center gap-2 pt-1">
+          <Text variant="h1" className="flex-1">
             Agenda
           </Text>
+          {desktop ? <RefreshButton onPress={refresh} busy={busy} /> : null}
+          {canCreate ? (
+            <Pressable
+              onPress={() => router.push('/new-class')}
+              className="h-10 w-10 items-center justify-center rounded-[14px] bg-primary shadow-[0_10px_20px_-8px_var(--color-primary-glow)] active:opacity-80"
+            >
+              <Icon as={Plus} size={18} color="#fff" />
+            </Pressable>
+          ) : null}
+        </View>
+        <View className="flex-row items-center gap-2 pb-1">
           <Pressable
             onPress={() => {
               setWeek(startOfWeek(today));
               setDay(today);
             }}
-            className="h-9 items-center justify-center rounded-xl bg-card px-3 active:opacity-70"
+            className="h-10 items-center justify-center rounded-[14px] border border-ink/[0.05] bg-card px-3.5 shadow-[0_1px_2px_rgba(16,32,26,0.05),0_6px_14px_-4px_rgba(16,32,26,0.10)] active:opacity-70"
           >
             <Text className="text-[12.5px] font-bold">Hoy</Text>
           </Pressable>
-          <Pressable onPress={() => shift(-1)} className="h-9 w-9 items-center justify-center rounded-xl bg-card active:opacity-70">
+          <Text className="flex-1 text-center font-mono text-[12px] text-muted-foreground">{title}</Text>
+          <Pressable onPress={() => shift(-1)} className="h-10 w-10 items-center justify-center rounded-[14px] border border-ink/[0.05] bg-card shadow-[0_1px_2px_rgba(16,32,26,0.05),0_6px_14px_-4px_rgba(16,32,26,0.10)] active:opacity-70">
             <Icon as={ChevronLeft} size={18} />
           </Pressable>
-          <Text className="min-w-[110px] text-center font-mono text-[12px] text-[#4A4152]">{title}</Text>
-          <Pressable onPress={() => shift(1)} className="h-9 w-9 items-center justify-center rounded-xl bg-card active:opacity-70">
+          <Pressable onPress={() => shift(1)} className="h-10 w-10 items-center justify-center rounded-[14px] border border-ink/[0.05] bg-card shadow-[0_1px_2px_rgba(16,32,26,0.05),0_6px_14px_-4px_rgba(16,32,26,0.10)] active:opacity-70">
             <Icon as={ChevronRight} size={18} />
           </Pressable>
-          {desktop ? <RefreshButton onPress={refresh} busy={busy} /> : null}
-          {canCreate ? (
-            <Pressable
-              onPress={() => router.push('/new-class')}
-              className="h-9 w-9 items-center justify-center rounded-xl bg-primary active:opacity-80"
-            >
-              <Icon as={Plus} size={18} color="#fff" />
-            </Pressable>
-          ) : null}
         </View>
 
         <QueryStatus q={sessions} />

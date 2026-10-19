@@ -1,5 +1,11 @@
 import { router } from 'expo-router';
-import { Banknote, CreditCard, Landmark, Receipt, Repeat, Ticket, Zap } from 'lucide-react-native';
+import Banknote from 'lucide-react-native/icons/banknote';
+import CreditCard from 'lucide-react-native/icons/credit-card';
+import Landmark from 'lucide-react-native/icons/landmark';
+import Receipt from 'lucide-react-native/icons/receipt';
+import Repeat from 'lucide-react-native/icons/repeat';
+import Ticket from 'lucide-react-native/icons/ticket';
+import Zap from 'lucide-react-native/icons/zap';
 import { useCallback } from 'react';
 import { Pressable, View } from 'react-native';
 
@@ -214,7 +220,7 @@ export function MembershipScreen() {
 
         <QueryStatus q={q} />
         {q.data && active.length === 0 ? (
-          <View className="items-center gap-1.5 rounded-[22px] bg-card p-6">
+          <View className="items-center gap-1.5 rounded-[24px] border border-ink/[0.045] bg-card p-6 shadow-[0_1px_2px_rgba(16,32,26,0.05),0_12px_28px_-8px_rgba(16,32,26,0.10)]">
             <Text className="text-base font-extrabold">Aún no tienes un paquete activo</Text>
             <Text variant="muted" className="text-center">
               Compra uno en el perfil de tu academia o pídelo en recepción; cuando se registre el pago, aquí verás tus créditos.

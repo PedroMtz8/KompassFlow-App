@@ -1,5 +1,7 @@
 import { router, useLocalSearchParams } from 'expo-router';
-import { Banknote, Shield, Ticket } from 'lucide-react-native';
+import Banknote from 'lucide-react-native/icons/banknote';
+import Shield from 'lucide-react-native/icons/shield';
+import Ticket from 'lucide-react-native/icons/ticket';
 import { ActivityIndicator, View } from 'react-native';
 
 import { ErrorNotice } from '@/components/query-status';

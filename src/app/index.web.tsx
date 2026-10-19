@@ -1,5 +1,5 @@
 import { router } from 'expo-router';
-import { Music } from 'lucide-react-native';
+import Music from 'lucide-react-native/icons/music';
 import { useEffect, useRef, type MouseEvent, type ReactNode } from 'react';
 import { ScrollView } from 'react-native';
 

@@ -1,5 +1,5 @@
 import { router } from 'expo-router';
-import { Search } from 'lucide-react-native';
+import Search from 'lucide-react-native/icons/search';
 import { useState } from 'react';
 import { Pressable, View } from 'react-native';
 
@@ -29,13 +29,13 @@ export function AdminUsersScreen() {
         <View className="pb-1 pt-1">
           <Text variant="h2">Usuarios</Text>
         </View>
-        <View className="h-12 flex-row items-center gap-2.5 rounded-[15px] bg-card px-3.5">
+        <View className="h-[52px] flex-row items-center gap-2.5 rounded-[18px] border border-ink/[0.05] bg-card px-4 shadow-[0_1px_2px_rgba(16,32,26,0.04),0_10px_22px_-10px_rgba(16,32,26,0.14)]">
           <Icon as={Search} size={18} color="#A69DAB" />
           <Input
             value={search}
             onChangeText={setSearch}
             placeholder="Buscar por nombre o correo"
-            className="h-12 flex-1 bg-transparent px-0 text-[14.5px] font-normal shadow-none"
+            className="h-12 flex-1 border-0 bg-transparent px-0 text-[14.5px] font-normal shadow-none"
           />
         </View>
         <QueryStatus q={q} />

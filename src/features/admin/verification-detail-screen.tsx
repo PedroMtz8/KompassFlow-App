@@ -1,5 +1,9 @@
 import { useLocalSearchParams } from 'expo-router';
-import { ExternalLink, Globe, MapPin, Phone, Search } from 'lucide-react-native';
+import ExternalLink from 'lucide-react-native/icons/external-link';
+import Globe from 'lucide-react-native/icons/globe';
+import MapPin from 'lucide-react-native/icons/map-pin';
+import Phone from 'lucide-react-native/icons/phone';
+import Search from 'lucide-react-native/icons/search';
 import { useState, type ReactNode } from 'react';
 import { Linking, Pressable, View } from 'react-native';
 

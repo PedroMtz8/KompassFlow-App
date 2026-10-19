@@ -1,5 +1,5 @@
 import { router, useLocalSearchParams } from 'expo-router';
-import { CalendarX2 } from 'lucide-react-native';
+import CalendarX2 from 'lucide-react-native/icons/calendar-x-2';
 import { useState } from 'react';
 import { ActivityIndicator, View } from 'react-native';
 

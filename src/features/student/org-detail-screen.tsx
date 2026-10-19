@@ -1,7 +1,14 @@
 import * as Linking from 'expo-linking';
 import { LinearGradient } from 'expo-linear-gradient';
 import { router, useLocalSearchParams } from 'expo-router';
-import { Camera, ChevronLeft, Clock, Globe, MapPin, Navigation, Phone, Users } from 'lucide-react-native';
+import Camera from 'lucide-react-native/icons/camera';
+import ChevronLeft from 'lucide-react-native/icons/chevron-left';
+import Clock from 'lucide-react-native/icons/clock';
+import Globe from 'lucide-react-native/icons/globe';
+import MapPin from 'lucide-react-native/icons/map-pin';
+import Navigation from 'lucide-react-native/icons/navigation';
+import Phone from 'lucide-react-native/icons/phone';
+import Users from 'lucide-react-native/icons/users';
 import { ActivityIndicator, Pressable, ScrollView, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
@@ -162,7 +169,7 @@ export function OrgDetailScreen() {
           </View>
 
           {o.address ? (
-            <View className="overflow-hidden rounded-3xl bg-card shadow-[0_6px_20px_rgba(27,22,32,0.06)]">
+            <View className="overflow-hidden rounded-3xl bg-card border border-ink/[0.045] shadow-[0_1px_2px_rgba(16,32,26,0.05),0_12px_28px_-8px_rgba(16,32,26,0.10)]">
               {hasCoords ? (
                 <PlacesMap
                   pins={[{ id: o.id, lat: o.lat!, lng: o.lng!, title: o.name }]}
@@ -197,7 +204,7 @@ export function OrgDetailScreen() {
           <SectionHeader title="Lo que ofrecen" variant="title" />
           <View className="gap-2.5">
             {o.services.map((s) => (
-              <View key={s.id} className="gap-1.5 rounded-[20px] bg-card p-3.5 shadow-[0_6px_20px_rgba(27,22,32,0.06)]">
+              <View key={s.id} className="gap-1.5 rounded-[20px] bg-card p-3.5 border border-ink/[0.045] shadow-[0_1px_2px_rgba(16,32,26,0.05),0_12px_28px_-8px_rgba(16,32,26,0.10)]">
                 <View className="flex-row items-start justify-between gap-3">
                   <Text className="flex-1 text-[14.5px] font-bold">{s.name}</Text>
                   <Text variant="mono">{s.priceCents ? formatMoney(s.priceCents, o.currency) : 'Gratis'}</Text>
@@ -226,7 +233,7 @@ export function OrgDetailScreen() {
               <SectionHeader title="Paquetes y precios" variant="title" />
               <View className="gap-2.5">
                 {pubProducts.data.products.map((p) => (
-                  <View key={p.id} className="gap-1.5 rounded-[20px] bg-card p-3.5 shadow-[0_6px_20px_rgba(27,22,32,0.06)]">
+                  <View key={p.id} className="gap-1.5 rounded-[20px] bg-card p-3.5 border border-ink/[0.045] shadow-[0_1px_2px_rgba(16,32,26,0.05),0_12px_28px_-8px_rgba(16,32,26,0.10)]">
                     <View className="flex-row items-start justify-between gap-3">
                       <Text className="flex-1 text-[14.5px] font-bold">{p.name}</Text>
                       <Text variant="mono">{formatMoney(p.priceCents, pubProducts.data.currency)}</Text>
@@ -271,7 +278,7 @@ export function OrgDetailScreen() {
                   <Pressable
                     key={s.id}
                     onPress={() => router.push({ pathname: '/class/[id]', params: { id: s.id } })}
-                    className="gap-1.5 rounded-[20px] bg-card px-3.5 py-3 shadow-[0_6px_20px_rgba(27,22,32,0.06)] active:opacity-90"
+                    className="gap-1.5 rounded-[20px] bg-card px-3.5 py-3 border border-ink/[0.045] shadow-[0_1px_2px_rgba(16,32,26,0.05),0_12px_28px_-8px_rgba(16,32,26,0.10)] active:opacity-90"
                   >
                     <View className="flex-row items-center gap-3">
                       <Text className="w-[46px] font-mono-bold text-[13px]">{formatTime(s.startsAt, o.timezone)}</Text>

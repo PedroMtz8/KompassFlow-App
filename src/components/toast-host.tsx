@@ -1,4 +1,4 @@
-import { CircleCheck } from 'lucide-react-native';
+import CircleCheck from 'lucide-react-native/icons/circle-check';
 import { useEffect } from 'react';
 import { Platform, View } from 'react-native';
 import Animated, { FadeInUp, FadeOutUp } from 'react-native-reanimated';

@@ -1,5 +1,6 @@
 import { router, useLocalSearchParams } from 'expo-router';
-import { KeyRound, MailCheck } from 'lucide-react-native';
+import KeyRound from 'lucide-react-native/icons/key-round';
+import MailCheck from 'lucide-react-native/icons/mail-check';
 import { useState } from 'react';
 
 import { FormScreen } from '@/components/form-screen';

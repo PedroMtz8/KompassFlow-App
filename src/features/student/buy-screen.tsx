@@ -1,5 +1,9 @@
 import { router, useLocalSearchParams } from 'expo-router';
-import { Banknote, CreditCard, Landmark, ShieldCheck, TriangleAlert } from 'lucide-react-native';
+import Banknote from 'lucide-react-native/icons/banknote';
+import CreditCard from 'lucide-react-native/icons/credit-card';
+import Landmark from 'lucide-react-native/icons/landmark';
+import ShieldCheck from 'lucide-react-native/icons/shield-check';
+import TriangleAlert from 'lucide-react-native/icons/triangle-alert';
 import { useState } from 'react';
 import { ActivityIndicator, View } from 'react-native';
 

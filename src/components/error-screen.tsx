@@ -1,5 +1,5 @@
 import type { ErrorBoundaryProps } from 'expo-router';
-import { TriangleAlert } from 'lucide-react-native';
+import TriangleAlert from 'lucide-react-native/icons/triangle-alert';
 import { useEffect } from 'react';
 import { Pressable, View } from 'react-native';
 

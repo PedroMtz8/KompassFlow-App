@@ -1,8 +1,9 @@
 import { router } from 'expo-router';
-import { ChevronLeft } from 'lucide-react-native';
-import { Pressable, View } from 'react-native';
+import ChevronLeft from 'lucide-react-native/icons/chevron-left';
+import { View } from 'react-native';
 
 import { Icon } from '@/components/ui/icon';
+import { PressScale } from '@/components/ui/press-scale';
 import { Text } from '@/components/ui/text';
 import { cn } from '@/lib/utils';
 
@@ -15,18 +16,19 @@ type ScreenHeaderProps = {
   className?: string;
 };
 
-/** Botón cuadrado blanco de 38 px (volver, cerrar, acciones). */
+/** Botón cuadrado blanco de 40 px (volver, cerrar, acciones). */
 export function IconButton({ children, onPress, className }: { children: React.ReactNode; onPress?: () => void; className?: string }) {
   return (
-    <Pressable
+    <PressScale
       onPress={onPress}
+      scale={0.92}
       className={cn(
-        'h-[38px] w-[38px] items-center justify-center rounded-xl bg-card shadow-[0_3px_10px_rgba(27,22,32,0.07)] active:opacity-80',
+        'h-[40px] w-[40px] items-center justify-center rounded-[14px] border border-ink/[0.05] bg-card shadow-[0_1px_2px_rgba(16,32,26,0.05),0_6px_14px_-4px_rgba(16,32,26,0.10)]',
         className
       )}
     >
       {children}
-    </Pressable>
+    </PressScale>
   );
 }
 
@@ -39,7 +41,7 @@ export function ScreenHeader({ title, subtitle, back = true, right, className }:
         </IconButton>
       ) : null}
       <View className="min-w-0 flex-1 gap-[3px]">
-        <Text className="text-[19px] font-extrabold tracking-[-0.02em]" numberOfLines={1}>
+        <Text className="text-[20px] font-extrabold tracking-[-0.03em]" numberOfLines={1}>
           {title}
         </Text>
         {subtitle ? <Text variant="muted">{subtitle}</Text> : null}

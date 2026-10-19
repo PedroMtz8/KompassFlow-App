@@ -1,6 +1,12 @@
 import * as Linking from 'expo-linking';
 import { router, useLocalSearchParams } from 'expo-router';
-import { CalendarClock, CalendarX, CircleCheck, CircleHelp, CircleX, Hourglass, Navigation } from 'lucide-react-native';
+import CalendarClock from 'lucide-react-native/icons/calendar-clock';
+import CalendarX from 'lucide-react-native/icons/calendar-x';
+import CircleCheck from 'lucide-react-native/icons/circle-check';
+import CircleHelp from 'lucide-react-native/icons/circle-question-mark';
+import CircleX from 'lucide-react-native/icons/circle-x';
+import Hourglass from 'lucide-react-native/icons/hourglass';
+import Navigation from 'lucide-react-native/icons/navigation';
 import { Pressable, View } from 'react-native';
 
 import { ErrorNotice } from '@/components/query-status';

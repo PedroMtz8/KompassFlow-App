@@ -3,6 +3,7 @@ import { useCallback, useMemo, useRef, useState } from 'react';
 import { ActivityIndicator, NativeScrollEvent, NativeSyntheticEvent, Platform, RefreshControl, ScrollView, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
+import { Ambient } from '@/components/ui/ambient';
 import { useTheme } from '@/lib/theme';
 import { cn } from '@/lib/utils';
 
@@ -14,8 +15,8 @@ type ScreenProps = React.ComponentProps<typeof View> & {
 /** En web no hay barra de estado ni notch (insets = 0): se deja aire arriba para que el contenido no quede pegado al borde. */
 const WEB_TOP_GAP = Platform.OS === 'web' ? 28 : 0;
 
-/** Contenedor base de pantalla: fondo crema + áreas seguras. */
-export function Screen({ className, bottomInset = false, style, ...props }: ScreenProps) {
+/** Contenedor base de pantalla: fondo con velo de color + áreas seguras. */
+export function Screen({ className, bottomInset = false, style, children, ...props }: ScreenProps) {
   const insets = useSafeAreaInsets();
   // Android con la barra de estado fuera de la app (sin «borde a borde»): el contenido empieza justo debajo y queda pegado.
   const androidGap = Platform.OS === 'android' && insets.top === 0 ? 14 : 0;
@@ -24,7 +25,10 @@ export function Screen({ className, bottomInset = false, style, ...props }: Scre
       className={cn('flex-1 bg-background', className)}
       style={[{ paddingTop: insets.top + WEB_TOP_GAP + androidGap, paddingBottom: bottomInset ? insets.bottom : 0 }, style]}
       {...props}
-    />
+    >
+      <Ambient />
+      {children}
+    </View>
   );
 }
 

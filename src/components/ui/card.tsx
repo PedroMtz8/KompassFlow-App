@@ -5,9 +5,12 @@ import { cn } from '@/lib/utils';
 
 type ViewProps = React.ComponentProps<typeof View>;
 
+/** Sombra en dos capas: un filo corto que da borde y una difusa que la despega del fondo. */
+export const CARD_SHADOW = 'shadow-[0_1px_2px_rgba(16,32,26,0.05),0_12px_28px_-8px_rgba(16,32,26,0.10)]';
+
 /** Superficie blanca con sombra suave: la tarjeta base de KompassFlow. */
 export function Card({ className, ...props }: ViewProps) {
-  return <View className={cn('rounded-[22px] bg-card p-4 shadow-[0_6px_20px_rgba(27,22,32,0.06)]', className)} {...props} />;
+  return <View className={cn('rounded-[24px] border border-ink/[0.045] bg-card p-4', CARD_SHADOW, className)} {...props} />;
 }
 
 export function CardHeader({ className, ...props }: ViewProps) {

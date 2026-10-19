@@ -1,4 +1,4 @@
-import { Clock } from 'lucide-react-native';
+import Clock from 'lucide-react-native/icons/clock';
 import { useState } from 'react';
 import { Modal, Pressable, View } from 'react-native';
 
@@ -64,7 +64,7 @@ export function TimeField({ label, value, onChange, step = 5, disabled, containe
         accessibilityRole="button"
         accessibilityLabel={label ? `${label}: ${value}` : `Hora: ${value}`}
         className={cn(
-          'h-12 flex-row items-center justify-between rounded-[14px] bg-card px-3.5 shadow-[0_6px_20px_rgba(27,22,32,0.06)] active:opacity-80',
+          'h-12 flex-row items-center justify-between rounded-[14px] bg-card px-3.5 border border-ink/[0.045] shadow-[0_1px_2px_rgba(16,32,26,0.05),0_12px_28px_-8px_rgba(16,32,26,0.10)] active:opacity-80',
           disabled && 'opacity-50',
           className
         )}

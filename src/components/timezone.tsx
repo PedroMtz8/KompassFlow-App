@@ -1,4 +1,4 @@
-import { Globe } from 'lucide-react-native';
+import Globe from 'lucide-react-native/icons/globe';
 import { View } from 'react-native';
 
 import { useTheme } from '@/lib/theme';

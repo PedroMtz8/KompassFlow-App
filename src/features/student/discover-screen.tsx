@@ -1,5 +1,9 @@
 import { router, useFocusEffect, useLocalSearchParams } from 'expo-router';
-import { LocateFixed, MapPin, Search, SlidersHorizontal, X } from 'lucide-react-native';
+import LocateFixed from 'lucide-react-native/icons/locate-fixed';
+import MapPin from 'lucide-react-native/icons/map-pin';
+import Search from 'lucide-react-native/icons/search';
+import SlidersHorizontal from 'lucide-react-native/icons/sliders-horizontal';
+import X from 'lucide-react-native/icons/x';
 import { useCallback, useState } from 'react';
 import { ActivityIndicator, Pressable, useWindowDimensions, View } from 'react-native';
 
@@ -8,6 +12,8 @@ import { PlacesMap } from '@/components/map/places-map';
 import type { MapPin as Pin } from '@/components/map/types';
 import { Screen, ScreenScroll } from '@/components/screen';
 import { Button } from '@/components/ui/button';
+import { CARD_SHADOW } from '@/components/ui/card';
+import { PressScale } from '@/components/ui/press-scale';
 import { Gradient } from '@/components/ui/gradient';
 import { Icon } from '@/components/ui/icon';
 import { Input } from '@/components/ui/input';
@@ -43,46 +49,56 @@ type Tab = 'classes' | 'orgs' | 'map';
 function SessionCard({ s, width, distance, showForYou }: { s: DiscoverSession; width: '49%' | '100%'; distance?: string; showForYou?: boolean }) {
   const tone = toneFor(s.organizationId);
   const full = s.left === 0;
+  const left = s.mineBookingId ? ('mine' as const) : full ? ('full' as const) : s.left <= 3 ? ('few' as const) : ('ok' as const);
+  const status = {
+    mine: { text: 'Reservada', bg: 'bg-[#E0F5E9]', fg: 'text-[#13703F]' },
+    full: { text: 'Llena', bg: 'bg-primary-soft', fg: 'text-primary-dark' },
+    few: { text: `Quedan ${s.left}`, bg: 'bg-amber-soft', fg: 'text-amber-dark' },
+    ok: { text: `Quedan ${s.left}`, bg: 'bg-muted', fg: 'text-muted-foreground' },
+  }[left];
   return (
-    <Pressable
+    <PressScale
       onPress={() => router.push({ pathname: '/class/[id]', params: { id: s.id } })}
-      className="flex-row items-center gap-3 rounded-[22px] bg-card p-[11px] shadow-[0_6px_20px_rgba(27,22,32,0.06)] active:opacity-90"
+      scale={0.975}
+      className={cn('flex-row items-center gap-3 rounded-[24px] border border-ink/[0.045] bg-card p-[11px]', CARD_SHADOW)}
       style={{ width }}
     >
-      {(s.logo ?? s.coverImage) ? (
-        <Photo uri={(s.logo ?? s.coverImage)!} width={66} height={66} radius={17} />
-      ) : (
-        <Gradient tone={tone} style={{ width: 66, height: 66, borderRadius: 17, alignItems: 'center', justifyContent: 'center' }}>
-          <Text className="text-lg font-extrabold text-white">{initialsOf(s.organizationName)}</Text>
-        </Gradient>
-      )}
+      <View>
+        {(s.logo ?? s.coverImage) ? (
+          <Photo uri={(s.logo ?? s.coverImage)!} width={76} height={84} radius={18} />
+        ) : (
+          <Gradient tone={tone} style={{ width: 76, height: 84, borderRadius: 18, alignItems: 'center', justifyContent: 'center' }}>
+            <Text className="text-xl font-extrabold text-white">{initialsOf(s.organizationName)}</Text>
+          </Gradient>
+        )}
+        <View className="absolute inset-x-1.5 bottom-1.5 items-center rounded-[9px] bg-ink/85 py-[3px]">
+          <Text className="font-mono-bold text-[11px] text-white">{formatTime(s.startsAt, s.timezone)}</Text>
+        </View>
+      </View>
       <View className="min-w-0 flex-1 gap-1.5">
-        <View className="flex-row justify-between gap-2">
-          <Text className="flex-1 text-[14.5px] font-bold" numberOfLines={1}>
+        <View className="flex-row items-start justify-between gap-2">
+          <Text className="flex-1 text-[15px] font-extrabold tracking-[-0.01em]" numberOfLines={1}>
             {s.serviceName}
           </Text>
-          <Text variant="mono">{s.priceCents ? formatMoney(s.priceCents, s.currency) : 'Gratis'}</Text>
+          <Text variant="mono" className="text-[13px] text-primary-dark">
+            {s.priceCents ? formatMoney(s.priceCents, s.currency) : 'Gratis'}
+          </Text>
         </View>
         <Text className="text-xs text-muted-foreground" numberOfLines={1}>
           {showForYou && s.forYou ? <Text className="text-xs font-bold text-primary">Para ti · </Text> : null}
-          {s.organizationName} · {relativeDay(+new Date(s.startsAt), s.timezone)} {formatTime(s.startsAt, s.timezone)}
+          {s.organizationName} · {relativeDay(+new Date(s.startsAt), s.timezone)}
           {distance ? ` · ${distance}` : s.neighborhood ? ` · ${s.neighborhood}` : ''}
         </Text>
-        <View className="flex-row items-center gap-2">
+        <View className="flex-row items-center gap-2 pt-0.5">
           <View className="flex-1">
             <ProgressBar value={s.capacity ? s.booked / s.capacity : 0} tone={tone} />
           </View>
-          <Text
-            className={cn(
-              'text-[11.5px] font-bold',
-              s.mineBookingId ? 'text-teal' : full || s.left <= 2 ? 'text-primary-dark' : 'text-muted-foreground'
-            )}
-          >
-            {s.mineBookingId ? 'Reservada' : full ? 'Llena' : `Quedan ${s.left}`}
-          </Text>
+          <View className={cn('rounded-full px-2 py-[3px]', status.bg)}>
+            <Text className={cn('text-[10.5px] font-extrabold', status.fg)}>{status.text}</Text>
+          </View>
         </View>
       </View>
-    </Pressable>
+    </PressScale>
   );
 }
 
@@ -226,7 +242,7 @@ export function DiscoverScreen() {
               <Icon as={MapPin} size={13} color="#6B6270" />
               <Text className="text-[12.5px] font-semibold text-muted-foreground">{place}</Text>
             </View>
-            <Text variant="h2">¿Qué bailas hoy?</Text>
+            <Text variant="h1">¿Qué bailas hoy?</Text>
           </View>
           <View className="flex-row items-center gap-2.5">
             {desktop ? <RefreshButton onPress={refresh} busy={sessionsQ.isFetching || orgsQ.isFetching} /> : <NotificationBell />}
@@ -234,21 +250,24 @@ export function DiscoverScreen() {
         </View>
 
         <View className="flex-row gap-2.5 pb-3">
-          <View className="h-12 flex-1 flex-row items-center gap-2.5 rounded-[15px] bg-card px-3.5">
+          <View className="h-[52px] flex-1 flex-row items-center gap-2.5 rounded-[18px] border border-ink/[0.05] bg-card px-4 shadow-[0_1px_2px_rgba(16,32,26,0.04),0_10px_22px_-10px_rgba(16,32,26,0.14)]">
             <Icon as={Search} size={18} color="#A69DAB" />
             <Input
               value={query}
               onChangeText={setQuery}
               placeholder="Bachata, salsa, academia…"
-              className="h-12 flex-1 bg-transparent px-0 text-[14.5px] font-normal shadow-none"
+              className="h-12 flex-1 border-0 bg-transparent px-0 text-[14.5px] font-normal shadow-none"
             />
           </View>
-          <Pressable
+          <PressScale
             onPress={useMyLocation}
             accessibilityLabel="Ordenar por cercanía"
+            scale={0.92}
             className={cn(
-              'h-12 w-12 items-center justify-center rounded-[15px] active:opacity-80',
-              f.sort === 'near' && loc.coords ? 'bg-primary' : 'bg-card'
+              'h-[52px] w-[52px] items-center justify-center rounded-[18px]',
+              f.sort === 'near' && loc.coords
+                ? 'bg-primary shadow-[0_10px_20px_-8px_var(--color-primary-glow)]'
+                : 'border border-ink/[0.05] bg-card shadow-[0_1px_2px_rgba(16,32,26,0.04),0_10px_22px_-10px_rgba(16,32,26,0.14)]'
             )}
           >
             {loc.status === 'loading' ? (
@@ -256,10 +275,11 @@ export function DiscoverScreen() {
             ) : (
               <Icon as={LocateFixed} size={19} color={f.sort === 'near' && loc.coords ? '#fff' : '#1B1620'} />
             )}
-          </Pressable>
-          <Pressable
+          </PressScale>
+          <PressScale
             onPress={() => router.push('/filters')}
-            className="h-12 w-12 items-center justify-center rounded-[15px] bg-ink active:opacity-80"
+            scale={0.92}
+            className="h-[52px] w-[52px] items-center justify-center rounded-[18px] bg-ink shadow-[0_10px_22px_-8px_rgba(16,32,26,0.55)]"
           >
             <Icon as={SlidersHorizontal} size={19} color="#fff" />
             {count ? (
@@ -267,7 +287,7 @@ export function DiscoverScreen() {
                 <Text className="text-[10.5px] font-extrabold text-white">{count}</Text>
               </View>
             ) : null}
-          </Pressable>
+          </PressScale>
         </View>
 
         {count ? (
@@ -346,7 +366,7 @@ export function DiscoverScreen() {
 function Empty({ filtered, what }: { filtered: boolean; what: string }) {
   const f = useDiscoverFilters();
   return (
-    <View className="w-full items-center gap-2 rounded-[22px] bg-card p-6">
+    <View className="w-full items-center gap-2 rounded-[24px] border border-ink/[0.045] bg-card p-6 shadow-[0_1px_2px_rgba(16,32,26,0.05),0_12px_28px_-8px_rgba(16,32,26,0.10)]">
       <Text className="text-base font-extrabold">{filtered ? `No hay ${what} con esos filtros` : `Aún no hay ${what}`}</Text>
       <Text variant="muted" className="text-center">
         {filtered ? 'Prueba quitando algún filtro.' : 'Cuando las academias publiquen horarios, los verás aquí.'}

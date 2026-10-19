@@ -1,4 +1,5 @@
-import { ChevronRight, Check } from 'lucide-react-native';
+import ChevronRight from 'lucide-react-native/icons/chevron-right';
+import Check from 'lucide-react-native/icons/check';
 import type { LucideIcon } from 'lucide-react-native';
 import { Pressable, View } from 'react-native';
 
@@ -30,7 +31,7 @@ export function SpaceRow({ name, badge, badgeTone, badgeSolid, detail, photo, in
     <Pressable
       onPress={onPress}
       className={cn(
-        'flex-row items-center gap-3 rounded-[20px] border-2 bg-card p-[11px] shadow-[0_6px_20px_rgba(27,22,32,0.06)] active:opacity-80',
+        'flex-row items-center gap-3 rounded-[20px] border-2 bg-card p-[11px] border border-ink/[0.045] shadow-[0_1px_2px_rgba(16,32,26,0.05),0_12px_28px_-8px_rgba(16,32,26,0.10)] active:opacity-80',
         active ? 'border-primary' : 'border-transparent'
       )}
     >

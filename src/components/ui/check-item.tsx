@@ -1,4 +1,6 @@
-import { Check, Minus, X } from 'lucide-react-native';
+import Check from 'lucide-react-native/icons/check';
+import Minus from 'lucide-react-native/icons/minus';
+import X from 'lucide-react-native/icons/x';
 import { View } from 'react-native';
 
 import { Icon } from '@/components/ui/icon';

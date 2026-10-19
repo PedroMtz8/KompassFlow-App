@@ -1,9 +1,10 @@
 import type { LucideIcon } from 'lucide-react-native';
-import { Pressable } from 'react-native';
 
 import { IconTile } from '@/components/ui/icon-tile';
+import { PressScale } from '@/components/ui/press-scale';
 import { Text } from '@/components/ui/text';
 import { useTones, type Tone } from '@/lib/tones';
+import { withAlpha } from '@/lib/theme';
 
 type QuickActionProps = { label: string; icon: LucideIcon; tone: Tone; onPress?: () => void };
 
@@ -12,15 +13,16 @@ export function QuickAction({ label, icon, tone, onPress }: QuickActionProps) {
   const tones = useTones();
   const t = tones[tone];
   return (
-    <Pressable
+    <PressScale
       onPress={onPress}
-      className="flex-1 items-center gap-[7px] rounded-[20px] px-2 py-[11px] active:opacity-80"
-      style={{ backgroundColor: t.soft }}
+      scale={0.94}
+      className="flex-1 items-center gap-2 rounded-[22px] px-2 pb-3 pt-3.5"
+      style={{ backgroundColor: t.soft, borderWidth: 1, borderColor: withAlpha(t.solid, 0.14) }}
     >
-      <IconTile icon={icon} tone={tone} size={32} />
-      <Text className="text-center text-[11.5px] font-bold" style={{ color: t.ink }}>
+      <IconTile icon={icon} tone={tone} size={36} />
+      <Text className="text-center text-[12px] font-extrabold" style={{ color: t.ink }}>
         {label}
       </Text>
-    </Pressable>
+    </PressScale>
   );
 }

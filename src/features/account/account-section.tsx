@@ -1,5 +1,15 @@
 import { router } from 'expo-router';
-import { Bell, Camera, FileText, KeyRound, Link2, Lock, LogOut, MailWarning, Repeat, ShieldCheck, Trash2 } from 'lucide-react-native';
+import Bell from 'lucide-react-native/icons/bell';
+import Camera from 'lucide-react-native/icons/camera';
+import FileText from 'lucide-react-native/icons/file-text';
+import KeyRound from 'lucide-react-native/icons/key-round';
+import Link2 from 'lucide-react-native/icons/link-2';
+import Lock from 'lucide-react-native/icons/lock';
+import LogOut from 'lucide-react-native/icons/log-out';
+import MailWarning from 'lucide-react-native/icons/mail-warning';
+import Repeat from 'lucide-react-native/icons/repeat';
+import ShieldCheck from 'lucide-react-native/icons/shield-check';
+import Trash2 from 'lucide-react-native/icons/trash';
 import { useEffect, useState } from 'react';
 import { ActivityIndicator, Pressable, View } from 'react-native';
 

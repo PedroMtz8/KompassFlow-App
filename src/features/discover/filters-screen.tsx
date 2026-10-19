@@ -1,4 +1,4 @@
-import { MapPin } from 'lucide-react-native';
+import MapPin from 'lucide-react-native/icons/map-pin';
 import { Pressable, View } from 'react-native';
 
 import { useTheme } from '@/lib/theme';

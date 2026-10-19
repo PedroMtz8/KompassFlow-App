@@ -1,5 +1,8 @@
 import { Tabs } from 'expo-router';
-import { CalendarDays, Search, User, Wallet } from 'lucide-react-native';
+import CalendarDays from 'lucide-react-native/icons/calendar-days';
+import Search from 'lucide-react-native/icons/search';
+import User from 'lucide-react-native/icons/user';
+import Wallet from 'lucide-react-native/icons/wallet';
 
 import { makeTabBar } from '@/components/tab-bar';
 

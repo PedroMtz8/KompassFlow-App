@@ -1,5 +1,11 @@
 import { useLocalSearchParams } from 'expo-router';
-import { Banknote, Ellipsis, Landmark, Plus, Shield, Users, X } from 'lucide-react-native';
+import Banknote from 'lucide-react-native/icons/banknote';
+import Ellipsis from 'lucide-react-native/icons/ellipsis';
+import Landmark from 'lucide-react-native/icons/landmark';
+import Plus from 'lucide-react-native/icons/plus';
+import Shield from 'lucide-react-native/icons/shield';
+import Users from 'lucide-react-native/icons/users';
+import X from 'lucide-react-native/icons/x';
 import { useState } from 'react';
 import { Pressable, View } from 'react-native';
 

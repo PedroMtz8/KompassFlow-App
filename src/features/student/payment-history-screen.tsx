@@ -1,5 +1,7 @@
 import { router } from 'expo-router';
-import { Banknote, Landmark, CreditCard } from 'lucide-react-native';
+import Banknote from 'lucide-react-native/icons/banknote';
+import Landmark from 'lucide-react-native/icons/landmark';
+import CreditCard from 'lucide-react-native/icons/credit-card';
 import { useState } from 'react';
 import { Pressable, View } from 'react-native';
 
@@ -64,7 +66,7 @@ export function PaymentHistoryScreen() {
 
         <QueryStatus q={q} />
         {q.data && rows.length === 0 ? (
-          <View className="items-center gap-1.5 rounded-[22px] bg-card p-6">
+          <View className="items-center gap-1.5 rounded-[24px] border border-ink/[0.045] bg-card p-6 shadow-[0_1px_2px_rgba(16,32,26,0.05),0_12px_28px_-8px_rgba(16,32,26,0.10)]">
             <Text className="text-base font-extrabold">Aún no tienes pagos</Text>
             <Text variant="muted" className="text-center">
               Cuando pagues un paquete o una mensualidad, aquí quedará el registro.

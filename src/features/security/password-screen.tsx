@@ -8,7 +8,7 @@ import { Text } from '@/components/ui/text';
 import { authClient } from '@/lib/auth-client';
 import { goBack } from '@/lib/nav';
 import { done } from '@/lib/simulate';
-import { KeyRound } from 'lucide-react-native';
+import KeyRound from 'lucide-react-native/icons/key-round';
 
 import { usePasswordMutation, useSecurity } from './queries';
 

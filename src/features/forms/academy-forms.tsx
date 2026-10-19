@@ -1,5 +1,10 @@
 import { router, useLocalSearchParams } from 'expo-router';
-import { ChevronRight, KeyRound, Mail, ShieldCheck, ShieldUser, UserRound } from 'lucide-react-native';
+import ChevronRight from 'lucide-react-native/icons/chevron-right';
+import KeyRound from 'lucide-react-native/icons/key-round';
+import Mail from 'lucide-react-native/icons/mail';
+import ShieldCheck from 'lucide-react-native/icons/shield-check';
+import ShieldUser from 'lucide-react-native/icons/shield-user';
+import UserRound from 'lucide-react-native/icons/user-round';
 import { useState } from 'react';
 import { ActivityIndicator, Pressable, View } from 'react-native';
 

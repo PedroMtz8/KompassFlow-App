@@ -1,5 +1,7 @@
 import { router } from 'expo-router';
-import { ChevronDown, ChevronRight, ShieldCheck } from 'lucide-react-native';
+import ChevronDown from 'lucide-react-native/icons/chevron-down';
+import ChevronRight from 'lucide-react-native/icons/chevron-right';
+import ShieldCheck from 'lucide-react-native/icons/shield-check';
 import { useState } from 'react';
 import { Pressable, View } from 'react-native';
 

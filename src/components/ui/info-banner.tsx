@@ -4,6 +4,7 @@ import { Pressable, View } from 'react-native';
 import { IconTile } from '@/components/ui/icon-tile';
 import { Text } from '@/components/ui/text';
 import { useTones, type Tone } from '@/lib/tones';
+import { withAlpha } from '@/lib/theme';
 
 type InfoBannerProps = {
   icon: LucideIcon;
@@ -20,7 +21,7 @@ export function InfoBanner({ icon, tone, text, action, onAction, variant = 'note
   const tones = useTones();
   const t = tones[tone];
   return (
-    <View className="flex-row items-center gap-[11px] rounded-[20px] px-3.5 py-3" style={{ backgroundColor: t.soft }}>
+    <View className="flex-row items-center gap-[11px] rounded-[22px] px-3.5 py-3" style={{ backgroundColor: t.soft, borderWidth: 1, borderColor: withAlpha(t.solid, 0.16) }}>
       <IconTile icon={icon} tone={tone} size={variant === 'alert' ? 32 : 34} />
       <Text
         className={variant === 'alert' ? 'flex-1 text-[13px] font-bold' : 'flex-1 text-[12.5px] font-semibold leading-[18px]'}

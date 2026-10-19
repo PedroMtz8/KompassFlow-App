@@ -1,6 +1,11 @@
 import * as Linking from 'expo-linking';
 import { router } from 'expo-router';
-import { MapPin, Navigation, Pencil, Plus, Ruler, Users } from 'lucide-react-native';
+import MapPin from 'lucide-react-native/icons/map-pin';
+import Navigation from 'lucide-react-native/icons/navigation';
+import Pencil from 'lucide-react-native/icons/pencil';
+import Plus from 'lucide-react-native/icons/plus';
+import Ruler from 'lucide-react-native/icons/ruler';
+import Users from 'lucide-react-native/icons/users';
 import { Pressable, View } from 'react-native';
 
 import { QueryStatus } from '@/components/query-status';
@@ -38,7 +43,7 @@ export function RoomsScreen() {
             `https://www.google.com/maps/search/?api=1&query=${loc.lat != null && loc.lng != null ? `${loc.lat},${loc.lng}` : encodeURIComponent(`${loc.address}, ${loc.city}`)}`;
           return (
             <View key={loc.id} className="gap-3">
-              <View className="flex-row items-center gap-[11px] rounded-3xl bg-card p-3.5 shadow-[0_6px_20px_rgba(27,22,32,0.06)]">
+              <View className="flex-row items-center gap-[11px] rounded-3xl bg-card p-3.5 border border-ink/[0.045] shadow-[0_1px_2px_rgba(16,32,26,0.05),0_12px_28px_-8px_rgba(16,32,26,0.10)]">
                 <View className="h-[38px] w-[38px] items-center justify-center rounded-[13px] bg-primary-soft">
                   <Icon as={MapPin} size={19} color={t.primary} />
                 </View>
@@ -74,7 +79,7 @@ export function RoomsScreen() {
                   key={r.id}
                   disabled={!canEdit}
                   onPress={() => router.push({ pathname: '/add-room', params: { roomId: r.id } })}
-                  className="flex-row items-center gap-3 rounded-[22px] bg-card px-3.5 py-3 shadow-[0_6px_20px_rgba(27,22,32,0.06)] active:opacity-90"
+                  className="flex-row items-center gap-3 rounded-[22px] bg-card px-3.5 py-3 border border-ink/[0.045] shadow-[0_1px_2px_rgba(16,32,26,0.05),0_12px_28px_-8px_rgba(16,32,26,0.10)] active:opacity-90"
                 >
                   <Gradient
                     tone={toneFor(r.id)}

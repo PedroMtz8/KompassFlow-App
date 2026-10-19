@@ -1,5 +1,7 @@
 import { useQueryClient, useMutation } from '@tanstack/react-query';
-import { Plus, Users, X } from 'lucide-react-native';
+import Plus from 'lucide-react-native/icons/plus';
+import Users from 'lucide-react-native/icons/users';
+import X from 'lucide-react-native/icons/x';
 import { useState } from 'react';
 import { Pressable, View } from 'react-native';
 

@@ -1,5 +1,6 @@
 import { useLocalSearchParams } from 'expo-router';
-import { Info, Sparkles } from 'lucide-react-native';
+import Info from 'lucide-react-native/icons/info';
+import Sparkles from 'lucide-react-native/icons/sparkles';
 import { useState } from 'react';
 import { View } from 'react-native';
 

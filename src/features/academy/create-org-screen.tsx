@@ -1,5 +1,5 @@
 import { router } from 'expo-router';
-import { Check } from 'lucide-react-native';
+import Check from 'lucide-react-native/icons/check';
 import { Pressable, View } from 'react-native';
 
 import { FormGroup } from '@/components/form-screen';
@@ -43,7 +43,7 @@ export function CreateOrgScreen() {
               key={k.id}
               onPress={() => patch({ type: k.id })}
               className={cn(
-                'overflow-hidden rounded-3xl border-[2.5px] bg-card shadow-[0_6px_20px_rgba(27,22,32,0.06)]',
+                'overflow-hidden rounded-3xl border-[2.5px] bg-card border border-ink/[0.045] shadow-[0_1px_2px_rgba(16,32,26,0.05),0_12px_28px_-8px_rgba(16,32,26,0.10)]',
                 selected ? 'border-primary' : 'border-transparent'
               )}
             >

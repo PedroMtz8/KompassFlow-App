@@ -1,5 +1,6 @@
 import { router, useLocalSearchParams } from 'expo-router';
-import { CheckCircle2, Clock } from 'lucide-react-native';
+import CheckCircle2 from 'lucide-react-native/icons/circle-check';
+import Clock from 'lucide-react-native/icons/clock';
 import { useEffect, useRef } from 'react';
 import { ActivityIndicator, View } from 'react-native';
 

@@ -1,4 +1,4 @@
-import { TriangleAlert } from 'lucide-react-native';
+import TriangleAlert from 'lucide-react-native/icons/triangle-alert';
 import { View } from 'react-native';
 
 import { Icon } from '@/components/ui/icon';

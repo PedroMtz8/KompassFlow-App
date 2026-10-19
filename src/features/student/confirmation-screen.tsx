@@ -1,6 +1,8 @@
 import * as Linking from 'expo-linking';
 import { router, useLocalSearchParams } from 'expo-router';
-import { CalendarPlus, Check, Navigation } from 'lucide-react-native';
+import CalendarPlus from 'lucide-react-native/icons/calendar-plus';
+import Check from 'lucide-react-native/icons/check';
+import Navigation from 'lucide-react-native/icons/navigation';
 import { ActivityIndicator, View } from 'react-native';
 
 import { Screen, ScreenScroll } from '@/components/screen';
@@ -58,7 +60,7 @@ export function ConfirmationScreen() {
           </Text>
         </View>
 
-        <View className="w-full overflow-hidden rounded-[26px] bg-card shadow-[0_6px_20px_rgba(27,22,32,0.06)]">
+        <View className="w-full overflow-hidden rounded-[26px] bg-card border border-ink/[0.045] shadow-[0_1px_2px_rgba(16,32,26,0.05),0_12px_28px_-8px_rgba(16,32,26,0.10)]">
           <Gradient tone={toneFor(s.organizationId)} style={{ height: 72, justifyContent: 'center', paddingHorizontal: 16 }}>
             <Badge appearance="white" tone="teal">
               Confirmada

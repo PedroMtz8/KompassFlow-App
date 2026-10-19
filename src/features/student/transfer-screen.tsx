@@ -1,6 +1,11 @@
 import * as Clipboard from 'expo-clipboard';
 import { router, useLocalSearchParams } from 'expo-router';
-import { Check, Clock, Copy, Send, Upload, X } from 'lucide-react-native';
+import Check from 'lucide-react-native/icons/check';
+import Clock from 'lucide-react-native/icons/clock';
+import Copy from 'lucide-react-native/icons/copy';
+import Send from 'lucide-react-native/icons/send';
+import Upload from 'lucide-react-native/icons/upload';
+import X from 'lucide-react-native/icons/x';
 import { useState } from 'react';
 import { ActivityIndicator, Pressable, View } from 'react-native';
 

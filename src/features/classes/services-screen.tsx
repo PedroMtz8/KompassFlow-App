@@ -1,5 +1,7 @@
 import { router } from 'expo-router';
-import { Clock, Plus, Users } from 'lucide-react-native';
+import Clock from 'lucide-react-native/icons/clock';
+import Plus from 'lucide-react-native/icons/plus';
+import Users from 'lucide-react-native/icons/users';
 import { Pressable, View } from 'react-native';
 
 import { QueryStatus } from '@/components/query-status';
@@ -42,7 +44,7 @@ export function ServicesScreen() {
         ) : null}
         <QueryStatus q={services} />
         {services.data?.length === 0 ? (
-          <View className="items-center gap-2 rounded-[22px] bg-card p-6">
+          <View className="items-center gap-2 rounded-[24px] border border-ink/[0.045] bg-card p-6 shadow-[0_1px_2px_rgba(16,32,26,0.05),0_12px_28px_-8px_rgba(16,32,26,0.10)]">
             <Text className="text-base font-extrabold">Todavía no hay {term.toLowerCase()}s</Text>
             <Text variant="muted" className="text-center">
               Crea la primera y programa sus horarios: aparecerá en la agenda y en Descubrir.
@@ -56,7 +58,7 @@ export function ServicesScreen() {
               <Pressable
                 key={s.id}
                 onPress={() => router.push({ pathname: '/edit-service', params: { serviceId: s.id } })}
-                className="w-full gap-2.5 rounded-[22px] bg-card p-4 shadow-[0_6px_20px_rgba(27,22,32,0.06)] active:opacity-90"
+                className="w-full gap-2.5 rounded-[22px] bg-card p-4 border border-ink/[0.045] shadow-[0_1px_2px_rgba(16,32,26,0.05),0_12px_28px_-8px_rgba(16,32,26,0.10)] active:opacity-90"
                 style={{ width: desktop ? '49%' : '100%', opacity: s.isActive ? 1 : 0.6 }}
               >
                 <View className="flex-row items-start justify-between gap-3">

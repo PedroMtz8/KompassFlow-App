@@ -1,4 +1,6 @@
-import { AlertTriangle, Check, Gift } from 'lucide-react-native';
+import AlertTriangle from 'lucide-react-native/icons/triangle-alert';
+import Check from 'lucide-react-native/icons/check';
+import Gift from 'lucide-react-native/icons/gift';
 import { ActivityIndicator, View } from 'react-native';
 
 import { ErrorNotice } from '@/components/query-status';
@@ -133,7 +135,7 @@ export function PlanScreen() {
           </View>
         </Gradient>
 
-        <View className="gap-3 rounded-[22px] bg-card p-3.5 shadow-[0_6px_20px_rgba(27,22,32,0.06)]">
+        <View className="gap-3 rounded-[22px] bg-card p-3.5 border border-ink/[0.045] shadow-[0_1px_2px_rgba(16,32,26,0.05),0_12px_28px_-8px_rgba(16,32,26,0.10)]">
           <Text variant="overline">Uso</Text>
           {usage.map((u) => (
             <View key={u.label} className="gap-1.5">
@@ -157,7 +159,7 @@ export function PlanScreen() {
           .map((p) => {
             const mine = p.key === b.plan;
             return (
-              <View key={p.key} className="gap-2 rounded-[22px] bg-card p-3.5 shadow-[0_6px_20px_rgba(27,22,32,0.06)]">
+              <View key={p.key} className="gap-2 rounded-[22px] bg-card p-3.5 border border-ink/[0.045] shadow-[0_1px_2px_rgba(16,32,26,0.05),0_12px_28px_-8px_rgba(16,32,26,0.10)]">
                 <View className="flex-row items-center justify-between">
                   <Text className="text-[15px] font-extrabold">{p.name}</Text>
                   <Text variant="mono" className="text-[15px]">

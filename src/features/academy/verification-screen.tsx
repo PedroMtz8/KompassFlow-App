@@ -1,5 +1,9 @@
 import { router } from 'expo-router';
-import { BadgeCheck, ChevronRight, Clock, EyeOff, ShieldAlert } from 'lucide-react-native';
+import BadgeCheck from 'lucide-react-native/icons/badge-check';
+import ChevronRight from 'lucide-react-native/icons/chevron-right';
+import Clock from 'lucide-react-native/icons/clock';
+import EyeOff from 'lucide-react-native/icons/eye-off';
+import ShieldAlert from 'lucide-react-native/icons/shield-alert';
 import { useState } from 'react';
 import { Pressable, View } from 'react-native';
 

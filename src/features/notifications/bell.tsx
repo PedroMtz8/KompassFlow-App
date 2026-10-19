@@ -1,5 +1,5 @@
 import { router } from 'expo-router';
-import { Bell } from 'lucide-react-native';
+import Bell from 'lucide-react-native/icons/bell';
 import { Pressable, View } from 'react-native';
 
 import { Icon } from '@/components/ui/icon';

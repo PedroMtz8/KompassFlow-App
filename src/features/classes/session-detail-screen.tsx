@@ -1,5 +1,9 @@
 import { router, useLocalSearchParams } from 'expo-router';
-import { CalendarX2, ClipboardCheck, EyeOff, UserPlus, X } from 'lucide-react-native';
+import CalendarX2 from 'lucide-react-native/icons/calendar-x-2';
+import ClipboardCheck from 'lucide-react-native/icons/clipboard-check';
+import EyeOff from 'lucide-react-native/icons/eye-off';
+import UserPlus from 'lucide-react-native/icons/user-plus';
+import X from 'lucide-react-native/icons/x';
 import { useState } from 'react';
 import { ActivityIndicator, Pressable, View } from 'react-native';
 
@@ -131,7 +135,7 @@ export function SessionDetailScreen() {
           <Text>Pasar lista</Text>
         </Button>
       ) : null}
-      <View className="gap-2 rounded-[22px] bg-card p-3.5 shadow-[0_6px_20px_rgba(27,22,32,0.06)]">
+      <View className="gap-2 rounded-[22px] bg-card p-3.5 border border-ink/[0.045] shadow-[0_1px_2px_rgba(16,32,26,0.05),0_12px_28px_-8px_rgba(16,32,26,0.10)]">
         <View className="flex-row items-center justify-between">
           <Text className="text-sm font-bold">
             Reservas · {roster.data?.length ?? s.booked} de {s.capacity}
@@ -176,7 +180,7 @@ export function SessionDetailScreen() {
       </View>
 
       {waitlist.data?.length ? (
-        <View className="gap-2 rounded-[22px] bg-card p-3.5 shadow-[0_6px_20px_rgba(27,22,32,0.06)]">
+        <View className="gap-2 rounded-[22px] bg-card p-3.5 border border-ink/[0.045] shadow-[0_1px_2px_rgba(16,32,26,0.05),0_12px_28px_-8px_rgba(16,32,26,0.10)]">
           <Text className="text-sm font-bold">Lista de espera · {waitlist.data.length}</Text>
           <Text variant="muted" className="text-xs">
             Cuando se libera un lugar se aparta para la primera persona y se le avisa; si no lo toma a tiempo pasa a la siguiente.

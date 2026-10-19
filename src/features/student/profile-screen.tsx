@@ -1,5 +1,11 @@
 import { router } from 'expo-router';
-import { CalendarCheck, ChevronRight, Clock, Flame, Repeat, Settings, Store } from 'lucide-react-native';
+import CalendarCheck from 'lucide-react-native/icons/calendar-check';
+import ChevronRight from 'lucide-react-native/icons/chevron-right';
+import Clock from 'lucide-react-native/icons/clock';
+import Flame from 'lucide-react-native/icons/flame';
+import Repeat from 'lucide-react-native/icons/repeat';
+import Settings from 'lucide-react-native/icons/settings';
+import Store from 'lucide-react-native/icons/store';
 import { ActivityIndicator, Pressable, View } from 'react-native';
 
 import { QueryStatus } from '@/components/query-status';
@@ -51,7 +57,7 @@ export function ProfileScreen() {
             <Pressable
               onPress={() => router.push('/account')}
               accessibilityLabel="Configuración"
-              className="h-[38px] flex-row items-center gap-1.5 rounded-xl bg-card px-3 active:opacity-80"
+              className="h-10 flex-row items-center gap-1.5 rounded-[14px] border border-ink/[0.05] bg-card px-3.5 shadow-[0_1px_2px_rgba(16,32,26,0.05),0_6px_14px_-4px_rgba(16,32,26,0.10)] active:opacity-80"
             >
               <Icon as={Settings} size={17} />
               <Text className="text-[13px] font-bold">Configuración</Text>
@@ -136,7 +142,7 @@ export function ProfileScreen() {
                 </View>
               </>
             ) : (
-              <View className="items-center gap-1.5 rounded-[22px] bg-card p-6">
+              <View className="items-center gap-1.5 rounded-[24px] border border-ink/[0.045] bg-card p-6 shadow-[0_1px_2px_rgba(16,32,26,0.05),0_12px_28px_-8px_rgba(16,32,26,0.10)]">
                 <Text className="text-base font-extrabold">Tu historial empieza con tu primera clase</Text>
                 <Text variant="muted" className="text-center">Reserva en Descubrir y aquí verás tu camino: academias, clases y horas.</Text>
                 <Pressable onPress={() => router.replace('/discover')} className="mt-1 rounded-xl bg-primary px-4 py-2.5 active:opacity-80">

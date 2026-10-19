@@ -1,4 +1,4 @@
-import { RefreshCw } from 'lucide-react-native';
+import RefreshCw from 'lucide-react-native/icons/refresh-cw';
 import { ActivityIndicator, Platform, Pressable } from 'react-native';
 
 import { Icon } from '@/components/ui/icon';

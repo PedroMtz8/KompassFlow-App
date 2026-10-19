@@ -1,5 +1,6 @@
 import { useLocalSearchParams } from 'expo-router';
-import { Info, TriangleAlert } from 'lucide-react-native';
+import Info from 'lucide-react-native/icons/info';
+import TriangleAlert from 'lucide-react-native/icons/triangle-alert';
 import { useState } from 'react';
 import { ActivityIndicator, Pressable, View } from 'react-native';
 

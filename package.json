@@ -14,7 +14,6 @@
     "@react-email/components": "^1.0.12",
     "@react-email/render": "^2.1.0",
     "@rn-primitives/portal": "^1.5.3",
-    "@shopify/flash-list": "2.0.2",
     "@tanstack/react-query": "^5.103.2",
     "aws4fetch": "^1.0.20",
     "better-auth": "1.7.7",
@@ -25,7 +24,6 @@
     "expo": "~57.0.29",
     "expo-clipboard": "~57.0.2",
     "expo-constants": "~57.0.22",
-    "expo-device": "~57.0.2",
     "expo-font": "~57.0.4",
     "expo-glass-effect": "~57.0.4",
     "expo-image": "~57.0.5",
@@ -74,6 +72,7 @@
     "drizzle-kit": "^0.31.11",
     "eslint": "^9.0.0",
     "eslint-config-expo": "~57.0.2",
+    "expo-atlas": "^0.4.0",
     "typescript": "~6.0.3"
   },
   "scripts": {

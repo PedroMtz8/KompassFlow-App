@@ -1,6 +1,7 @@
 import { useLocalSearchParams } from 'expo-router';
 import * as Clipboard from 'expo-clipboard';
-import { Copy, KeyRound } from 'lucide-react-native';
+import Copy from 'lucide-react-native/icons/copy';
+import KeyRound from 'lucide-react-native/icons/key-round';
 import { ActivityIndicator, Pressable, View } from 'react-native';
 
 import { ErrorNotice } from '@/components/query-status';
@@ -51,7 +52,7 @@ export function LinkAccountScreen() {
     <Screen>
       <ScreenHeader title="Vincular cuenta" subtitle={st.name} />
       <ScreenScroll contentContainerClassName="gap-3">
-        <View className="gap-2.5 rounded-[22px] bg-card p-3.5 shadow-[0_6px_20px_rgba(27,22,32,0.06)]">
+        <View className="gap-2.5 rounded-[22px] bg-card p-3.5 border border-ink/[0.045] shadow-[0_1px_2px_rgba(16,32,26,0.05),0_12px_28px_-8px_rgba(16,32,26,0.10)]">
           <Text variant="overline">Registro en {org?.name}</Text>
           <Text className="text-[15px] font-bold">{st.name}</Text>
           <View className="flex-row gap-2">
@@ -63,7 +64,7 @@ export function LinkAccountScreen() {
         {st.hasAccount ? (
           <Text variant="muted">Este alumno ya tiene una cuenta vinculada.</Text>
         ) : (
-          <View className="gap-2 rounded-[22px] bg-card p-3.5 shadow-[0_6px_20px_rgba(27,22,32,0.06)]">
+          <View className="gap-2 rounded-[22px] bg-card p-3.5 border border-ink/[0.045] shadow-[0_1px_2px_rgba(16,32,26,0.05),0_12px_28px_-8px_rgba(16,32,26,0.10)]">
             <Text variant="overline">Cómo funciona</Text>
             <Text variant="muted" className="text-[13px]">
               1. Genera un código y compártelo con la persona (en persona o por mensaje).{'\n'}2. Ella lo escribe en su Perfil → «Tengo un

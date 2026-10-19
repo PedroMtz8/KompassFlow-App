@@ -71,7 +71,7 @@ export function WeekCalendar({ days, today, sessions, tz, now }: Props) {
   const showNow = days.includes(today) && nowMin >= startHour * 60 && nowMin <= endHour * 60;
 
   return (
-    <View className="overflow-hidden rounded-3xl bg-card shadow-[0_6px_20px_rgba(27,22,32,0.06)]">
+    <View className="overflow-hidden rounded-3xl bg-card border border-ink/[0.045] shadow-[0_1px_2px_rgba(16,32,26,0.05),0_12px_28px_-8px_rgba(16,32,26,0.10)]">
       {/* Encabezado de días */}
       <View className="flex-row border-b border-ink/[0.07]" style={{ paddingLeft: GUTTER }}>
         {days.map((d) => {

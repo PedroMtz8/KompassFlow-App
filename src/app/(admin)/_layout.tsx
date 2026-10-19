@@ -1,5 +1,9 @@
 import { Tabs } from 'expo-router';
-import { Building2, ChartNoAxesCombined, Ellipsis, ShieldCheck, Users } from 'lucide-react-native';
+import Building2 from 'lucide-react-native/icons/building-complex';
+import ChartNoAxesCombined from 'lucide-react-native/icons/chart-no-axes-combined';
+import Ellipsis from 'lucide-react-native/icons/ellipsis';
+import ShieldCheck from 'lucide-react-native/icons/shield-check';
+import Users from 'lucide-react-native/icons/users';
 
 import { makeTabBar } from '@/components/tab-bar';
 

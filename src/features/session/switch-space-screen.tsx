@@ -1,5 +1,9 @@
 import { router } from 'expo-router';
-import { MailWarning, Plus, Search, ShieldCheck, X } from 'lucide-react-native';
+import MailWarning from 'lucide-react-native/icons/mail-warning';
+import Plus from 'lucide-react-native/icons/plus';
+import Search from 'lucide-react-native/icons/search';
+import ShieldCheck from 'lucide-react-native/icons/shield-check';
+import X from 'lucide-react-native/icons/x';
 import { useState } from 'react';
 import { View } from 'react-native';
 

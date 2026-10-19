@@ -1,5 +1,9 @@
 import { router } from 'expo-router';
-import { History, LogOut, Repeat, Settings, SlidersHorizontal } from 'lucide-react-native';
+import History from 'lucide-react-native/icons/rotate-ccw-clock';
+import LogOut from 'lucide-react-native/icons/log-out';
+import Repeat from 'lucide-react-native/icons/repeat';
+import Settings from 'lucide-react-native/icons/settings';
+import SlidersHorizontal from 'lucide-react-native/icons/sliders-horizontal';
 import { View } from 'react-native';
 
 import { Screen, ScreenScroll } from '@/components/screen';

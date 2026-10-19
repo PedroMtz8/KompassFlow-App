@@ -1,5 +1,4 @@
-import { Pressable } from 'react-native';
-
+import { PressScale } from '@/components/ui/press-scale';
 import { Text } from '@/components/ui/text';
 import { cn } from '@/lib/utils';
 
@@ -16,12 +15,17 @@ type ChipProps = {
 /** Filtro en forma de píldora (Cerca de mí, Hoy, Bachata...). */
 export function Chip({ label, selected, onPress, disabled, onCard }: ChipProps) {
   return (
-    <Pressable
+    <PressScale
       onPress={onPress}
       disabled={disabled}
-      className={cn('rounded-full px-3.5 py-[9px] active:opacity-80', selected ? 'bg-ink' : onCard ? 'bg-muted' : 'bg-card', disabled && 'opacity-40')}
+      scale={0.94}
+      className={cn(
+        'rounded-full px-3.5 py-[9px]',
+        selected ? 'bg-ink shadow-[0_8px_18px_-6px_rgba(16,32,26,0.5)]' : onCard ? 'bg-muted' : 'border border-ink/[0.05] bg-card',
+        disabled && 'opacity-40'
+      )}
     >
       <Text className={cn('text-[13px] font-bold', selected ? 'text-white' : 'text-muted-foreground')}>{label}</Text>
-    </Pressable>
+    </PressScale>
   );
 }

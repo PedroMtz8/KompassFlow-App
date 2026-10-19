@@ -1,28 +1,27 @@
 import { router, usePathname } from 'expo-router';
-import {
-  Bell,
-  BarChart3,
-  ChartNoAxesCombined,
-  ShieldCheck,
-  SlidersHorizontal,
-  Building2,
-  CalendarDays,
-  CreditCard,
-  Crown,
-  Ellipsis,
-  History,
-  House,
-  LogOut,
-  Music,
-  Repeat,
-  Search,
-  Shapes,
-  User,
-  Wallet,
-  Users,
-  UserRoundCog,
-  type LucideIcon,
-} from 'lucide-react-native';
+import { LinearGradient } from 'expo-linear-gradient';
+import type { LucideIcon } from 'lucide-react-native';
+import Bell from 'lucide-react-native/icons/bell';
+import BarChart3 from 'lucide-react-native/icons/chart-column';
+import ChartNoAxesCombined from 'lucide-react-native/icons/chart-no-axes-combined';
+import ShieldCheck from 'lucide-react-native/icons/shield-check';
+import SlidersHorizontal from 'lucide-react-native/icons/sliders-horizontal';
+import Building2 from 'lucide-react-native/icons/building-complex';
+import CalendarDays from 'lucide-react-native/icons/calendar-days';
+import CreditCard from 'lucide-react-native/icons/credit-card';
+import Crown from 'lucide-react-native/icons/crown';
+import Ellipsis from 'lucide-react-native/icons/ellipsis';
+import History from 'lucide-react-native/icons/rotate-ccw-clock';
+import House from 'lucide-react-native/icons/house';
+import LogOut from 'lucide-react-native/icons/log-out';
+import Music from 'lucide-react-native/icons/music';
+import Repeat from 'lucide-react-native/icons/repeat';
+import Search from 'lucide-react-native/icons/search';
+import Shapes from 'lucide-react-native/icons/shapes';
+import User from 'lucide-react-native/icons/user';
+import Wallet from 'lucide-react-native/icons/wallet';
+import Users from 'lucide-react-native/icons/users';
+import UserRoundCog from 'lucide-react-native/icons/user-round-cog';
 import { Pressable, ScrollView, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
@@ -123,13 +122,21 @@ export function Sidebar() {
             <Pressable
               key={it.path}
               onPress={() => router.navigate(it.path as never)}
-              className={cn(
-                'flex-row items-center gap-3 rounded-xl px-3 py-2.5 active:opacity-80',
-                active ? 'bg-primary-soft' : 'hover:bg-background'
-              )}
+              className={cn('flex-row items-center gap-3 overflow-hidden rounded-[14px] px-3 py-2.5 active:opacity-80', !active && 'hover:bg-background')}
             >
-              <Icon as={it.icon} size={19} color={active ? t.primary : t.mutedForeground} strokeWidth={active ? 2.2 : 1.9} />
-              <Text className={cn('text-sm font-bold', active ? 'text-primary' : 'text-muted-foreground')}>{it.label}</Text>
+              {active ? (
+                <LinearGradient
+                  colors={[t.primaryLight, t.primary]}
+                  start={{ x: 0, y: 0 }}
+                  end={{ x: 1, y: 1 }}
+                  style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0 }}
+                />
+              ) : null}
+              {/* El icono (svg) va en un View: en la web un svg suelto se pinta debajo del degradado absoluto. */}
+              <View>
+                <Icon as={it.icon} size={19} color={active ? '#fff' : t.mutedForeground} strokeWidth={active ? 2.3 : 1.9} />
+              </View>
+              <Text className={cn('text-sm font-bold', active ? 'text-white' : 'text-muted-foreground')}>{it.label}</Text>
             </Pressable>
           );
         })}

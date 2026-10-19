@@ -13,7 +13,7 @@ import { useClassMutations } from '@/features/organizations/queries';
 import { authClient } from '@/lib/auth-client';
 import { goBack } from '@/lib/nav';
 import { done } from '@/lib/simulate';
-import { Repeat } from 'lucide-react-native';
+import Repeat from 'lucide-react-native/icons/repeat';
 
 import { kindLabel, levelLabel, type Kind, type Level } from './class-labels';
 import { ConflictList } from './conflict-list';

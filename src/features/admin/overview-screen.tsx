@@ -1,5 +1,9 @@
 import { router } from 'expo-router';
-import { Building2, Landmark, Repeat, ShieldCheck, Users } from 'lucide-react-native';
+import Building2 from 'lucide-react-native/icons/building-complex';
+import Landmark from 'lucide-react-native/icons/landmark';
+import Repeat from 'lucide-react-native/icons/repeat';
+import ShieldCheck from 'lucide-react-native/icons/shield-check';
+import Users from 'lucide-react-native/icons/users';
 import { Pressable, View } from 'react-native';
 
 import { QueryStatus } from '@/components/query-status';

@@ -1,5 +1,7 @@
 import * as Clipboard from 'expo-clipboard';
-import { Copy, Share2, ShieldAlert } from 'lucide-react-native';
+import Copy from 'lucide-react-native/icons/copy';
+import Share2 from 'lucide-react-native/icons/share-2';
+import ShieldAlert from 'lucide-react-native/icons/shield-alert';
 import { useEffect } from 'react';
 import { Pressable, Share, View } from 'react-native';
 

@@ -1,5 +1,5 @@
 import { router } from 'expo-router';
-import { Check } from 'lucide-react-native';
+import Check from 'lucide-react-native/icons/check';
 import { useState } from 'react';
 import { ActivityIndicator, Pressable, View } from 'react-native';
 

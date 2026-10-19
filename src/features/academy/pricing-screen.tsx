@@ -1,5 +1,7 @@
 import { router } from 'expo-router';
-import { Repeat, Ticket, Zap } from 'lucide-react-native';
+import Repeat from 'lucide-react-native/icons/repeat';
+import Ticket from 'lucide-react-native/icons/ticket';
+import Zap from 'lucide-react-native/icons/zap';
 import { useState } from 'react';
 import { ActivityIndicator, View } from 'react-native';
 
@@ -103,7 +105,7 @@ export function PricingScreen() {
 
         <SectionHeader title="Cómo cobras" className="pt-1" />
         {form ? (
-          <View className="gap-1 rounded-[22px] bg-card px-3.5 py-1 shadow-[0_6px_20px_rgba(27,22,32,0.06)]">
+          <View className="gap-1 rounded-[22px] bg-card px-3.5 py-1 border border-ink/[0.045] shadow-[0_1px_2px_rgba(16,32,26,0.05),0_12px_28px_-8px_rgba(16,32,26,0.10)]">
             <View className="flex-row items-center gap-3 py-2.5">
               <View className="flex-1 gap-0.5">
                 <Text className="text-[13.5px] font-bold">Pago en efectivo</Text>

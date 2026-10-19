@@ -18,7 +18,7 @@ export function SectionHeader({ title, action, onAction, variant = 'overline', c
       {variant === 'overline' ? <Text variant="overline">{title}</Text> : <Text className="text-base font-extrabold">{title}</Text>}
       {action ? (
         <Pressable onPress={onAction} hitSlop={8}>
-          <Text className="text-[12.5px] font-bold text-primary">{action}</Text>
+          <Text className="text-[12.5px] font-extrabold text-primary">{action}</Text>
         </Pressable>
       ) : null}
     </View>

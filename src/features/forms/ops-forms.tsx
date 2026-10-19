@@ -1,5 +1,9 @@
 import { router, useLocalSearchParams } from 'expo-router';
-import { ArrowUpRight, Banknote, BarChart3, Check, UserPlus } from 'lucide-react-native';
+import ArrowUpRight from 'lucide-react-native/icons/arrow-up-right';
+import Banknote from 'lucide-react-native/icons/banknote';
+import BarChart3 from 'lucide-react-native/icons/chart-column';
+import Check from 'lucide-react-native/icons/check';
+import UserPlus from 'lucide-react-native/icons/user-plus';
 import { useState } from 'react';
 import { ActivityIndicator, Pressable, View } from 'react-native';
 
@@ -104,7 +108,7 @@ export function CloseCashScreen() {
         }
       />
       {c.lines.length ? (
-        <View className="gap-1 rounded-[22px] bg-card px-3.5 py-1 shadow-[0_6px_20px_rgba(27,22,32,0.06)]">
+        <View className="gap-1 rounded-[22px] bg-card px-3.5 py-1 border border-ink/[0.045] shadow-[0_1px_2px_rgba(16,32,26,0.05),0_12px_28px_-8px_rgba(16,32,26,0.10)]">
           {c.lines.map((l, i) => (
             <View key={l.id}>
               <View className="flex-row items-center justify-between gap-2 py-2.5">
@@ -252,7 +256,7 @@ export function AvailabilityScreen() {
       cta={save.isPending ? 'Guardando…' : 'Guardar disponibilidad'}
       onSubmit={submit}
     >
-      <View className="rounded-[22px] bg-card px-3.5 py-1 shadow-[0_6px_20px_rgba(27,22,32,0.06)]">
+      <View className="rounded-[22px] bg-card px-3.5 py-1 border border-ink/[0.045] shadow-[0_1px_2px_rgba(16,32,26,0.05),0_12px_28px_-8px_rgba(16,32,26,0.10)]">
         {DAYS.map((d, i) => {
           const v = get(d.weekday);
           return (
@@ -544,7 +548,7 @@ export function ReportsScreen() {
               ]}
             />
             {r.data.sessions === 0 ? <Text variant="muted">Aún no hay clases impartidas en este periodo.</Text> : null}
-            <View className="gap-3 rounded-[22px] bg-card p-3.5 shadow-[0_6px_20px_rgba(27,22,32,0.06)]">
+            <View className="gap-3 rounded-[22px] bg-card p-3.5 border border-ink/[0.045] shadow-[0_1px_2px_rgba(16,32,26,0.05),0_12px_28px_-8px_rgba(16,32,26,0.10)]">
               <View className="flex-row items-center justify-between">
                 <Text variant="overline">Ocupación por día</Text>
                 <Icon as={ArrowUpRight} size={16} color={t.teal} />

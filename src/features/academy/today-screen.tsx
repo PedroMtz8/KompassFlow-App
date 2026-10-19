@@ -1,5 +1,10 @@
 import { router } from 'expo-router';
-import { CalendarDays, ChevronUp, EyeOff, UserPlus, Banknote, CalendarPlus } from 'lucide-react-native';
+import CalendarDays from 'lucide-react-native/icons/calendar-days';
+import ChevronUp from 'lucide-react-native/icons/chevron-up';
+import EyeOff from 'lucide-react-native/icons/eye-off';
+import UserPlus from 'lucide-react-native/icons/user-plus';
+import Banknote from 'lucide-react-native/icons/banknote';
+import CalendarPlus from 'lucide-react-native/icons/calendar-plus';
 import { Pressable, View } from 'react-native';
 
 import { QueryStatus } from '@/components/query-status';
@@ -9,6 +14,7 @@ import { Avatar } from '@/components/ui/avatar';
 import { Icon } from '@/components/ui/icon';
 import { InfoBanner } from '@/components/ui/info-banner';
 import { ListDivider } from '@/components/ui/list-divider';
+import { Card } from '@/components/ui/card';
 import { QuickAction } from '@/components/ui/quick-action';
 import { SectionHeader } from '@/components/ui/section-header';
 import { StatCard } from '@/components/ui/stat-card';
@@ -71,21 +77,23 @@ export function TodayScreen() {
       <SectionHeader title="Sesiones de hoy" action="Agenda" onAction={() => router.push('/schedule')} />
       <QueryStatus q={sessions} />
       {!sessions.isPending && !sessions.isError && list.length === 0 ? (
-        <View className="items-center gap-1 rounded-[20px] bg-card p-5">
-          <Text className="text-sm font-bold">No hay sesiones hoy</Text>
+        <Card className="items-center gap-1 p-6">
+          <Text className="text-sm font-extrabold">No hay sesiones hoy</Text>
           <Text variant="muted" className="text-center">
             Programa una {term.toLowerCase()} y aparecerá aquí.
           </Text>
-        </View>
+        </Card>
       ) : null}
-      <View>
-        {list.map((s, i) => (
-          <View key={s.id}>
-            <SessionRow s={s} tz={tz} />
-            {i < list.length - 1 ? <ListDivider /> : null}
-          </View>
-        ))}
-      </View>
+      {list.length ? (
+        <Card className="rounded-[26px] px-4 py-1.5">
+          {list.map((s, i) => (
+            <View key={s.id}>
+              <SessionRow s={s} tz={tz} />
+              {i < list.length - 1 ? <ListDivider /> : null}
+            </View>
+          ))}
+        </Card>
+      ) : null}
     </View>
   );
 
@@ -95,8 +103,8 @@ export function TodayScreen() {
         <View className="flex-row items-center gap-[11px] pb-0.5 pt-1">
           <Avatar name={org?.name} uri={org?.logo ?? org?.coverImage} size={40} radius={14} />
           <View className="flex-1 gap-px">
-            <Text className="text-base font-extrabold tracking-[-0.02em]">{org?.name ?? 'Mi espacio'}</Text>
-            <Text className="text-[11px] font-extrabold tracking-[0.06em] text-primary-dark">
+            <Text className="text-[19px] font-extrabold tracking-[-0.03em]">{org?.name ?? 'Mi espacio'}</Text>
+            <Text className="font-mono text-[10.5px] uppercase tracking-[0.08em] text-primary-dark">
               {weekday}
               {org ? ` · ${roleLabel(org.role, ctx.terms?.instructor)}` : ''}
             </Text>
@@ -106,7 +114,7 @@ export function TodayScreen() {
           {!desktop ? (
             <Pressable
               onPress={() => router.push('/switch-space')}
-              className="h-9 w-9 items-center justify-center rounded-xl bg-card active:opacity-80"
+              className="h-10 w-10 items-center justify-center rounded-[14px] border border-ink/[0.05] bg-card shadow-[0_1px_2px_rgba(16,32,26,0.05),0_6px_14px_-4px_rgba(16,32,26,0.10)] active:opacity-80"
             >
               <Icon as={ChevronUp} size={18} />
             </Pressable>

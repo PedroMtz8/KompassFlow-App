@@ -11,7 +11,7 @@ import { useActiveOrganization } from '@/features/organizations/queries';
 import { useRoleMutations, useRoles, type Permissions } from '@/features/roles/queries';
 import { goBack } from '@/lib/nav';
 import { done } from '@/lib/simulate';
-import { Info } from 'lucide-react-native';
+import Info from 'lucide-react-native/icons/info';
 
 /** Crear o editar (con `role`) un rol personalizado: nombre y, por recurso, qué acciones permite. */
 export function RoleEditorScreen() {

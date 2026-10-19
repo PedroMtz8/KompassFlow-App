@@ -1,5 +1,10 @@
 import { router, useLocalSearchParams } from 'expo-router';
-import { Check, Clock, Info, Lock, Plus, X } from 'lucide-react-native';
+import Check from 'lucide-react-native/icons/check';
+import Clock from 'lucide-react-native/icons/clock';
+import Info from 'lucide-react-native/icons/info';
+import Lock from 'lucide-react-native/icons/lock';
+import Plus from 'lucide-react-native/icons/plus';
+import X from 'lucide-react-native/icons/x';
 import { ActivityIndicator, Pressable, View } from 'react-native';
 
 import { Screen, ScreenScroll } from '@/components/screen';

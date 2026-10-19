@@ -8,7 +8,7 @@ const textVariants = cva('text-base font-normal text-foreground', {
   variants: {
     variant: {
       default: '',
-      h1: 'text-[30px] font-extrabold leading-[32px] tracking-[-0.035em]',
+      h1: 'text-[32px] font-extrabold leading-[34px] tracking-[-0.04em]',
       h2: 'text-2xl font-extrabold tracking-[-0.03em]',
       h3: 'text-xl font-extrabold tracking-[-0.02em]',
       h4: 'text-base font-extrabold',
@@ -16,7 +16,7 @@ const textVariants = cva('text-base font-normal text-foreground', {
       muted: 'text-[12.5px] text-muted-foreground',
       small: 'text-[13px] font-bold',
       /** Etiqueta de sección en mayúsculas: "SESIONES", "DONDE ENSEÑAS". */
-      overline: 'text-[12.5px] font-extrabold uppercase tracking-[0.06em] text-subtle',
+      overline: 'font-mono text-[11px] uppercase tracking-[0.08em] text-subtle',
       /** Cifras y horas en JetBrains Mono. */
       mono: 'font-mono-bold text-[13.5px]',
     },

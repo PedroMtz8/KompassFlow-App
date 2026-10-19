@@ -1,5 +1,13 @@
 import { router } from 'expo-router';
-import { BarChart3, Building2, CalendarClock, CalendarPlus, Crown, Shapes, Pencil, Repeat, Users } from 'lucide-react-native';
+import BarChart3 from 'lucide-react-native/icons/chart-column';
+import Building2 from 'lucide-react-native/icons/building-complex';
+import CalendarClock from 'lucide-react-native/icons/calendar-clock';
+import CalendarPlus from 'lucide-react-native/icons/calendar-plus';
+import Crown from 'lucide-react-native/icons/crown';
+import Shapes from 'lucide-react-native/icons/shapes';
+import Pencil from 'lucide-react-native/icons/pencil';
+import Repeat from 'lucide-react-native/icons/repeat';
+import Users from 'lucide-react-native/icons/users';
 import { Pressable, View } from 'react-native';
 
 import { Screen, ScreenScroll } from '@/components/screen';
@@ -22,7 +30,7 @@ export function MoreScreen() {
         </View>
         <Pressable
           onPress={() => router.push('/account')}
-          className="flex-row items-center gap-3 rounded-[22px] bg-card p-3 shadow-[0_6px_20px_rgba(27,22,32,0.06)] active:opacity-90"
+          className="flex-row items-center gap-3 rounded-[22px] bg-card p-3 border border-ink/[0.045] shadow-[0_1px_2px_rgba(16,32,26,0.05),0_12px_28px_-8px_rgba(16,32,26,0.10)] active:opacity-90"
         >
           <Avatar uri={user?.image} name={user?.name} size={44} radius={15} />
           <View className="min-w-0 flex-1 gap-0.5">

@@ -1,5 +1,6 @@
 import { useQueryClient } from '@tanstack/react-query';
-import { Camera, Trash2 } from 'lucide-react-native';
+import Camera from 'lucide-react-native/icons/camera';
+import Trash2 from 'lucide-react-native/icons/trash';
 import { useState } from 'react';
 import { ActivityIndicator, Pressable, View } from 'react-native';
 

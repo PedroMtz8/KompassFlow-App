@@ -1,9 +1,11 @@
-import { ChevronRight } from 'lucide-react-native';
+import ChevronRight from 'lucide-react-native/icons/chevron-right';
 import type { LucideIcon } from 'lucide-react-native';
-import { Pressable, View } from 'react-native';
+import { View } from 'react-native';
 
 import { IconTile } from '@/components/ui/icon-tile';
 import { Icon } from '@/components/ui/icon';
+import { PressScale } from '@/components/ui/press-scale';
+import { CARD_SHADOW } from '@/components/ui/card';
 import { Text } from '@/components/ui/text';
 import { useTones, type Tone } from '@/lib/tones';
 
@@ -48,12 +50,12 @@ export function ListRow({ icon, tone, title, note, badge, trailing, variant = 't
   );
   const cls =
     variant === 'tile'
-      ? 'flex-row items-center gap-3 rounded-[20px] bg-card px-3 py-[11px] shadow-[0_6px_20px_rgba(27,22,32,0.06)]'
+      ? `flex-row items-center gap-3 rounded-[22px] border border-ink/[0.045] bg-card px-3 py-[11px] ${CARD_SHADOW}`
       : 'flex-row items-center gap-[11px] py-[9px]';
   return onPress ? (
-    <Pressable onPress={onPress} className={`${cls} active:opacity-80`}>
+    <PressScale onPress={onPress} scale={0.98} className={cls}>
       {body}
-    </Pressable>
+    </PressScale>
   ) : (
     <View className={cls}>{body}</View>
   );

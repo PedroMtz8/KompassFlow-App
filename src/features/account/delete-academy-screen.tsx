@@ -1,5 +1,5 @@
 import { useQueryClient } from '@tanstack/react-query';
-import { Trash2 } from 'lucide-react-native';
+import Trash2 from 'lucide-react-native/icons/trash';
 import { useState } from 'react';
 
 import { FormScreen } from '@/components/form-screen';

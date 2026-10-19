@@ -1,4 +1,4 @@
-import { CreditCard } from 'lucide-react-native';
+import CreditCard from 'lucide-react-native/icons/credit-card';
 import { ActivityIndicator, View } from 'react-native';
 
 import { ErrorNotice } from '@/components/query-status';
@@ -29,7 +29,7 @@ export function CardSetup({ orgId, org }: { orgId: string; org: { permissions?: 
   const ready = s.connected && s.chargesEnabled;
   const pending = s.connected && !ready;
   return (
-    <View className="gap-3 rounded-[22px] bg-card p-3.5 shadow-[0_6px_20px_rgba(27,22,32,0.06)]">
+    <View className="gap-3 rounded-[22px] bg-card p-3.5 border border-ink/[0.045] shadow-[0_1px_2px_rgba(16,32,26,0.05),0_12px_28px_-8px_rgba(16,32,26,0.10)]">
       <View className="flex-row items-center gap-3">
         <IconTile icon={CreditCard} tone={ready ? 'teal' : 'violet'} size={38} />
         <View className="min-w-0 flex-1 gap-0.5">

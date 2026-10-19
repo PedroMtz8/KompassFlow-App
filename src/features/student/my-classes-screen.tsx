@@ -1,6 +1,8 @@
 import * as Linking from 'expo-linking';
 import { router, useFocusEffect } from 'expo-router';
-import { CalendarX, ChevronRight, CircleCheck } from 'lucide-react-native';
+import CalendarX from 'lucide-react-native/icons/calendar-x';
+import ChevronRight from 'lucide-react-native/icons/chevron-right';
+import CircleCheck from 'lucide-react-native/icons/circle-check';
 import { useCallback, useState } from 'react';
 import { Pressable, ScrollView, View, type NativeScrollEvent, type NativeSyntheticEvent } from 'react-native';
 
@@ -9,7 +11,9 @@ import { Screen, ScreenScroll } from '@/components/screen';
 import { RefreshButton } from '@/components/ui/refresh-button';
 import { Avatar } from '@/components/ui/avatar';
 import { Badge } from '@/components/ui/badge';
-import { Gradient } from '@/components/ui/gradient';
+import { Card } from '@/components/ui/card';
+import { HeroCard } from '@/components/ui/hero-card';
+import { PressScale } from '@/components/ui/press-scale';
 import { InfoBanner } from '@/components/ui/info-banner';
 import { ListDivider } from '@/components/ui/list-divider';
 import { SectionDivider } from '@/components/ui/section-divider';
@@ -20,6 +24,7 @@ import { LoadMore } from '@/components/load-more';
 import { useMyMembership } from '@/features/payments/queries';
 import { useCheckIn, useMyBookings, useMyWaitlist, type MyBooking } from '@/features/bookings/queries';
 import { cardToneFor } from '@/features/session/switch-space-screen';
+import { authClient } from '@/lib/auth-client';
 import { done } from '@/lib/simulate';
 import { formatTime, localDateOf, longDate, relativeDay } from '@/lib/dates';
 import { clock, deviceTimeZone, differsFromDevice, gmtLabel } from '@/lib/timezone';
@@ -42,25 +47,31 @@ function NextCard({ b, now }: { b: MyBooking; now: number }) {
         ? `EN ${hours} H`
         : `EN ${Math.round(hours / 24)} ${Math.round(hours / 24) === 1 ? 'DÍA' : 'DÍAS'}`;
   return (
-    <Gradient tone={cardToneFor(b.organizationId)} style={{ borderRadius: 26, padding: 15, gap: 12 }}>
+    <HeroCard tone={cardToneFor(b.organizationId)} padding={20} gap={14}>
       <View className="flex-row items-center justify-between">
-        <Text className="text-[11px] font-extrabold tracking-[0.08em] text-white">{live ? 'EN CURSO' : `PRÓXIMA · ${when}`}</Text>
-        <View className="rounded-lg bg-white/[0.22] px-2 py-1.5">
-          <Text className="font-mono-bold text-xs text-white">RES-{b.id.replace(/-/g, '').slice(0, 5).toUpperCase()}</Text>
+        <View className="flex-row items-center gap-2 self-start rounded-full bg-white/[0.2] px-3 py-1.5">
+          <View className="h-1.5 w-1.5 rounded-full bg-white" />
+          <Text className="font-mono text-[10.5px] uppercase tracking-[0.08em] text-white">{live ? 'En curso' : `Próxima · ${when.toLowerCase()}`}</Text>
+        </View>
+        <View className="rounded-lg bg-white/[0.18] px-2 py-1.5">
+          <Text className="font-mono-bold text-[11px] text-white/95">RES-{b.id.replace(/-/g, '').slice(0, 5).toUpperCase()}</Text>
         </View>
       </View>
-      <View className="gap-[3px]">
+      <View className="gap-1">
         <View className="flex-row items-center gap-2">
-          <Avatar uri={b.organizationLogo} name={b.organizationName} size={28} radius={9} />
-          <Text className="flex-1 text-[14px] font-extrabold text-white" numberOfLines={1}>
+          <Avatar uri={b.organizationLogo} name={b.organizationName} size={26} radius={9} />
+          <Text className="flex-1 text-[13.5px] font-bold text-white/95" numberOfLines={1}>
             {b.organizationName}
           </Text>
         </View>
-        <Text className="text-[19px] font-extrabold text-white">{b.serviceName}</Text>
-        <Text className="text-[13px] text-white/90">
-          {relativeDay(start, b.timezone)} · {formatTime(start, b.timezone)}
-          {b.roomName ? ` · ${b.roomName}` : ''}
-        </Text>
+        <Text className="text-[26px] font-extrabold leading-[30px] tracking-[-0.03em] text-white">{b.serviceName}</Text>
+        <View className="flex-row items-baseline gap-2.5 pt-0.5">
+          <Text className="font-mono-bold text-[22px] tracking-[-0.03em] text-white">{formatTime(start, b.timezone)}</Text>
+          <Text className="flex-1 text-[13.5px] text-white/90" numberOfLines={1}>
+            {relativeDay(start, b.timezone)}
+            {b.roomName ? ` · ${b.roomName}` : ''}
+          </Text>
+        </View>
         {differsFromDevice(b.timezone, start) ? (
           <Text className="text-[11.5px] text-white/85">
             Hora de la academia ({gmtLabel(b.timezone, start)}) · en tu zona: {clock(start, deviceTimeZone())}
@@ -84,19 +95,20 @@ function NextCard({ b, now }: { b: MyBooking; now: number }) {
         </Pressable>
       ) : null}
       <View className="flex-row gap-2">
-        <Pressable onPress={() => Linking.openURL(mapsOf(b))} className="rounded-[11px] bg-white px-3 py-2 active:opacity-80">
-          <Text className="text-[12.5px] font-bold text-primary-dark">Cómo llegar</Text>
-        </Pressable>
+        <PressScale onPress={() => Linking.openURL(mapsOf(b))} scale={0.95} className="rounded-[13px] bg-white px-3.5 py-2.5 shadow-[0_8px_16px_-8px_rgba(0,0,0,0.35)]">
+          <Text className="text-[12.5px] font-extrabold text-primary-dark">Cómo llegar</Text>
+        </PressScale>
         {live ? null : (
-          <Pressable
+          <PressScale
             onPress={() => router.push({ pathname: '/cancel-booking', params: { bookingId: b.id } })}
-            className="rounded-[11px] bg-white/[0.22] px-3 py-2 active:opacity-80"
+            scale={0.95}
+            className="rounded-[13px] bg-white/[0.22] px-3.5 py-2.5"
           >
             <Text className="text-[12.5px] font-bold text-white">Cancelar</Text>
-          </Pressable>
+          </PressScale>
         )}
       </View>
-    </Gradient>
+    </HeroCard>
   );
 }
 
@@ -150,6 +162,9 @@ export function MyClassesScreen() {
   const theme = useTheme();
   const now = useNow();
   const desktop = useIsDesktop();
+  const { data: session } = authClient.useSession();
+  const firstName = session?.user.name?.trim().split(/\s+/)[0];
+  const todayLabel = new Date(now).toLocaleDateString('es-MX', { weekday: 'long', day: 'numeric', month: 'long' });
   const upcoming = useMyBookings('upcoming');
   const past = useMyBookings('past');
   const waitlist = useMyWaitlist();
@@ -190,7 +205,12 @@ export function MyClassesScreen() {
     <Screen>
       <ScreenScroll contentContainerClassName="gap-3 pb-10" onRefresh={refresh}>
         <View className="flex-row items-center justify-between pb-1.5 pt-1">
-          <Text variant="h2">Mis clases</Text>
+          <View className="gap-1">
+            <Text className="font-mono text-[11px] uppercase tracking-[0.08em] text-muted-foreground">{todayLabel}</Text>
+            <Text variant="h1" numberOfLines={1}>
+              {firstName ? `Hola, ${firstName}` : 'Mis clases'}
+            </Text>
+          </View>
           <View className="flex-row items-center gap-2">
             {desktop ? <RefreshButton onPress={refresh} busy={upcoming.isFetching || past.isFetching} /> : null}
           </View>
@@ -198,15 +218,15 @@ export function MyClassesScreen() {
 
         <QueryStatus q={upcoming} />
         {!upcoming.isPending && !upcoming.isError && !next && !waitlist.data?.length ? (
-          <View className="items-center gap-2 rounded-[22px] bg-card p-6">
+          <Card className="items-center gap-2 p-6">
             <Text className="text-base font-extrabold">Aún no tienes clases reservadas</Text>
             <Text variant="muted" className="text-center">
               Explora las clases cerca de ti y reserva tu lugar.
             </Text>
-            <Pressable onPress={() => router.replace('/discover')} className="mt-1 rounded-xl bg-primary px-4 py-2.5 active:opacity-80">
-              <Text className="text-[13px] font-bold text-white">Descubrir clases</Text>
-            </Pressable>
-          </View>
+            <PressScale onPress={() => router.replace('/discover')} className="mt-1 rounded-[14px] bg-primary px-5 py-3">
+              <Text className="text-[13px] font-extrabold text-white">Descubrir clases</Text>
+            </PressScale>
+          </Card>
         ) : null}
 
         {canceledBySchool.map((b) => (
@@ -224,9 +244,10 @@ export function MyClassesScreen() {
         {orgSections.map((sec) => (
           <View key={sec.id} className="gap-2.5">
             <SectionDivider />
-            <Pressable
+            <PressScale
               onPress={() => router.push({ pathname: '/org/[id]', params: { id: sec.id } })}
-              className="flex-row items-center gap-3 active:opacity-80"
+              scale={0.98}
+              className="flex-row items-center gap-3"
             >
               <Avatar uri={sec.logo} name={sec.name} size={48} radius={16} />
               <View className="min-w-0 flex-1">
@@ -239,10 +260,10 @@ export function MyClassesScreen() {
                 </Text>
               </View>
               <ChevronRight size={16} color={theme.subtle} />
-            </Pressable>
+            </PressScale>
 
             {sec.passes.length ? (
-              <Pressable onPress={() => router.push('/membership')} className="gap-2 rounded-[18px] bg-card px-3.5 py-3 active:opacity-80">
+              <Pressable onPress={() => router.push('/membership')} className="gap-2 rounded-[18px] border border-ink/[0.045] bg-card px-3.5 py-3 shadow-[0_1px_2px_rgba(16,32,26,0.05),0_8px_20px_-8px_rgba(16,32,26,0.10)] active:opacity-80">
                 {sec.passes.map((p) => (
                   <View key={p.id} className="flex-row items-center gap-3">
                     <View className="min-w-0 flex-1">
@@ -287,7 +308,7 @@ export function MyClassesScreen() {
             ))}
 
             {sec.bookings.length ? (
-              <View>
+              <Card className="rounded-[22px] px-3 py-1.5">
                 {sec.bookings.map((b, i) => {
                   const day = relativeDay(+new Date(b.startsAt), b.timezone);
                   const showDay = i === 0 || relativeDay(+new Date(sec.bookings[i - 1].startsAt), b.timezone) !== day;
@@ -313,13 +334,13 @@ export function MyClassesScreen() {
                             </Text>
                           ) : null}
                         </View>
-                        <Badge tone="teal">RESERVADA</Badge>
+                        <Badge tone="green">RESERVADA</Badge>
                       </Pressable>
                       {i < sec.bookings.length - 1 ? <ListDivider /> : null}
                     </View>
                   );
                 })}
-              </View>
+              </Card>
             ) : null}
           </View>
         ))}

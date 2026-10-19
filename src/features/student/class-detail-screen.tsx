@@ -1,6 +1,14 @@
 import * as Linking from 'expo-linking';
 import { router, useLocalSearchParams } from 'expo-router';
-import { CalendarDays, ChevronLeft, ChevronRight, Clock, DoorOpen, MapPin, Navigation, ShieldCheck, Ticket } from 'lucide-react-native';
+import CalendarDays from 'lucide-react-native/icons/calendar-days';
+import ChevronLeft from 'lucide-react-native/icons/chevron-left';
+import ChevronRight from 'lucide-react-native/icons/chevron-right';
+import Clock from 'lucide-react-native/icons/clock';
+import DoorOpen from 'lucide-react-native/icons/door-open';
+import MapPin from 'lucide-react-native/icons/map-pin';
+import Navigation from 'lucide-react-native/icons/navigation';
+import ShieldCheck from 'lucide-react-native/icons/shield-check';
+import Ticket from 'lucide-react-native/icons/ticket';
 import { ActivityIndicator, Pressable, ScrollView, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
@@ -146,7 +154,7 @@ export function ClassDetailScreen() {
           </View>
           <TimeZoneNote at={start} tz={s.timezone} />
 
-          <View className="gap-2.5 rounded-[22px] bg-card p-3.5 shadow-[0_6px_20px_rgba(27,22,32,0.06)]">
+          <View className="gap-2.5 rounded-[22px] bg-card p-3.5 border border-ink/[0.045] shadow-[0_1px_2px_rgba(16,32,26,0.05),0_12px_28px_-8px_rgba(16,32,26,0.10)]">
             <View className="flex-row items-baseline justify-between">
               <Text className="text-sm font-bold">Cupo</Text>
               <Text className="text-[13px] text-muted-foreground">
@@ -170,7 +178,7 @@ export function ClassDetailScreen() {
           ) : null}
 
           {s.address ? (
-            <View className="flex-row items-center gap-[11px] rounded-[22px] bg-card p-3 shadow-[0_6px_20px_rgba(27,22,32,0.06)]">
+            <View className="flex-row items-center gap-[11px] rounded-[22px] bg-card p-3 border border-ink/[0.045] shadow-[0_1px_2px_rgba(16,32,26,0.05),0_12px_28px_-8px_rgba(16,32,26,0.10)]">
               <View className="h-[38px] w-[38px] items-center justify-center rounded-[13px] bg-primary-soft">
                 <Icon as={MapPin} size={19} color={theme.primary} />
               </View>

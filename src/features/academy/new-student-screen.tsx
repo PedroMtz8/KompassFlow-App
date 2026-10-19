@@ -1,5 +1,6 @@
 import { router } from 'expo-router';
-import { KeyRound, Link2 } from 'lucide-react-native';
+import KeyRound from 'lucide-react-native/icons/key-round';
+import Link2 from 'lucide-react-native/icons/link-2';
 import { useState } from 'react';
 import { View } from 'react-native';
 

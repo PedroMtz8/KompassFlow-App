@@ -1,5 +1,8 @@
 import { router } from 'expo-router';
-import { BellRing, CalendarClock, CreditCard, Info } from 'lucide-react-native';
+import BellRing from 'lucide-react-native/icons/bell-ring';
+import CalendarClock from 'lucide-react-native/icons/calendar-clock';
+import CreditCard from 'lucide-react-native/icons/credit-card';
+import Info from 'lucide-react-native/icons/info';
 import { useEffect, useState } from 'react';
 import { Platform, Pressable, View } from 'react-native';
 
@@ -93,7 +96,7 @@ export function NotificationsScreen() {
 
         <QueryStatus q={q} />
         {q.data && items.length === 0 ? (
-          <View className="items-center gap-1.5 rounded-[22px] bg-card p-6">
+          <View className="items-center gap-1.5 rounded-[24px] border border-ink/[0.045] bg-card p-6 shadow-[0_1px_2px_rgba(16,32,26,0.05),0_12px_28px_-8px_rgba(16,32,26,0.10)]">
             <Text className="text-base font-extrabold">Todo al día</Text>
             <Text variant="muted" className="text-center">Aquí aparecerán tus recordatorios de clase, cambios y pagos.</Text>
           </View>

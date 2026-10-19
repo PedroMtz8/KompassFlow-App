@@ -1,5 +1,5 @@
 import { router } from 'expo-router';
-import { Trash2 } from 'lucide-react-native';
+import Trash2 from 'lucide-react-native/icons/trash';
 import { useState } from 'react';
 import { View } from 'react-native';
 
