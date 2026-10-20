@@ -29,7 +29,7 @@ export function Avatar({ uri, name, size = 40, radius, ring }: AvatarProps) {
   const style = {
     width: size,
     height: size,
-    borderRadius: radius ?? size / 2,
+    borderRadius: radius ?? (Number.isFinite(size) ? size / 2 : 0),
     borderWidth: ring ? 2 : 0,
     borderColor: t.primary,
     backgroundColor: t.muted,

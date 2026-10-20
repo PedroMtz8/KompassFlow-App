@@ -154,7 +154,7 @@ export function PaymentsScreen() {
                     {s.byMethod
                       .filter((m) => m.amountCents > 0)
                       .map((m) => (
-                        <View key={m.method} style={{ width: `${m.share * 100}%`, backgroundColor: METHOD[m.method].color }} />
+                        <View key={m.method} style={{ width: `${(Number.isFinite(m.share) ? m.share : 0) * 100}%`, backgroundColor: METHOD[m.method].color }} />
                       ))}
                   </View>
                   <View className="flex-row flex-wrap gap-x-3 gap-y-1.5">

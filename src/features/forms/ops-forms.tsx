@@ -558,7 +558,7 @@ export function ReportsScreen() {
                   <View key={w.label} className="flex-1 items-center gap-1.5" style={{ height: '100%', justifyContent: 'flex-end' }}>
                     <View
                       className="w-full rounded-t-md"
-                      style={{ height: `${Math.max(w.occupancy * 100, w.sessions ? 4 : 0)}%`, backgroundColor: barShade(t, i, 7) }}
+                      style={{ height: `${Math.max((Number.isFinite(w.occupancy) ? w.occupancy : 0) * 100, w.sessions ? 4 : 0)}%`, backgroundColor: barShade(t, i, 7) }}
                     />
                   </View>
                 ))}

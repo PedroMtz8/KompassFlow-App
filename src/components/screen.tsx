@@ -18,8 +18,9 @@ const WEB_TOP_GAP = Platform.OS === 'web' ? 28 : 0;
 /** Contenedor base de pantalla: fondo con velo de color + áreas seguras. */
 export function Screen({ className, bottomInset = false, style, children, ...props }: ScreenProps) {
   const insets = useSafeAreaInsets();
-  // Android con la barra de estado fuera de la app (sin «borde a borde»): el contenido empieza justo debajo y queda pegado.
-  const androidGap = Platform.OS === 'android' && insets.top === 0 ? 14 : 0;
+  // Android: la barra de estado es baja (sin notch ni isla), así que el contenido queda pegado a ella tanto si la app va
+  // «borde a borde» (el inset es la altura de la barra) como si no (inset 0). En iOS el inset ya deja aire suficiente.
+  const androidGap = Platform.OS === 'android' ? 14 : 0;
   return (
     <View
       className={cn('flex-1 bg-background', className)}

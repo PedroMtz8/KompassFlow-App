@@ -14,8 +14,9 @@ export function Segmented<T extends string>({ value, onChange, options }: { valu
   const [width, setWidth] = useState(0);
   const index = Math.max(0, options.findIndex((o) => o.value === value));
   const cell = width > 0 ? (width - PAD * 2) / options.length : 0;
+  // Solo el desplazamiento se anima. El ancho va fijo en el estilo: si Reanimated lo pone después de montar, la vista nace con
+  // ancho 0 y la sombra con esquinas redondeadas produce NaN en iOS (errores de CoreGraphics).
   const thumb = useAnimatedStyle(() => ({
-    width: cell,
     transform: [{ translateX: withSpring(index * cell, { damping: 20, stiffness: 260, mass: 0.7 }) }],
   }));
   return (
@@ -24,7 +25,7 @@ export function Segmented<T extends string>({ value, onChange, options }: { valu
         <Animated.View
           pointerEvents="none"
           className="absolute rounded-[14px] bg-card shadow-[0_1px_2px_rgba(16,32,26,0.08),0_6px_12px_-4px_rgba(16,32,26,0.14)]"
-          style={[{ top: PAD, bottom: PAD, left: PAD }, thumb]}
+          style={[{ top: PAD, bottom: PAD, left: PAD, width: cell }, thumb]}
         />
       ) : null}
       {options.map((o) => {
