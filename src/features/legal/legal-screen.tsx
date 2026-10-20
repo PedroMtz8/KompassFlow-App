@@ -4,7 +4,7 @@ import { Screen, ScreenScroll } from '@/components/screen';
 import { ScreenHeader } from '@/components/ui/screen-header';
 import { Text } from '@/components/ui/text';
 
-import { LEGAL, PRIVACY, TERMS, type LegalSection } from './legal-text';
+import { LEGAL, PRIVACY, SUPPORT, TERMS, type LegalSection } from './legal-text';
 
 function Doc({ title, sections }: { title: string; sections: LegalSection[] }) {
   return (
@@ -30,3 +30,4 @@ function Doc({ title, sections }: { title: string; sections: LegalSection[] }) {
 
 export const PrivacyScreen = () => <Doc title="Aviso de privacidad" sections={PRIVACY} />;
 export const TermsScreen = () => <Doc title="Términos y condiciones" sections={TERMS} />;
+export const SupportScreen = () => <Doc title="Soporte" sections={SUPPORT} />;

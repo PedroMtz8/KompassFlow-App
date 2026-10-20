@@ -1,9 +1,9 @@
-import { router } from 'expo-router';
-import Music from 'lucide-react-native/icons/music';
 import { useEffect, useRef, type MouseEvent, type ReactNode } from 'react';
 import { ScrollView } from 'react-native';
 
 import { Entry } from '@/features/entry/entry';
+import { PageHead } from '@/features/web/seo';
+import { A, Footer, INK, PAPER, Wordmark } from '@/features/web/site';
 import { photos } from '@/mocks/photos';
 
 /**
@@ -19,26 +19,8 @@ export default function Index() {
 }
 
 /* ─────────────────────────────  colores propios de la página  ───────────────────────────── */
-const PAPER = '#F5EFE3';
-const INK = '#0D1D18';
 
 const DISCIPLINES = ['Bachata', 'Salsa', 'Kizomba', 'Tango', 'Zouk', 'Danza urbana', 'Ballet', 'Folklore', 'Jazz', 'Contemporáneo', 'Cumbia', 'Hip hop'];
-
-const SUPPORT_EMAIL = process.env.EXPO_PUBLIC_SUPPORT_EMAIL;
-
-/** Enlace HTML real (clic derecho, abrir en pestaña nueva…) que navega sin recargar la página. */
-function A({ href, className, style, children }: { href: string; className?: string; style?: React.CSSProperties; children: ReactNode }) {
-  const onClick = (e: MouseEvent<HTMLAnchorElement>) => {
-    if (e.metaKey || e.ctrlKey || e.shiftKey || e.button !== 0) return;
-    e.preventDefault();
-    router.push(href as never);
-  };
-  return (
-    <a href={href} onClick={onClick} className={className} style={style}>
-      {children}
-    </a>
-  );
-}
 
 function scrollToId(id: string) {
   return (e: MouseEvent) => {
@@ -106,19 +88,6 @@ const CSS = `
 `;
 
 /* ─────────────────────────────  piezas  ───────────────────────────── */
-
-function Wordmark({ light = false }: { light?: boolean }) {
-  return (
-    <span className="inline-flex items-center gap-2.5">
-      <span className="flex h-8 w-8 items-center justify-center rounded-[10px] bg-primary">
-        <Music size={17} color="#fff" strokeWidth={2.4} />
-      </span>
-      <span className="font-extrabold text-[21px] tracking-[-0.035em]" style={{ color: light ? '#fff' : INK }}>
-        KompassFlow
-      </span>
-    </span>
-  );
-}
 
 function Nav() {
   return (
@@ -618,30 +587,6 @@ function FinalCta() {
   );
 }
 
-function Footer() {
-  return (
-    <footer style={{ borderTop: `2px solid ${INK}` }}>
-      <div className="mx-auto flex w-full max-w-[1240px] flex-col gap-6 px-5 py-9 md:flex-row md:items-center md:justify-between md:px-8">
-        <div className="flex flex-col gap-2">
-          <Wordmark />
-          <p className="text-[13.5px]" style={{ color: `${INK}99` }}>
-            © {new Date().getFullYear()} KompassFlow. La agenda de las academias de baile.
-          </p>
-        </div>
-        <nav className="flex flex-wrap items-center gap-x-7 gap-y-2 text-[14.5px] font-bold" aria-label="Legal y contacto">
-          <A href="/terms" className="kf-link">Términos</A>
-          <A href="/privacy" className="kf-link">Privacidad</A>
-          {SUPPORT_EMAIL ? (
-            <a href={`mailto:${SUPPORT_EMAIL}`} className="kf-link">
-              {SUPPORT_EMAIL}
-            </a>
-          ) : null}
-        </nav>
-      </div>
-    </footer>
-  );
-}
-
 function Landing() {
   // Las animaciones de aparición solo se activan con JavaScript: sin él (o antes de hidratar) todo el contenido está visible.
   useEffect(() => {
@@ -650,6 +595,11 @@ function Landing() {
   }, []);
   return (
     <ScrollView style={{ flex: 1, backgroundColor: PAPER }} contentContainerStyle={{ flexGrow: 1 }} showsVerticalScrollIndicator>
+      <PageHead
+        title="KompassFlow · La agenda de tu academia de baile"
+        description="Publica tus clases, controla el cupo, cobra y pasa lista desde un solo lugar. Y si bailas, encuentra una clase cerca y reserva en dos toques."
+        path="/"
+      />
       <style dangerouslySetInnerHTML={{ __html: CSS }} />
       <div className="kf-root w-full" style={{ background: PAPER }}>
         <Nav />

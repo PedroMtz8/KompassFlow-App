@@ -9,7 +9,7 @@ export const LEGAL = {
   address: process.env.EXPO_PUBLIC_LEGAL_ADDRESS ?? '[domicilio del responsable]',
   /** Correo para ejercer derechos ARCO y dudas de privacidad. */
   contactEmail: process.env.EXPO_PUBLIC_SUPPORT_EMAIL ?? 'privacidad@tu-dominio.com',
-  updated: '8 de octubre de 2026',
+  updated: '20 de octubre de 2026',
 };
 
 export type LegalSection = { title: string; body: string[] };
@@ -27,12 +27,13 @@ export const PRIVACY: LegalSection[] = [
       'Cuenta: nombre, correo electrónico, contraseña (guardada de forma cifrada) y, si entras con Google, tu nombre y foto de perfil.',
       'Uso de la app: tus reservas, asistencia, pagos registrados por la academia, intereses y las academias a las que perteneces.',
       'Opcionales: teléfono, nivel de baile y fotos que subas. Si lo permites, tu ubicación aproximada para mostrarte clases cercanas; no la guardamos.',
+      'Dispositivo: si activas las notificaciones, un identificador del teléfono (token) para enviarte avisos de tus clases. Para que puedas consultar tus reservas y tu perfil sin conexión, la app guarda en tu teléfono una copia temporal (hasta 7 días) de esa información; se borra al cerrar sesión.',
     ],
   },
   {
     title: 'Para qué los usamos',
     body: [
-      'Crear y proteger tu cuenta, permitirte reservar, pagar y llevar tu historial, y enviarte correos necesarios del servicio (confirmar tu correo, recuperar tu contraseña, invitaciones y avisos de clases canceladas).',
+      'Crear y proteger tu cuenta, permitirte reservar, pagar y llevar tu historial, y enviarte correos y notificaciones necesarios del servicio (confirmar tu correo, recuperar tu contraseña, invitaciones y avisos de clases canceladas o modificadas).',
       'No vendemos tus datos ni los usamos para publicidad de terceros.',
     ],
   },
@@ -40,7 +41,7 @@ export const PRIVACY: LegalSection[] = [
     title: 'Con quién los compartimos',
     body: [
       'Con las academias donde te inscribes o reservas: ven tu nombre y la información que ellas necesitan para atenderte. Su personal solo ve tu teléfono y correo si su rol lo permite.',
-      'Con proveedores que hacen posible el servicio y solo para eso: base de datos (Turso), almacenamiento de archivos (Cloudflare), correo (Resend), acceso con Google y, cuando se active, procesamiento de pagos (Stripe).',
+      'Con proveedores que hacen posible el servicio y solo para eso: base de datos (Turso), almacenamiento de archivos (Cloudflare), correo (Resend), acceso con Google, envío de notificaciones y actualizaciones de la app (Expo, Apple y Google) y, cuando se active, procesamiento de pagos (Stripe).',
       'Con autoridades, solo cuando una ley o una orden lo exija.',
     ],
   },
@@ -111,5 +112,33 @@ export const TERMS: LegalSection[] = [
   {
     title: 'Cambios y contacto',
     body: [`Podemos actualizar estos términos y te avisaremos en la app. Dudas: ${LEGAL.contactEmail}. Última actualización: ${LEGAL.updated}.`],
+  },
+];
+
+export const SUPPORT: LegalSection[] = [
+  {
+    title: 'Escríbenos',
+    body: [
+      `Para dudas, problemas con tu cuenta o sugerencias escribe a ${LEGAL.contactEmail}. Te respondemos en un máximo de 2 días hábiles.`,
+      'Si algo falla, cuéntanos qué hacías, qué pasó y en qué teléfono (iPhone o Android); una captura de pantalla ayuda mucho.',
+    ],
+  },
+  {
+    title: 'No puedo entrar a mi cuenta',
+    body: [
+      'En la pantalla de inicio de sesión toca «¿Olvidaste tu contraseña?» y te enviaremos un correo para crear una nueva. Si tu academia te creó la cuenta con una contraseña temporal, la app te pedirá cambiarla en tu primer acceso.',
+    ],
+  },
+  {
+    title: 'Reservas y pagos',
+    body: [
+      'Cada academia define sus precios, paquetes y plazo de cancelación; para cambios en una reserva o un pago, habla primero con tu academia. Si hay un cobro que no reconoces, escríbenos con la fecha y el monto.',
+    ],
+  },
+  {
+    title: 'Eliminar mi cuenta y mis datos',
+    body: [
+      'Desde la app: Perfil → Configuración → Eliminar mi cuenta. Si no puedes entrar, escríbenos desde el correo de tu cuenta y la eliminamos por ti. Más detalle en el aviso de privacidad.',
+    ],
   },
 ];

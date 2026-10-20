@@ -6,6 +6,7 @@ const PAGES: { path: string; priority: string; changefreq: string }[] = [
   { path: '/sign-in', priority: '0.5', changefreq: 'monthly' },
   { path: '/terms', priority: '0.3', changefreq: 'yearly' },
   { path: '/privacy', priority: '0.3', changefreq: 'yearly' },
+  { path: '/support', priority: '0.3', changefreq: 'yearly' },
 ];
 
 /** sitemap.xml con las páginas públicas. */

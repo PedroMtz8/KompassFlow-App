@@ -25,6 +25,7 @@ import { authClient } from '@/lib/auth-client';
 import { fontMap } from '@/lib/fonts';
 import { OfflineBanner } from '@/components/offline-banner';
 import { UpdateBanner } from '@/components/update-banner';
+import { PAPER } from '@/features/web/colors';
 import { QueryProvider, syncCacheOwner } from '@/lib/query-provider';
 import { onlineManager } from '@tanstack/react-query';
 import { installGlobalErrorHandlers } from '@/lib/report-error';
@@ -57,9 +58,12 @@ export default function RootLayout() {
     SystemUI.setBackgroundColorAsync(t.background).catch(() => {});
   }, [t.background]);
 
+  // Páginas web públicas: todo el marco ya va del color de papel de la página, para que el primer cuadro no parpadee con el
+  // color del tema de la app (blanco → tema → página).
+  const bg = earlyLanding ? PAPER : t.background;
   return (
-    <GestureHandlerRootView style={{ flex: 1, backgroundColor: t.background }}>
-      <SafeAreaProvider style={{ backgroundColor: t.background }}>
+    <GestureHandlerRootView style={{ flex: 1, backgroundColor: bg }}>
+      <SafeAreaProvider style={{ backgroundColor: bg }}>
         <QueryProvider>
           <ThemeProvider value={navTheme}>
             {Platform.OS === 'android' ? (
@@ -82,10 +86,12 @@ export default function RootLayout() {
   );
 }
 
-/** Web y ruta «/»: la landing pública, que debe verse sin esperar a que cargue la sesión. */
+/** Páginas web públicas (landing y legales): se dibujan ya en el servidor, sin esperar a las fuentes ni a la sesión. */
+const PUBLIC_WEB_PATHS = new Set(['/', '/privacy', '/terms', '/support']);
+
 function useIsWebLanding() {
   const pathname = usePathname();
-  return Platform.OS === 'web' && pathname === '/';
+  return Platform.OS === 'web' && PUBLIC_WEB_PATHS.has(pathname);
 }
 
 /** Guard de autenticación: (auth) solo sin sesión; (student) y (academy) solo con sesión. */
@@ -134,10 +140,10 @@ function AuthNavigator() {
   const forced = isSignedIn && !!security.data?.mustChangePassword;
 
   return (
-    <View className="flex-1 flex-row bg-background">
+    <View className="flex-1 flex-row bg-background" style={earlyLanding ? { backgroundColor: PAPER } : undefined}>
       {isSignedIn && !forced && desktop ? <Sidebar /> : null}
       <View className="flex-1">
-        <Stack screenOptions={{ headerShown: false, contentStyle: { backgroundColor: t.background } }}>
+        <Stack screenOptions={{ headerShown: false, contentStyle: { backgroundColor: earlyLanding ? PAPER : t.background } }}>
           <Stack.Protected guard={isSignedIn && !forced}>
             <Stack.Screen name="(student)" />
             <Stack.Screen name="(academy)" />
