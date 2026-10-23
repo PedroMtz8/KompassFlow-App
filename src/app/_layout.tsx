@@ -141,7 +141,7 @@ function AuthNavigator() {
 
   return (
     <View className="flex-1 flex-row bg-background" style={earlyLanding ? { backgroundColor: PAPER } : undefined}>
-      {isSignedIn && !forced && desktop ? <Sidebar /> : null}
+      {isSignedIn && !forced && desktop && !earlyLanding ? <Sidebar /> : null}
       <View className="flex-1">
         <Stack screenOptions={{ headerShown: false, contentStyle: { backgroundColor: earlyLanding ? PAPER : t.background } }}>
           <Stack.Protected guard={isSignedIn && !forced}>

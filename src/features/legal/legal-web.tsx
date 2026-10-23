@@ -1,5 +1,6 @@
 import { ScrollView } from 'react-native';
 
+import { authClient } from '@/lib/auth-client';
 import { PageHead } from '@/features/web/seo';
 import { A, Footer, INK, PAPER, Wordmark } from '@/features/web/site';
 
@@ -61,6 +62,8 @@ function scrollToId(id: string) {
 }
 
 function LegalNav({ current }: { current: string }) {
+  // Con sesión iniciada el servidor no lo sabe (dibuja la versión pública) y el navegador lo ajusta al cargar la sesión.
+  const signedIn = !!authClient.useSession().data;
   return (
     <header className="sticky top-0 z-50" style={{ background: `${PAPER}E6`, backdropFilter: 'blur(14px)', WebkitBackdropFilter: 'blur(14px)' }}>
       <div className="mx-auto flex h-[68px] w-full max-w-[1240px] items-center justify-between px-5 md:px-8">
@@ -68,15 +71,23 @@ function LegalNav({ current }: { current: string }) {
           <Wordmark />
         </A>
         <div className="flex items-center gap-2 md:gap-3">
-          <A href="/" className="kf-link hidden px-2 text-[14.5px] font-bold sm:inline">
-            Inicio
-          </A>
-          <A href="/sign-in" className="kf-link px-2 text-[14.5px] font-bold">
-            Entrar
-          </A>
-          <A href="/sign-up" className="kf-btn rounded-full px-4 py-2.5 text-[14px] font-extrabold text-white md:px-5" style={{ background: INK }}>
-            Empezar gratis
-          </A>
+          {signedIn ? (
+            <A href="/" className="kf-btn rounded-full px-4 py-2.5 text-[14px] font-extrabold text-white md:px-5" style={{ background: INK }}>
+              Abrir la app
+            </A>
+          ) : (
+            <>
+              <A href="/" className="kf-link hidden px-2 text-[14.5px] font-bold sm:inline">
+                Inicio
+              </A>
+              <A href="/sign-in" className="kf-link px-2 text-[14.5px] font-bold">
+                Entrar
+              </A>
+              <A href="/sign-up" className="kf-btn rounded-full px-4 py-2.5 text-[14px] font-extrabold text-white md:px-5" style={{ background: INK }}>
+                Empezar gratis
+              </A>
+            </>
+          )}
         </div>
       </div>
       <span className="sr-only">{current}</span>

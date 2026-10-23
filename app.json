@@ -30,8 +30,7 @@
       "package": "mx.kompassflow.app",
       "permissions": [
         "android.permission.ACCESS_COARSE_LOCATION",
-        "android.permission.ACCESS_FINE_LOCATION",
-        "android.permission.RECORD_AUDIO"
+        "android.permission.ACCESS_FINE_LOCATION"
       ]
     },
     "web": {
@@ -65,7 +64,8 @@
       [
         "expo-image-picker",
         {
-          "photosPermission": "KompassFlow necesita tus fotos para elegir la portada de tu academia y tu foto de perfil."
+          "photosPermission": "KompassFlow necesita tus fotos para elegir la portada de tu academia y tu foto de perfil.",
+          "microphonePermission": false
         }
       ],
       [
