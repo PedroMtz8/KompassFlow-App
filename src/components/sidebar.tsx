@@ -14,7 +14,6 @@ import Ellipsis from 'lucide-react-native/icons/ellipsis';
 import History from 'lucide-react-native/icons/rotate-ccw-clock';
 import House from 'lucide-react-native/icons/house';
 import LogOut from 'lucide-react-native/icons/log-out';
-import Music from 'lucide-react-native/icons/music';
 import Repeat from 'lucide-react-native/icons/repeat';
 import Search from 'lucide-react-native/icons/search';
 import Shapes from 'lucide-react-native/icons/shapes';
@@ -37,6 +36,7 @@ import { signOut } from '@/lib/sign-out';
 import { useTheme } from '@/lib/theme';
 import { cn } from '@/lib/utils';
 import { useSpace } from '@/stores/space';
+import { BrandMark } from '@/components/brand-mark';
 
 type Item = { path: string; label: string; icon: LucideIcon; show?: boolean };
 
@@ -88,9 +88,7 @@ export function Sidebar() {
       style={{ paddingTop: insets.top + 20, paddingBottom: Math.max(insets.bottom, 16) }}
     >
       <View className="flex-row items-center gap-[9px] px-5 pb-5">
-        <View className="h-[30px] w-[30px] items-center justify-center rounded-[10px] bg-primary">
-          <Icon as={Music} size={17} color="#fff" />
-        </View>
+        <BrandMark size={30} />
         <Text className="text-xl font-extrabold tracking-[-0.025em]">KompassFlow</Text>
       </View>
 

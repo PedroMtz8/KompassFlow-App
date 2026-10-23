@@ -1,13 +1,12 @@
 import { LinearGradient } from 'expo-linear-gradient';
-import Music from 'lucide-react-native/icons/music';
 import { ScrollView, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { useTheme, withAlpha } from '@/lib/theme';
-import { Icon } from '@/components/ui/icon';
 import { Photo } from '@/components/ui/photo';
 import { Text } from '@/components/ui/text';
 import { photos } from '@/mocks/photos';
+import { BrandMark } from '@/components/brand-mark';
 
 type AuthShellProps = { title: string; subtitle: string; children: React.ReactNode; footer: React.ReactNode };
 
@@ -32,9 +31,7 @@ export function AuthShell({ title, subtitle, children, footer }: AuthShellProps)
               style={{ position: 'absolute', inset: 0 }}
             />
             <View className="flex-row items-center gap-[9px] px-6" style={{ paddingTop: insets.top + 12 }}>
-              <View className="h-[30px] w-[30px] items-center justify-center rounded-[10px] bg-primary">
-                <Icon as={Music} size={17} color="#fff" />
-              </View>
+              <BrandMark size={30} />
               <Text className="text-xl font-extrabold tracking-[-0.025em] text-white">KompassFlow</Text>
             </View>
           </View>

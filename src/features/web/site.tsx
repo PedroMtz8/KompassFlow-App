@@ -1,5 +1,4 @@
 import { router } from 'expo-router';
-import Music from 'lucide-react-native/icons/music';
 import type { MouseEvent, ReactNode } from 'react';
 
 import { INK, PAPER } from './colors';
@@ -27,9 +26,20 @@ export function A({ href, className, style, children }: { href: string; classNam
 export function Wordmark({ light = false }: { light?: boolean }) {
   return (
     <span className="inline-flex items-center gap-2.5">
-      <span className="flex h-8 w-8 items-center justify-center rounded-[10px] bg-primary">
-        <Music size={17} color="#fff" strokeWidth={2.4} />
-      </span>
+      <svg width={32} height={32} viewBox="0 0 1024 1024" aria-hidden="true">
+        <defs>
+          <linearGradient id="kf-wordmark" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stopColor="#00a88f" />
+            <stop offset="1" stopColor="#00745f" />
+          </linearGradient>
+        </defs>
+        <rect width={1024} height={1024} rx={230} fill="url(#kf-wordmark)" />
+        <g fill="none" strokeLinecap="round">
+          <line x1={316} y1={262} x2={316} y2={762} stroke="#F5EFE3" strokeWidth={112} />
+          <path d="M411 505 C 546 470, 546 300, 708 268" stroke="#F5EFE3" strokeWidth={104} />
+          <path d="M426 520 C 556 560, 576 730, 716 762" stroke="#e4572e" strokeWidth={96} />
+        </g>
+      </svg>
       <span className="font-extrabold text-[21px] tracking-[-0.035em]" style={{ color: light ? '#fff' : INK }}>
         KompassFlow
       </span>
