@@ -24,7 +24,7 @@ const BASE = `http://localhost:${PORT}`;
 const H = { 'content-type': 'application/json', origin: 'http://localhost:8081' };
 const out: [string, boolean, string?][] = [];
 const metro = spawn('npx', ['expo', 'start', '--port', String(PORT)], {
-  env: { ...process.env, CI: '1', NODE_OPTIONS: '--max-old-space-size=8192', RESEND_API_KEY: 're_smoke', RESEND_BASE_URL: `http://localhost:${rport}`, EMAIL_FROM: 'KompassFlow <no-reply@smoke.dev>' } as NodeJS.ProcessEnv,
+  env: { ...process.env, CI: '1', NODE_OPTIONS: '--max-old-space-size=8192', RESEND_API_KEY: 're_smoke', RESEND_BASE_URL: `http://localhost:${rport}`, EMAIL_FROM: 'Kompass <no-reply@smoke.dev>' } as NodeJS.ProcessEnv,
   stdio: 'ignore',
   detached: true,
 });

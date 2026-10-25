@@ -9,7 +9,7 @@ import type { PropsWithChildren } from 'react';
  */
 const SITE = (process.env.EXPO_PUBLIC_API_URL || process.env.APP_URL || process.env.BETTER_AUTH_URL || '').replace(/\/+$/, '');
 
-const NAME = 'KompassFlow';
+const NAME = 'Kompass';
 const DESCRIPTION =
   'Publica tus clases, controla el cupo, cobra y pasa lista desde un solo lugar. Y si bailas, encuentra una clase cerca y reserva en dos toques.';
 const THEME = '#F5EFE3';
@@ -52,7 +52,7 @@ export default function Root({ children }: PropsWithChildren) {
         <meta property="og:image" content={abs('/og-image.png')} />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
-        <meta property="og:image:alt" content="KompassFlow: la agenda de tu academia, al compás" />
+        <meta property="og:image:alt" content="Kompass: la agenda de tu academia, al compás" />
 
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:image" content={abs('/og-image.png')} />

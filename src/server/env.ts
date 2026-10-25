@@ -31,7 +31,7 @@ export const env = {
     if (!key) return undefined;
     return {
       key,
-      from: clean(process.env.EMAIL_FROM) ?? 'KompassFlow <onboarding@resend.dev>',
+      from: clean(process.env.EMAIL_FROM) ?? 'Kompass <onboarding@resend.dev>',
       // Solo se cambia en pruebas (un servidor local que imita a Resend).
       baseUrl: (clean(process.env.RESEND_BASE_URL) ?? 'https://api.resend.com').replace(/\/+$/, ''),
     };

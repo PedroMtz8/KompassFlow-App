@@ -32,7 +32,7 @@ export function AuthShell({ title, subtitle, children, footer }: AuthShellProps)
             />
             <View className="flex-row items-center gap-[9px] px-6" style={{ paddingTop: insets.top + 12 }}>
               <BrandMark size={30} />
-              <Text className="text-xl font-extrabold tracking-[-0.025em] text-white">KompassFlow</Text>
+              <Text className="text-xl font-extrabold tracking-[-0.025em] text-white">Kompass</Text>
             </View>
           </View>
 

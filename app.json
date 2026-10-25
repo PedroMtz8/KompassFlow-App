@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "KompassFlow",
+    "name": "Kompass",
     "slug": "kompassflow-app",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -35,8 +35,8 @@
     },
     "web": {
       "output": "server",
-      "name": "KompassFlow",
-      "shortName": "KompassFlow",
+      "name": "Kompass",
+      "shortName": "Kompass",
       "description": "Reservas, cupos, cobros y asistencia para academias e instructores de baile.",
       "lang": "es",
       "themeColor": "#F5EFE3",
@@ -64,14 +64,14 @@
       [
         "expo-image-picker",
         {
-          "photosPermission": "KompassFlow necesita tus fotos para elegir la portada de tu academia y tu foto de perfil.",
+          "photosPermission": "Kompass necesita tus fotos para elegir la portada de tu academia y tu foto de perfil.",
           "microphonePermission": false
         }
       ],
       [
         "expo-location",
         {
-          "locationWhenInUsePermission": "KompassFlow usa tu ubicación para mostrarte las academias y clases más cercanas."
+          "locationWhenInUsePermission": "Kompass usa tu ubicación para mostrarte las academias y clases más cercanas."
         }
       ],
       "expo-sqlite",

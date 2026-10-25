@@ -167,7 +167,7 @@ export function AccountSection() {
       />
       <ListRow icon={Bell} tone="violet" title="Avisos y recordatorios" note="Qué te avisamos y dónde" chevron onPress={() => router.push('/notifications' as never)} />
       <ListRow icon={ShieldCheck} tone="ink" title="Aviso de privacidad" note="Cómo cuidamos tus datos" chevron onPress={() => router.push('/privacy')} />
-      <ListRow icon={FileText} tone="ink" title="Términos y condiciones" note="Las reglas de uso de KompassFlow" chevron onPress={() => router.push('/terms')} />
+      <ListRow icon={FileText} tone="ink" title="Términos y condiciones" note="Las reglas de uso de Kompass" chevron onPress={() => router.push('/terms')} />
       <Button
         variant="outline"
         onPress={async () => {

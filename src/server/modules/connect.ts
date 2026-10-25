@@ -40,7 +40,7 @@ export const connectModule = new Elysia({ name: 'connect' })
       const extra = [query.session_id && `session_id=${query.session_id}`, query.acct && `acct=${query.acct}`].filter(Boolean).join('&');
       const to = extra ? `${query.to}${query.to.includes('?') ? '&' : '?'}${extra}` : query.to;
       const esc = (v: string) => v.replace(/[&<>"']/g, (c) => `&#${c.charCodeAt(0)};`);
-      return `<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Volver a KompassFlow</title><meta http-equiv="refresh" content="0;url=${esc(to)}"></head><body style="font-family:system-ui;text-align:center;padding:48px 24px"><h2>Listo</h2><p>Regresa a KompassFlow para continuar.</p><p><a href="${esc(to)}" style="display:inline-block;padding:12px 20px;border-radius:12px;background:#E8590C;color:#fff;text-decoration:none;font-weight:700">Abrir KompassFlow</a></p></body></html>`;
+      return `<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Volver a Kompass</title><meta http-equiv="refresh" content="0;url=${esc(to)}"></head><body style="font-family:system-ui;text-align:center;padding:48px 24px"><h2>Listo</h2><p>Regresa a Kompass para continuar.</p><p><a href="${esc(to)}" style="display:inline-block;padding:12px 20px;border-radius:12px;background:#E8590C;color:#fff;text-decoration:none;font-weight:700">Abrir Kompass</a></p></body></html>`;
     },
     { query: t.Object({ acct: t.Optional(t.String({ pattern: '^acct_[A-Za-z0-9]{6,100}$' })), session_id: t.Optional(t.String({ pattern: '^cs_[A-Za-z0-9_]{6,200}$' })), to: t.String({ maxLength: 700, pattern: '^(exp|exps|stagelight)://[^\\s<>"\']*$' }) }) }
   )

@@ -14,7 +14,7 @@ Esta guía lleva la app de tu laptop a internet. El orden importa: cada paso des
 ## 1. Repositorio y CI
 
 ```bash
-git init && git add -A && git commit -m "KompassFlow"
+git init && git add -A && git commit -m "Kompass"
 git branch -M main
 git remote add origin git@github.com:<tu-usuario>/KompassFlow-App.git   # repositorio PRIVADO
 git push -u origin main
@@ -28,7 +28,7 @@ Crea **otra** base de Turso para producción (no uses la de pruebas) y aplica la
 ## 3. Correo (Resend)
 
 1. Resend → Domains → agrega tu dominio y crea los registros DNS que te pide (SPF y DKIM). Espera a "Verified".
-2. `EMAIL_FROM="KompassFlow <hola@tudominio.mx>"`.
+2. `EMAIL_FROM="Kompass <hola@tudominio.mx>"`.
 
 ## 4. Archivos y respaldos (Cloudflare R2)
 

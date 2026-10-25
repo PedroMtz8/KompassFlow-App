@@ -9,7 +9,7 @@ import { sendEmail } from '../lib/email';
 export const sendResetPassword = (user: { email: string; name: string }, url: string) =>
   sendEmail({
     to: user.email,
-    subject: 'Restablece tu contraseña de KompassFlow',
+    subject: 'Restablece tu contraseña de Kompass',
     react: async () => {
       const { ResetPasswordEmail } = await import('./reset-password');
       return <ResetPasswordEmail name={user.name} url={url} />;
@@ -19,7 +19,7 @@ export const sendResetPassword = (user: { email: string; name: string }, url: st
 export const sendVerifyEmail = (user: { email: string; name: string }, url: string) =>
   sendEmail({
     to: user.email,
-    subject: 'Confirma tu correo de KompassFlow',
+    subject: 'Confirma tu correo de Kompass',
     react: async () => {
       const { VerifyEmailEmail } = await import('./verify-email');
       return <VerifyEmailEmail name={user.name} url={url} />;
@@ -49,7 +49,7 @@ export const sendClassCanceled = (to: string, data: { name: string; organization
 export const sendAccountDeleted = (to: string, name: string) =>
   sendEmail({
     to,
-    subject: 'Eliminamos tu cuenta de KompassFlow',
+    subject: 'Eliminamos tu cuenta de Kompass',
     react: async () => {
       const { AccountDeletedEmail } = await import('./account-deleted');
       return <AccountDeletedEmail name={name} />;

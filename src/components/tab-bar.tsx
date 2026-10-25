@@ -22,7 +22,7 @@ export type TabItem = {
   perm?: [string, string];
 };
 
-/** Barra inferior de KompassFlow: cápsula flotante blanca con sombra; la pestaña activa lleva una pastilla con degradado. */
+/** Barra inferior de Kompass: cápsula flotante blanca con sombra; la pestaña activa lleva una pastilla con degradado. */
 export function makeTabBar(items: TabItem[]) {
   return function TabBar({ state, navigation }: BottomTabBarProps) {
     const insets = useSafeAreaInsets();

@@ -45,7 +45,7 @@ export function AdminOrgDetailScreen() {
                   <Badge tone={o.cardEnabled ? 'green' : 'ink'}>{o.cardEnabled ? 'COBRA CON TARJETA' : 'SIN TARJETA'}</Badge>
                 </View>
                 <Text variant="muted" className="text-xs">
-                  En KompassFlow desde {day(o.createdAt)}
+                  En Kompass desde {day(o.createdAt)}
                 </Text>
               </View>
             </View>

@@ -58,7 +58,7 @@ export function CredentialsScreen() {
   }
 
   const days = Math.max(1, Math.round((+new Date(creds.expiresAt) - now) / (24 * 3600_000)));
-  const message = `Hola ${creds.name.split(' ')[0]}, esta es tu cuenta de KompassFlow${creds.organizationName ? ` en ${creds.organizationName}` : ''}.\n\nCorreo: ${creds.email}\nContraseña temporal: ${creds.password}\n\nAl entrar te pedirá crear tu propia contraseña. La temporal sirve ${days} días.`;
+  const message = `Hola ${creds.name.split(' ')[0]}, esta es tu cuenta de Kompass${creds.organizationName ? ` en ${creds.organizationName}` : ''}.\n\nCorreo: ${creds.email}\nContraseña temporal: ${creds.password}\n\nAl entrar te pedirá crear tu propia contraseña. La temporal sirve ${days} días.`;
 
   return (
     <FormScreen

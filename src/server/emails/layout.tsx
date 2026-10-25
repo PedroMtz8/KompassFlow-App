@@ -14,11 +14,11 @@ export function EmailLayout({ preview, children }: { preview: string; children: 
       <Preview>{preview}</Preview>
       <Body style={{ backgroundColor: BRAND.soft, margin: 0, padding: '24px 12px', fontFamily: font, color: BRAND.ink }}>
         <Container style={{ maxWidth: 520, margin: '0 auto' }}>
-          <Text style={{ fontSize: 20, fontWeight: 800, letterSpacing: '-0.02em', margin: '0 0 16px', color: BRAND.primary }}>KompassFlow</Text>
+          <Text style={{ fontSize: 20, fontWeight: 800, letterSpacing: '-0.02em', margin: '0 0 16px', color: BRAND.primary }}>Kompass</Text>
           <Section style={{ backgroundColor: '#FFFFFF', borderRadius: 20, padding: '28px 24px', border: `1px solid ${BRAND.border}` }}>{children}</Section>
           <Hr style={{ borderColor: BRAND.border, margin: '24px 0 12px' }} />
           <Text style={{ fontSize: 12, lineHeight: '18px', color: BRAND.muted, margin: 0 }}>
-            Recibes este correo porque alguien usó esta dirección en KompassFlow. Si no fuiste tú, puedes ignorarlo.
+            Recibes este correo porque alguien usó esta dirección en Kompass. Si no fuiste tú, puedes ignorarlo.
           </Text>
         </Container>
       </Body>

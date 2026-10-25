@@ -1,7 +1,7 @@
 import { useId } from 'react';
 import Svg, { Defs, Line, LinearGradient, Path, Rect, Stop } from 'react-native-svg';
 
-/** Logo de KompassFlow: K con brazos en onda (mismo dibujo que el icono de la app, en `assets/images`). */
+/** Logo de Kompass: K con brazos en onda (mismo dibujo que el icono de la app, en `assets/images`). */
 export function BrandMark({ size = 30 }: { size?: number }) {
   const id = `kf-mark-${useId().replace(/:/g, '')}`;
   return (

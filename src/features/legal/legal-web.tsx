@@ -19,7 +19,7 @@ const DOCS: Doc[] = [
     tab: 'Términos',
     kicker: 'Reglas del juego',
     title: 'Términos y condiciones',
-    lead: 'Lo que puedes esperar de KompassFlow y lo que esperamos de ti, escrito sin letra chiquita.',
+    lead: 'Lo que puedes esperar de Kompass y lo que esperamos de ti, escrito sin letra chiquita.',
     sections: TERMS,
   },
   {
@@ -144,7 +144,7 @@ function ContactCard() {
 function LegalPage({ doc }: { doc: Doc }) {
   return (
     <ScrollView style={{ flex: 1, backgroundColor: PAPER }} contentContainerStyle={{ flexGrow: 1 }} showsVerticalScrollIndicator>
-      <PageHead title={`${doc.title} · KompassFlow`} description={doc.lead} path={doc.path} />
+      <PageHead title={`${doc.title} · Kompass`} description={doc.lead} path={doc.path} />
       <style dangerouslySetInnerHTML={{ __html: CSS }} />
       <div className="kf-root w-full" style={{ background: PAPER }}>
         <LegalNav current={doc.title} />

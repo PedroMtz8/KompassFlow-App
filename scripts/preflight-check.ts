@@ -15,7 +15,7 @@ const good = {
   RATE_LIMIT_STORE: 'db',
   CRON_SECRET: 'm7Q2xv9LkT4pR8sWzY1bN6cHdJ3fGaE0uXo5iV=',
   RESEND_API_KEY: 're_live_xxx',
-  EMAIL_FROM: 'KompassFlow <hola@stagelight.mx>',
+  EMAIL_FROM: 'Kompass <hola@stagelight.mx>',
   STRIPE_SECRET_KEY: 'sk_live_abc',
   STRIPE_WEBHOOK_SECRET: 'whsec_abc',
   STRIPE_CONNECT_WEBHOOK_SECRET: 'whsec_def',
@@ -26,7 +26,7 @@ const good = {
   R2_BACKUP_BUCKET: 'stagelight-backups',
   BACKUP_ENCRYPTION_KEY: 'k3Jx9Lm2Pq8Rt5Vw1Yz4Bc7Df0Gh6Jn3Qs8Tu1Xa5Zc=',
   SENTRY_DSN: 'https://abc@o1.ingest.sentry.io/1',
-  EXPO_PUBLIC_LEGAL_NAME: 'KompassFlow SA de CV', EXPO_PUBLIC_LEGAL_ADDRESS: 'Calle 1, Tepic', EXPO_PUBLIC_LEGAL_SUPPORT_EMAIL: 'soporte@stagelight.mx',
+  EXPO_PUBLIC_LEGAL_NAME: 'Kompass SA de CV', EXPO_PUBLIC_LEGAL_ADDRESS: 'Calle 1, Tepic', EXPO_PUBLIC_LEGAL_SUPPORT_EMAIL: 'soporte@stagelight.mx',
   GOOGLE_CLIENT_ID: 'g', GOOGLE_CLIENT_SECRET: 'h',
 };
 const app = { expo: { ios: { bundleIdentifier: 'mx.stagelight.app' }, android: { package: 'mx.stagelight.app' } } };
@@ -49,7 +49,7 @@ const cases: [string, Record<string, string | undefined>, string, typeof app?][]
   ['Sin secreto para los recordatorios', { ...good, CRON_SECRET: undefined }, 'Recordatorios'],
   ['Límite de intentos en memoria', { ...good, RATE_LIMIT_STORE: undefined }, 'Seguridad'],
   ['Sin Resend', { ...good, RESEND_API_KEY: undefined }, 'Correo'],
-  ['Remitente de pruebas de Resend', { ...good, EMAIL_FROM: 'KompassFlow <onboarding@resend.dev>' }, 'Correo'],
+  ['Remitente de pruebas de Resend', { ...good, EMAIL_FROM: 'Kompass <onboarding@resend.dev>' }, 'Correo'],
   ['Stripe en modo de prueba', { ...good, STRIPE_SECRET_KEY: 'sk_test_abc' }, 'Stripe'],
   ['Sin secreto del webhook', { ...good, STRIPE_WEBHOOK_SECRET: undefined }, 'Stripe'],
   ['Sin secreto del webhook de cuentas conectadas', { ...good, STRIPE_CONNECT_WEBHOOK_SECRET: undefined }, 'Stripe'],

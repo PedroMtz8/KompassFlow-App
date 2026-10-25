@@ -596,7 +596,7 @@ function Landing() {
   return (
     <ScrollView style={{ flex: 1, backgroundColor: PAPER }} contentContainerStyle={{ flexGrow: 1 }} showsVerticalScrollIndicator>
       <PageHead
-        title="KompassFlow · La agenda de tu academia de baile"
+        title="Kompass · La agenda de tu academia de baile"
         description="Publica tus clases, controla el cupo, cobra y pasa lista desde un solo lugar. Y si bailas, encuentra una clase cerca y reserva en dos toques."
         path="/"
       />

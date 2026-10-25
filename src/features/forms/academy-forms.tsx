@@ -550,7 +550,7 @@ export function InviteMemberScreen() {
         <InfoBanner
           icon={Mail}
           tone="violet"
-          text="La persona verá la invitación al entrar a KompassFlow con ese correo. Una misma cuenta puede estar en varias organizaciones."
+          text="La persona verá la invitación al entrar a Kompass con ese correo. Una misma cuenta puede estar en varias organizaciones."
         />
       )}
     </FormScreen>

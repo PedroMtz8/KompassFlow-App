@@ -21,7 +21,7 @@ const server = createServer((req, res) => {
   });
 });
 await new Promise<void>((r) => server.listen(0, r));
-Object.assign(process.env, { RESEND_API_KEY: 're_test', RESEND_BASE_URL: `http://localhost:${(server.address() as { port: number }).port}`, EMAIL_FROM: 'KompassFlow <no-reply@test.dev>' });
+Object.assign(process.env, { RESEND_API_KEY: 're_test', RESEND_BASE_URL: `http://localhost:${(server.address() as { port: number }).port}`, EMAIL_FROM: 'Kompass <no-reply@test.dev>' });
 
 const { api } = await import('../src/server/app');
 const { db, schema } = await import('../src/server/db');

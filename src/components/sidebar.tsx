@@ -89,7 +89,7 @@ export function Sidebar() {
     >
       <View className="flex-row items-center gap-[9px] px-5 pb-5">
         <BrandMark size={30} />
-        <Text className="text-xl font-extrabold tracking-[-0.025em]">KompassFlow</Text>
+        <Text className="text-xl font-extrabold tracking-[-0.025em]">Kompass</Text>
       </View>
 
       <Pressable
@@ -107,7 +107,7 @@ export function Sidebar() {
             {inAdmin ? 'Administración' : inOrg ? org?.name : 'Modo alumno'}
           </Text>
           <Text className="text-[11px] font-semibold text-muted-foreground" numberOfLines={1}>
-            {inAdmin ? 'Plataforma KompassFlow' : inOrg ? roleLabel(org!.role, terms?.instructor) : 'Descubrir y reservar'}
+            {inAdmin ? 'Plataforma Kompass' : inOrg ? roleLabel(org!.role, terms?.instructor) : 'Descubrir y reservar'}
           </Text>
         </View>
         <Icon as={Repeat} size={15} color={t.subtle} />

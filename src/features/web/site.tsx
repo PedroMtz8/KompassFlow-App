@@ -41,7 +41,7 @@ export function Wordmark({ light = false }: { light?: boolean }) {
         </g>
       </svg>
       <span className="font-extrabold text-[21px] tracking-[-0.035em]" style={{ color: light ? '#fff' : INK }}>
-        KompassFlow
+        Kompass
       </span>
     </span>
   );
@@ -54,7 +54,7 @@ export function Footer() {
         <div className="flex flex-col gap-2">
           <Wordmark />
           <p className="text-[13.5px]" style={{ color: `${INK}99` }}>
-            © {new Date().getFullYear()} KompassFlow. La agenda de las academias de baile.
+            © {new Date().getFullYear()} Kompass. La agenda de las academias de baile.
           </p>
         </div>
         <nav className="flex flex-wrap items-center gap-x-7 gap-y-2 text-[14.5px] font-bold" aria-label="Legal y contacto">

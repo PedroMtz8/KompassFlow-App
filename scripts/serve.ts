@@ -86,4 +86,4 @@ const server = Bun.serve({
     return maybeCompress(request, await handler(request));
   },
 });
-console.log(`KompassFlow escuchando en el puerto ${server.port}`);
+console.log(`Kompass escuchando en el puerto ${server.port}`);
